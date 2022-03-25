@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 25 mar. 2022 22:49:43 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Carta" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="carta">
+        <id name="idCarta" type="int">
+            <column name="ID_CARTA"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="NOMBRE" not-null="true">
+                <comment>Nombre del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="posicion" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="POSICION" not-null="true">
+                <comment>Posicion del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="pais" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="PAIS" not-null="true">
+                <comment>Pais del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="equipo" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="EQUIPO" not-null="true">
+                <comment>Equipo del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="media" optimistic-lock="true" type="int" unique="false">
+            <column name="MEDIA" not-null="true">
+                <comment>Puntuación media del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="ritmo" optimistic-lock="true" type="int" unique="false">
+            <column name="RITMO" not-null="true">
+                <comment>Ritmo del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="tiro" optimistic-lock="true" type="int" unique="false">
+            <column name="TIRO" not-null="true">
+                <comment>Tiro del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="pase" optimistic-lock="true" type="int" unique="false">
+            <column name="PASE" not-null="true">
+                <comment>Pase del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="regate" optimistic-lock="true" type="int" unique="false">
+            <column name="REGATE" not-null="true">
+                <comment>Regate del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="defensa" optimistic-lock="true" type="int" unique="false">
+            <column name="DEFENSA" not-null="true">
+                <comment>Defensa del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fisico" optimistic-lock="true" type="int" unique="false">
+            <column name="FISICO" not-null="true">
+                <comment>Físico del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="usuarios" optimistic-lock="true" sort="unsorted" table="usuario">
+            <key on-delete="noaction">
+                <column name="ID_CARTA" not-null="true">
+                    <comment>Identificador del Jugador de la Carta</comment>
+                </column>
+            </key>
+            <one-to-many class="MODELO.Usuario" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
