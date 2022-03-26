@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 25 mar. 2022 22:49:43 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 mar. 2022 13:26:16 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Carta" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="carta">
-        <id name="idCarta" type="int">
+        <id name="idCarta" type="java.lang.Integer">
             <column name="ID_CARTA"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
         <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
             <column length="50" name="NOMBRE" not-null="true">
@@ -26,9 +26,19 @@
                 <comment>Equipo del Jugador de la Carta</comment>
             </column>
         </property>
+        <property generated="never" lazy="false" name="liga" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="LIGA" not-null="true">
+                <comment>Liga que juega el Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="precio" optimistic-lock="true" type="int" unique="false">
+            <column name="PRECIO" not-null="true">
+                <comment>Precio del Jugador de la Carta</comment>
+            </column>
+        </property>
         <property generated="never" lazy="false" name="media" optimistic-lock="true" type="int" unique="false">
             <column name="MEDIA" not-null="true">
-                <comment>Puntuación media del Jugador de la Carta</comment>
+                <comment>Puntuacion media del Jugador de la Carta</comment>
             </column>
         </property>
         <property generated="never" lazy="false" name="ritmo" optimistic-lock="true" type="int" unique="false">
@@ -58,7 +68,7 @@
         </property>
         <property generated="never" lazy="false" name="fisico" optimistic-lock="true" type="int" unique="false">
             <column name="FISICO" not-null="true">
-                <comment>Físico del Jugador de la Carta</comment>
+                <comment>Fisico del Jugador de la Carta</comment>
             </column>
         </property>
         <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="usuarios" optimistic-lock="true" sort="unsorted" table="usuario">

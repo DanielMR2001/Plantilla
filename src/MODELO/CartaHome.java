@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 25 mar. 2022 22:49:44 by Hibernate Tools 5.4.32.Final
+// Generated 26 mar. 2022 13:26:18 by Hibernate Tools 5.4.32.Final
 
 import java.util.List;
 import java.util.logging.Level;
@@ -85,7 +85,7 @@ public class CartaHome {
 		}
 	}
 
-	public Carta findById(int id) {
+	public Carta findById(java.lang.Integer id) {
 		logger.log(Level.INFO, "getting Carta instance with id: " + id);
 		try {
 			Carta instance = (Carta) sessionFactory.getCurrentSession().get("MODELO.Carta", id);

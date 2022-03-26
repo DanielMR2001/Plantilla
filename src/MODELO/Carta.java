@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 25 mar. 2022 22:49:42 by Hibernate Tools 5.4.32.Final
+// Generated 26 mar. 2022 13:26:16 by Hibernate Tools 5.4.32.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,11 +9,13 @@ import java.util.Set;
  */
 public class Carta implements java.io.Serializable {
 
-	private int idCarta;
+	private Integer idCarta;
 	private String nombre;
 	private String posicion;
 	private String pais;
 	private String equipo;
+	private String liga;
+	private int precio;
 	private int media;
 	private int ritmo;
 	private int tiro;
@@ -21,18 +23,19 @@ public class Carta implements java.io.Serializable {
 	private int regate;
 	private int defensa;
 	private int fisico;
-	private Set usuarios = new HashSet(0);
+	private Set <Usuario> usuarios = new HashSet(0);
 
 	public Carta() {
 	}
 
-	public Carta(int idCarta, String nombre, String posicion, String pais, String equipo, int media, int ritmo,
-			int tiro, int pase, int regate, int defensa, int fisico) {
-		this.idCarta = idCarta;
+	public Carta(String nombre, String posicion, String pais, String equipo, String liga, int precio, int media,
+			int ritmo, int tiro, int pase, int regate, int defensa, int fisico) {
 		this.nombre = nombre;
 		this.posicion = posicion;
 		this.pais = pais;
 		this.equipo = equipo;
+		this.liga = liga;
+		this.precio = precio;
 		this.media = media;
 		this.ritmo = ritmo;
 		this.tiro = tiro;
@@ -42,13 +45,14 @@ public class Carta implements java.io.Serializable {
 		this.fisico = fisico;
 	}
 
-	public Carta(int idCarta, String nombre, String posicion, String pais, String equipo, int media, int ritmo,
-			int tiro, int pase, int regate, int defensa, int fisico, Set usuarios) {
-		this.idCarta = idCarta;
+	public Carta(String nombre, String posicion, String pais, String equipo, String liga, int precio, int media,
+			int ritmo, int tiro, int pase, int regate, int defensa, int fisico, Set usuarios) {
 		this.nombre = nombre;
 		this.posicion = posicion;
 		this.pais = pais;
 		this.equipo = equipo;
+		this.liga = liga;
+		this.precio = precio;
 		this.media = media;
 		this.ritmo = ritmo;
 		this.tiro = tiro;
@@ -59,11 +63,11 @@ public class Carta implements java.io.Serializable {
 		this.usuarios = usuarios;
 	}
 
-	public int getIdCarta() {
+	public Integer getIdCarta() {
 		return this.idCarta;
 	}
 
-	public void setIdCarta(int idCarta) {
+	public void setIdCarta(Integer idCarta) {
 		this.idCarta = idCarta;
 	}
 
@@ -97,6 +101,22 @@ public class Carta implements java.io.Serializable {
 
 	public void setEquipo(String equipo) {
 		this.equipo = equipo;
+	}
+
+	public String getLiga() {
+		return this.liga;
+	}
+
+	public void setLiga(String liga) {
+		this.liga = liga;
+	}
+
+	public int getPrecio() {
+		return this.precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 	public int getMedia() {
@@ -155,11 +175,11 @@ public class Carta implements java.io.Serializable {
 		this.fisico = fisico;
 	}
 
-	public Set getUsuarios() {
+	public Set <Usuario> getUsuarios() {
 		return this.usuarios;
 	}
 
-	public void setUsuarios(Set usuarios) {
+	public void setUsuarios(Set <Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 
