@@ -13,11 +13,12 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.SystemColor;
 
 public class Login extends JFrame {
 
 	public JPanel contentPane;
-	public JTextField usuario;
+	public JTextField usuarioInicioSesion;
 	public JPanel panel;
 	public JPanel loguear;
 	public JTextPane txtpnContrasea;
@@ -28,11 +29,11 @@ public class Login extends JFrame {
 	public JButton aceptar1;
 	public JPanel registro;
 	public JButton aceptar2;
-	public JTextField nombree;
-	public JTextField contraseñaa;
-	public JTextField usuarioo;
-	public JTextField emaill;
-	public JTextField contrasena;
+	public JTextField nombreRegistro;
+	public JTextField usuarioRegistro;
+	public JTextField contrasenaRegistro;
+	public JTextField emailRegistro;
+	public JTextField contrasenaInicioSesion;
 	public JTextPane corregir2;
 
 	public static void main(String[] args) {
@@ -57,7 +58,7 @@ public class Login extends JFrame {
 		
 		panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(SystemColor.textHighlight);
 		panel.setBounds(0, 0, 576, 400);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -86,12 +87,12 @@ public class Login extends JFrame {
 		txtpnUsuario.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
 		txtpnUsuario.setText("USUARIO:");
 		
-		usuario = new JTextField();
-		usuario.setForeground(Color.BLACK);
-		usuario.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		usuario.setBounds(189, 11, 201, 25);
-		loguear.add(usuario);
-		usuario.setColumns(10);
+		usuarioInicioSesion = new JTextField();
+		usuarioInicioSesion.setForeground(Color.BLACK);
+		usuarioInicioSesion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		usuarioInicioSesion.setBounds(189, 11, 201, 25);
+		loguear.add(usuarioInicioSesion);
+		usuarioInicioSesion.setColumns(10);
 		
 		corregir = new JTextPane();
 		corregir.setForeground(Color.RED);
@@ -100,12 +101,12 @@ public class Login extends JFrame {
 		corregir.setBounds(68, 74, 255, 25);
 		loguear.add(corregir);
 		
-		contrasena = new JTextField();
-		contrasena.setForeground(Color.BLACK);
-		contrasena.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		contrasena.setColumns(10);
-		contrasena.setBounds(189, 42, 201, 25);
-		loguear.add(contrasena);
+		contrasenaInicioSesion = new JTextField();
+		contrasenaInicioSesion.setForeground(Color.BLACK);
+		contrasenaInicioSesion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		contrasenaInicioSesion.setColumns(10);
+		contrasenaInicioSesion.setBounds(189, 42, 201, 25);
+		loguear.add(contrasenaInicioSesion);
 		
 		iniciarSesion = new JButton("INICIAR SESI\u00D3N");
 		iniciarSesion.setForeground(Color.BLACK);
@@ -161,33 +162,33 @@ public class Login extends JFrame {
 		Contraseniaa.setBounds(10, 73, 87, 22);
 		registro.add(Contraseniaa);
 		
-		nombree = new JTextField();
-		nombree.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		nombree.setForeground(Color.BLACK);
-		nombree.setBounds(107, 10, 294, 25);
-		registro.add(nombree);
-		nombree.setColumns(10);
+		nombreRegistro = new JTextField();
+		nombreRegistro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		nombreRegistro.setForeground(Color.BLACK);
+		nombreRegistro.setBounds(107, 10, 294, 25);
+		registro.add(nombreRegistro);
+		nombreRegistro.setColumns(10);
 		
-		contraseñaa = new JTextField();
-		contraseñaa.setForeground(Color.BLACK);
-		contraseñaa.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		contraseñaa.setColumns(10);
-		contraseñaa.setBounds(107, 40, 294, 25);
-		registro.add(contraseñaa);
+		usuarioRegistro = new JTextField();
+		usuarioRegistro.setForeground(Color.BLACK);
+		usuarioRegistro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		usuarioRegistro.setColumns(10);
+		usuarioRegistro.setBounds(107, 40, 294, 25);
+		registro.add(usuarioRegistro);
 		
-		usuarioo = new JTextField();
-		usuarioo.setForeground(Color.BLACK);
-		usuarioo.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		usuarioo.setColumns(10);
-		usuarioo.setBounds(107, 70, 294, 25);
-		registro.add(usuarioo);
+		contrasenaRegistro = new JTextField();
+		contrasenaRegistro.setForeground(Color.BLACK);
+		contrasenaRegistro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		contrasenaRegistro.setColumns(10);
+		contrasenaRegistro.setBounds(107, 70, 294, 25);
+		registro.add(contrasenaRegistro);
 		
-		emaill = new JTextField();
-		emaill.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		emaill.setForeground(Color.BLACK);
-		emaill.setColumns(10);
-		emaill.setBounds(107, 100, 294, 25);
-		registro.add(emaill);
+		emailRegistro = new JTextField();
+		emailRegistro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		emailRegistro.setForeground(Color.BLACK);
+		emailRegistro.setColumns(10);
+		emailRegistro.setBounds(107, 100, 294, 25);
+		registro.add(emailRegistro);
 		
 		corregir2 = new JTextPane();
 		corregir2.setForeground(Color.RED);

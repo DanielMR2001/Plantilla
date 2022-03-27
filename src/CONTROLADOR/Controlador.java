@@ -2,11 +2,16 @@ package CONTROLADOR;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
 import MODELO.Usuario;
 import VISTA.Login;
 import VISTA.Plantilla;
@@ -42,54 +47,62 @@ public class Controlador implements ActionListener{
 				
 		//FUNCIONALIDAD SI SE PULSA EL BOTÓN DE INICIAR SESIÓN
 		if(e.getSource()==login.iniciarSesion) {
-			login.nombree.setText("");
-			login.usuarioo.setText("");
-			login.contraseñaa.setText("");
-			login.emaill.setText("");
-			login.corregir2.setText("");
-			login.loguear.setVisible(true);	
-			login.registro.setVisible(false);
-			login.iniciarSesion.setVisible(false);
-			login.registrar.setVisible(true);
-			login.aceptar1.setVisible(true);
-			login.aceptar2.setVisible(false);
+			login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
+			login.loguear.setVisible(true);	login.registro.setVisible(false); login.iniciarSesion.setVisible(false); login.registrar.setVisible(true); login.aceptar1.setVisible(true); login.aceptar2.setVisible(false);
 		}		
 		
 		//FUNCIONALIDAD SI SE PULSA EL BOTÓN DE ACEPTAR PARA INICIAR SESIÓN
 		if(e.getSource()==login.aceptar1) {
-			String usuario=login.usuario.getText();
-			String contrasena=login.contrasena.getText();
+			String usuario=login.usuarioInicioSesion.getText();
+			String contrasena=login.contrasenaInicioSesion.getText();
 			Boolean usuarioBoolean=usuario.isEmpty();
 			Boolean contrasenaBoolean=contrasena.isEmpty();
+			
+			String usuariousuarioBBDD="";
+			String contrasenaUsuarioBBDD="";
+			
+			//sacar los datos de los usuarios registrados para comprobar el inicio de sesion
+			Session session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			Query query = session.createSQLQuery("SELECT * FROM USUARIO WHERE USUARIO=:usuario");	
+			query.setParameter("usuario", usuario);  
+        	List<Object[]> resultado = query.list();
+    		for (Object[] fila : resultado) {		
+    			Integer idUsuarioBBDD = (Integer) fila[0]; 
+    			String nombreUsuarioBBDD = (String) fila[1]; 
+    			usuariousuarioBBDD = (String) fila[2]; 
+    			contrasenaUsuarioBBDD = (String) fila[3]; 
+    			String emailUsuarioBBDD = (String) fila[4];     			
+    		}
 			
 			//comprobar que se han rellenado los campos de inicio sesión
 			if((usuarioBoolean==true)||(contrasenaBoolean==true)) {
 				login.corregir.setText("");
 				login.corregir.setText("       *Rellene Todos Los Campos*");	
-			}else{			
-				
+			}else if(usuario.equalsIgnoreCase(usuariousuarioBBDD)&&(contrasena.equalsIgnoreCase(contrasenaUsuarioBBDD))){
+				JOptionPane.showMessageDialog(null, "INICIO DE SESIÓN CONFIRMADO","INICIAR SESION", JOptionPane.INFORMATION_MESSAGE);
+				Plantilla p=new Plantilla();
+				p.setVisible(true);
+				login.setVisible(false);			
+			}else{
+				JOptionPane.showMessageDialog(null, "CONTRASEÑA Y/O USUARIO INCORRECTO","INICIAR SESION", JOptionPane.ERROR_MESSAGE);
+				login.usuarioInicioSesion.setText("");
+				login.contrasenaInicioSesion.setText("");
 			}
 		}
 		
 		//FUNCIONALIDAD SI SE PULSA EL BOTÓN DE REGISTRARSE
 		if(e.getSource()==login.registrar) {
-			login.corregir.setText("");
-			login.usuario.setText("");
-			login.contrasena.setText("");
-			login.loguear.setVisible(false);	
-			login.registro.setVisible(true);
-			login.iniciarSesion.setVisible(true);
-			login.aceptar1.setVisible(false);
-			login.registrar.setVisible(false);
-			login.aceptar2.setVisible(true);
+			login.corregir.setText(""); login.usuarioInicioSesion.setText(""); login.contrasenaInicioSesion.setText("");
+			login.loguear.setVisible(false); login.registro.setVisible(true); login.iniciarSesion.setVisible(true); login.aceptar1.setVisible(false); login.registrar.setVisible(false); login.aceptar2.setVisible(true);
 		}
 		
 		//FUNCIONALIDAD SI SE PULSA EL BOTÓN DE ACEPTAR PARA REGISTRARSE
 		if(e.getSource()==login.aceptar2) {
-			String nombre=login.nombree.getText();
-			String contrasena=login.contraseñaa.getText();
-			String usuario=login.usuarioo.getText();
-			String email=login.emaill.getText();
+			String nombre=login.nombreRegistro.getText();
+			String contrasena=login.contrasenaRegistro.getText();
+			String usuario=login.usuarioRegistro.getText();
+			String email=login.emailRegistro.getText();
 			
 			Boolean usuarioBoolean=usuario.isEmpty();
 			Boolean contrasenaBoolean=contrasena.isEmpty();
@@ -101,12 +114,13 @@ public class Controlador implements ActionListener{
 				login.corregir2.setText("");
 				login.corregir2.setText("       *Rellene Todos Los Campos*");	
 			}else{
+				JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO","REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+				String nombreUsuario=login.nombreRegistro.getText();
+				String usuarioUsuario=login.usuarioRegistro.getText();
+				String contraseñaUsuario=login.contrasenaRegistro.getText();
+				String emailUsuario=login.emailRegistro.getText();
 				
-				String nombreUsuario=login.nombree.getText();
-				String usuarioUsuario=login.usuarioo.getText();
-				String contraseñaUsuario=login.contraseñaa.getText();
-				String emailUsuario=login.emaill.getText();
-				
+				//insertar los nuevos usuarios en la BBDD
 				Session session = null;
 				try {
 					session = sessionFactory.getCurrentSession();
@@ -122,11 +136,7 @@ public class Controlador implements ActionListener{
 					if (null != session) { session.getTransaction().rollback(); }
 				} finally { if (null != session) { session.close(); } }
 				
-				login.nombree.setText("");
-				login.usuarioo.setText("");
-				login.contraseñaa.setText("");
-				login.emaill.setText("");
-				login.corregir2.setText("");
+				login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
 			}
 
 		}	
