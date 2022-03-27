@@ -11,9 +11,12 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
+import java.awt.Image;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import javax.swing.JLabel;
 
 public class Login extends JFrame {
 
@@ -35,6 +38,8 @@ public class Login extends JFrame {
 	public JTextField emailRegistro;
 	public JTextField contrasenaInicioSesion;
 	public JTextPane corregir2;
+	public JButton sonido;
+	public JButton silencio;
 
 	public static void main(String[] args) {
 		Login login = new Login();
@@ -212,6 +217,20 @@ public class Login extends JFrame {
 		aceptar2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		aceptar2.setBounds(231, 181, 112, 34);
 		panel.add(aceptar2);
+		
+		sonido = new JButton("");
+		sonido.setVisible(true);
+		sonido.setBackground(SystemColor.textHighlight);
+		sonido.setBounds(509, 12, 57, 41);
+		sonido.setIcon(new ImageIcon("sonido.png"));
+		panel.add(sonido);
+		
+		silencio = new JButton("");
+		silencio.setVisible(false);
+		silencio.setBackground(SystemColor.textHighlight);
+		silencio.setBounds(509, 11, 57, 41);
+		silencio.setIcon(new ImageIcon("silencio.png"));
+		panel.add(silencio);
 	}
 	
 	 public static void centreWindow(Window frame) {
