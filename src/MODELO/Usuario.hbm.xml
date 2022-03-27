@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 26 mar. 2022 13:26:16 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 mar. 2022 1:14:46 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Usuario" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="usuario">
-        <id name="idUsuario" type="int">
+        <id name="idUsuario" type="java.lang.Integer">
             <column name="ID_USUARIO"/>
-            <generator class="assigned"/>
+            <generator class="identity"/>
         </id>
-        <many-to-one class="MODELO.Carta" embed-xml="true" fetch="select" insert="true" name="carta" not-found="exception" optimistic-lock="true" unique="false" update="true">
-            <column name="ID_CARTA" not-null="true">
-                <comment>Identificador del Jugador de la Carta</comment>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="NOMBRE" not-null="true">
+                <comment>Nombre del Jugador de la Carta</comment>
             </column>
-        </many-to-one>
-        <property generated="never" lazy="false" name="nombreUsuario" optimistic-lock="true" type="string" unique="false">
-            <column length="50" name="NOMBRE_USUARIO" not-null="true">
-                <comment>Nombre del Usuario Logueado</comment>
+        </property>
+        <property generated="never" lazy="false" name="usuario" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="USUARIO" not-null="true">
+                <comment>Nombre del Jugador de la Carta</comment>
             </column>
         </property>
         <property generated="never" lazy="false" name="contrasena" optimistic-lock="true" type="string" unique="false">
             <column length="50" name="CONTRASENA" not-null="true">
-                <comment>Contrasena del Usuario Logueado</comment>
+                <comment>Nombre del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="email" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="EMAIL" not-null="true">
+                <comment>Nombre del Jugador de la Carta</comment>
             </column>
         </property>
     </class>

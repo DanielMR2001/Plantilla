@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 26 mar. 2022 13:26:18 by Hibernate Tools 5.4.32.Final
+// Generated 27 mar. 2022 1:14:47 by Hibernate Tools 5.4.32.Final
 
 import java.util.List;
 import java.util.logging.Level;
@@ -85,7 +85,7 @@ public class UsuarioHome {
 		}
 	}
 
-	public Usuario findById(int id) {
+	public Usuario findById(java.lang.Integer id) {
 		logger.log(Level.INFO, "getting Usuario instance with id: " + id);
 		try {
 			Usuario instance = (Usuario) sessionFactory.getCurrentSession().get("MODELO.Usuario", id);
