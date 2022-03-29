@@ -219,6 +219,7 @@ public class Login extends JFrame {
 		panel.add(aceptar2);
 		
 		sonido = new JButton("");
+		sonido.setForeground(SystemColor.textHighlight);
 		sonido.setVisible(true);
 		sonido.setBackground(SystemColor.textHighlight);
 		sonido.setBounds(509, 12, 57, 41);
@@ -226,9 +227,10 @@ public class Login extends JFrame {
 		panel.add(sonido);
 		
 		silencio = new JButton("");
+		silencio.setForeground(SystemColor.textHighlight);
 		silencio.setVisible(false);
 		silencio.setBackground(SystemColor.textHighlight);
-		silencio.setBounds(509, 11, 57, 41);
+		silencio.setBounds(509, 12, 57, 41);
 		silencio.setIcon(new ImageIcon("silencio.png"));
 		panel.add(silencio);
 	}

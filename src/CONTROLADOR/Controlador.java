@@ -45,14 +45,10 @@ public class Controlador implements ActionListener{
 		this.login.sonido.addActionListener(this);
 		this.login.silencio.addActionListener(this);
 
-		//musica de fondo desde que se ejecuta la aplicacion hasta que se cierra
 		
 		
-		//CONFIGURACION DEL HIBERNATE
-		Configuration configuration = new Configuration();
-		configuration.configure("hibernate.cfg.xml");
-		sessionFactory = configuration.buildSessionFactory();
-		sessionFactory.getCurrentSession();
+		
+		
 		}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -60,7 +56,13 @@ public class Controlador implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		try {
+			//CONFIGURACION DEL HIBERNATE
+			Configuration configuration = new Configuration();
+			configuration.configure("hibernate.cfg.xml");
+			sessionFactory = configuration.buildSessionFactory();
+			sessionFactory.getCurrentSession();
 
+			//musica de fondo con opcion de que pare la musica o de que empiece a sonar
 			if((e.getSource()==login.sonido)) {
 				sonido = AudioSystem.getClip();	            
 				sonido.open(AudioSystem.getAudioInputStream(new File("musica.wav")));	            
@@ -94,48 +96,30 @@ public class Controlador implements ActionListener{
 				String nombreUsuarioBBDD="";
 			
 				//sacar los datos de los usuarios registrados para comprobar el inicio de sesion
-				Session session = sessionFactory.getCurrentSession();
-				session.beginTransaction();
-				Query query = session.createSQLQuery("SELECT * FROM USUARIO WHERE USUARIO=:usuario");	
-				query.setParameter("usuario", usuario);  
-				List<Object[]> resultado = query.list();
-				for (Object[] fila : resultado) {		
-					idUsuarioBBDD = (Integer) fila[0]; 
-					nombreUsuarioBBDD = (String) fila[1]; 
-					usuariousuarioBBDD = (String) fila[2]; 
-					contrasenaUsuarioBBDD = (String) fila[3]; 
-					emailUsuarioBBDD = (String) fila[4];     			
-				}
+				Session session=null;
+				try {
+					session = sessionFactory.getCurrentSession();
+					session.beginTransaction();
+					Query query = session.createSQLQuery("SELECT * FROM USUARIO WHERE USUARIO=:usuario");	
+					query.setParameter("usuario", usuario);  
+					List<Object[]> resultado = query.list();
+					for (Object[] fila : resultado) {		
+						idUsuarioBBDD = (Integer) fila[0]; 
+						nombreUsuarioBBDD = (String) fila[1]; 
+						usuariousuarioBBDD = (String) fila[2]; 
+						contrasenaUsuarioBBDD = (String) fila[3]; 
+						emailUsuarioBBDD = (String) fila[4];     			
+					}
+				}catch(HibernateException e2) { e2.printStackTrace();
+					if (null != session) { session.getTransaction().rollback(); }
+				} finally { if (null != session) { session.close(); } }
 			
 				//comprobar que se han rellenado los campos de inicio sesión
 				if((usuarioBoolean==true)||(contrasenaBoolean==true)) {
 					login.corregir.setText("");
 					login.corregir.setText("       *Rellene Todos Los Campos*");	
 				}else if(usuario.equalsIgnoreCase(usuariousuarioBBDD)&&(contrasena.equalsIgnoreCase(contrasenaUsuarioBBDD))){										
-					//mandar un mensaje de confirmacion al email que se introdujo en el registro
-					/*try {
-		            	Properties properties = new Properties();
-		            	properties.put("mail.smtp.host", "smtp.gmail.com");
-		            	properties.put("mail.smtp.starttls.enable", "true");
-		            	properties.put("mail.smtp.port", "25");
-		            	properties.put("mail.smtp.auth", "true");
-		                javax.mail.Session ses = javax.mail.Session.getInstance(properties);
-		                String remitente="danielmarchantero2001@gmail.com";
-		                String password="ciudadreal12";
-		                String receptor=emailUsuarioBBDD;
-		                String asunto="- - FIFA 22 - - ";
-		                String mensaje="SESIÓN INICIADA COMO -"+usuariousuarioBBDD+"-";
-		                MimeMessage message=new MimeMessage(ses);
-		                message.setFrom(new InternetAddress(remitente));
-		                message.setRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
-		                message.setSubject(asunto);
-		                message.setText(mensaje);
-		                Transport t=ses.getTransport("smtp");
-	        			t.connect("smtp.gmail.com", remitente, password);
-		                t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
-		                t.close();    
-		            } catch (MessagingException e1) { e1.printStackTrace(); } */
-					JOptionPane.showMessageDialog(null, "INICIO DE SESIÓN CONFIRMADO\n            USUARIO: "+usuariousuarioBBDD,"INICIAR SESION", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "INICIO DE SESIÓN CONFIRMADO\n         BIENVENIDO "+usuariousuarioBBDD,"INICIAR SESION", JOptionPane.INFORMATION_MESSAGE);
 					Plantilla p=new Plantilla();
 					p.setVisible(true);
 					login.setVisible(false); 
@@ -174,6 +158,30 @@ public class Controlador implements ActionListener{
 					String usuarioUsuario=login.usuarioRegistro.getText();
 					String contraseñaUsuario=login.contrasenaRegistro.getText();
 					String emailUsuario=login.emailRegistro.getText();
+					
+					//mandar un mensaje de confirmacion al email que se ha obtenido del registro
+					/*try {
+		            	Properties properties = new Properties();
+		            	properties.put("mail.smtp.host", "smtp.gmail.com");
+		            	properties.put("mail.smtp.starttls.enable", "true");
+		            	properties.put("mail.smtp.port", "25");
+		            	properties.put("mail.smtp.auth", "true");
+		                javax.mail.Session ses = javax.mail.Session.getInstance(properties);
+		                String remitente="danielmarchantero2001@gmail.com";
+		                String password="ciudadreal12";
+		                String receptor=emailUsuario;
+		                String asunto="- - FIFA 22 - - ";
+		                String mensaje="HOLA "+nombreUsuario+"\nSE HA REGISTRADO COMO -"+usuarioUsuario+"-";
+		                MimeMessage message=new MimeMessage(ses);
+		                message.setFrom(new InternetAddress(remitente));
+		                message.setRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
+		                message.setSubject(asunto);
+		                message.setText(mensaje);
+		                Transport t=ses.getTransport("smtp");
+	        			t.connect("smtp.gmail.com", remitente, password);
+		                t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+		                t.close();    
+		            } catch (MessagingException e1) { e1.printStackTrace(); }*/
 				
 					//insertar los nuevos usuarios en la BBDD
 					Session session = null;

@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 public class Plantilla extends JFrame {
 
 	public JPanel contentPane;
-	public JLabel fondo;
 
 	public static void main(String[] args) {
 		Plantilla frame = new Plantilla();
@@ -35,15 +34,7 @@ public class Plantilla extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		contentPane.setLayout(null);
 		
-		fondo = new JLabel("");
-		fondo.setBounds(0, 0, 1366, 706);
-		ImageIcon icon = new ImageIcon("fondo.png");
-		ImageIcon img2 = new ImageIcon(icon.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_SMOOTH));
-		contentPane.setLayout(null);
-		fondo.setIcon(img2);
-		contentPane.add(fondo);
 		
 		
 		

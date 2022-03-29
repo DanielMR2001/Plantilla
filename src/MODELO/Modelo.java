@@ -16,8 +16,10 @@ public class Modelo {
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
             sessionFactory = configuration.buildSessionFactory();
-            sessionFactory.getCurrentSession().beginTransaction();
-            Query query = sessionFactory.getCurrentSession().createSQLQuery("SELECT * FROM CARTA;");		
+            sessionFactory.getCurrentSession();
+            Session session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT * FROM CARTA;");		
         	List<Object[]> resultado = query.list();
     		for (Object[] fila : resultado) {		
     			Integer id = (Integer) fila[0]; 
