@@ -153,14 +153,13 @@ public class Controlador implements ActionListener{
 					login.corregir2.setText("");
 					login.corregir2.setText("       *Rellene Todos Los Campos*");	
 				}else{
-					JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO\n            USUARIO: "+usuario,"REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 					String nombreUsuario=login.nombreRegistro.getText();
 					String usuarioUsuario=login.usuarioRegistro.getText();
 					String contraseñaUsuario=login.contrasenaRegistro.getText();
 					String emailUsuario=login.emailRegistro.getText();
 					
 					//mandar un mensaje de confirmacion al email que se ha obtenido del registro
-					/*try {
+					try {
 		            	Properties properties = new Properties();
 		            	properties.put("mail.smtp.host", "smtp.gmail.com");
 		            	properties.put("mail.smtp.starttls.enable", "true");
@@ -181,7 +180,7 @@ public class Controlador implements ActionListener{
 	        			t.connect("smtp.gmail.com", remitente, password);
 		                t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
 		                t.close();    
-		            } catch (MessagingException e1) { e1.printStackTrace(); }*/
+		            } catch (MessagingException e1) { e1.printStackTrace(); }
 				
 					//insertar los nuevos usuarios en la BBDD
 					Session session = null;
@@ -200,7 +199,8 @@ public class Controlador implements ActionListener{
 					} finally { if (null != session) { session.close(); } }
 				
 					login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
-					}
+					JOptionPane.showMessageDialog(null, "USUARIO REGISTRADO\n            USUARIO: "+usuario,"REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+				}
 				}	
 			} catch (Exception e3) { e3.printStackTrace();
 			} finally { if(sessionFactory != null) { sessionFactory.close(); } }

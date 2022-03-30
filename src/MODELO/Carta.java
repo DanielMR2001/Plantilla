@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 29 mar. 2022 19:47:06 by Hibernate Tools 5.4.32.Final
+// Generated 30 mar. 2022 10:01:58 by Hibernate Tools 5.4.32.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +32,8 @@ public class Carta implements java.io.Serializable {
 		this.media = media;
 	}
 
-	public Carta(String nombre, String posicion, String pais, String equipo, String liga, int precio, int media, Set plantillas) {
+	public Carta(String nombre, String posicion, String pais, String equipo, String liga, int precio, int media,
+			Set plantillas) {
 		this.nombre = nombre;
 		this.posicion = posicion;
 		this.pais = pais;
