@@ -6,17 +6,15 @@ import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import CONTROLADOR.Controlador;
+import CONTROLADOR.Controlador1;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
-import java.awt.Image;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
-import javax.swing.JLabel;
 
 public class Login extends JFrame {
 
@@ -40,14 +38,15 @@ public class Login extends JFrame {
 	public JTextPane corregir2;
 	public JButton sonido;
 	public JButton silencio;
+	public JTextPane validar;
 
 	public static void main(String[] args) {
 		Login login = new Login();
-		centreWindow(login);
+		centreWindow1(login);
 		login.setVisible(true);
 		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		@SuppressWarnings("unused")
-		Controlador controlador=new Controlador(login);			
+		Controlador1 controlador=new Controlador1(login);			
 	}
 
 	public Login() {
@@ -199,8 +198,16 @@ public class Login extends JFrame {
 		corregir2.setForeground(Color.RED);
 		corregir2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		corregir2.setEditable(false);
-		corregir2.setBounds(57, 129, 253, 25);
+		corregir2.setBounds(157, 136, 244, 25);
 		registro.add(corregir2);
+		
+		validar = new JTextPane();
+		validar.setText("  *Espere al ACEPTAR*");
+		validar.setForeground(Color.BLACK);
+		validar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		validar.setEditable(false);
+		validar.setBounds(3, 136, 144, 25);
+		registro.add(validar);
 		
 		aceptar1 = new JButton("ACEPTAR");
 		aceptar1.setVisible(false);
@@ -211,9 +218,9 @@ public class Login extends JFrame {
 		aceptar1.setForeground(Color.BLACK);
 		
 		aceptar2 = new JButton("ACEPTAR");
+		aceptar2.setVisible(false);
 		aceptar2.setBackground(Color.WHITE);
 		aceptar2.setForeground(Color.BLACK);
-		aceptar2.setVisible(false);
 		aceptar2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		aceptar2.setBounds(231, 181, 112, 34);
 		panel.add(aceptar2);
@@ -235,7 +242,7 @@ public class Login extends JFrame {
 		panel.add(silencio);
 	}
 	
-	 public static void centreWindow(Window frame) {
+	 public static void centreWindow1(Window frame) {
 	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
 	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);

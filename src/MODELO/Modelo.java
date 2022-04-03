@@ -1,6 +1,14 @@
 package MODELO;
 
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -45,5 +53,70 @@ public class Modelo {
         } catch (Exception e) { e.printStackTrace(); throw e;
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
     }
+	
+	public Usuario iniciarSesion(SessionFactory sessionFactory, String buscarUsuario) {
+		Session session=null;
+		Usuario u=null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			Query query = session.createSQLQuery("SELECT * FROM USUARIO WHERE USUARIO=:usuario");	
+			query.setParameter("usuario", buscarUsuario);  
+			List<Object[]> resultado = query.getResultList();
+			for (Object[] fila : resultado) {		
+				int id = (Integer) fila[0]; 
+				String nombre = (String) fila[1]; 
+				String usuario = (String) fila[2]; 
+				String contrasena = (String) fila[3]; 
+				String email = (String) fila[4]; 
+				u=new Usuario(nombre, usuario, contrasena, email);
+			}
+		}catch(HibernateException e2) { e2.printStackTrace();
+			if (null != session) { session.getTransaction().rollback(); }
+		} finally { if (null != session) { session.close(); } }	
+		return u;
+	}
+	
+	public void insertarDatos(SessionFactory sessionFactory, String nombre, String usuario, String contrasena, String email) {
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			Usuario usuario1 =new Usuario();
+			usuario1.setNombre(nombre);
+			usuario1.setUsuario(usuario);
+			usuario1.setContrasena(contrasena);
+			usuario1.setEmail(email);
+			session.saveOrUpdate(usuario1);	           
+			session.getTransaction().commit();				
+		}catch(HibernateException e2) { e2.printStackTrace();
+			if (null != session) { session.getTransaction().rollback(); }
+		} finally { if (null != session) { session.close(); } }
+	}
+	
+	public void mandarMensaje(String email, String nombre, String usuario) {
+		try {
+        	Properties properties = new Properties();
+        	properties.put("mail.smtp.host", "smtp.gmail.com");
+        	properties.put("mail.smtp.starttls.enable", "true");
+        	properties.put("mail.smtp.port", "25");
+        	properties.put("mail.smtp.auth", "true");
+            javax.mail.Session ses = javax.mail.Session.getInstance(properties);
+            String remitente="danielmarchantero2001@gmail.com";
+            String password="ciudadreal12";
+            String receptor=email;
+            String asunto="- - FIFA 22 - - ";
+            String mensaje="¡Hola "+nombre+"!\nTe has registrado como '"+usuario+"'";
+            MimeMessage message=new MimeMessage(ses);
+            message.setFrom(new InternetAddress(remitente));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
+            message.setSubject(asunto);
+            message.setText(mensaje);
+            Transport t=ses.getTransport("smtp");
+			t.connect("smtp.gmail.com", remitente, password);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();    
+        } catch (MessagingException e1) { e1.printStackTrace(); }
+	}
 
 }
