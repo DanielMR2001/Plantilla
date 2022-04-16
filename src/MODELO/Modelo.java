@@ -1,5 +1,6 @@
 package MODELO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -8,6 +9,7 @@ import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JComboBox;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -44,7 +46,7 @@ public class Modelo {
             		Integer media = (Integer) fila[7]; 
     			
             		System.out.println(id+"-"+nombre+"-"+posicion+"-"+pais+"-"+equipo+"-"+liga+"-"+precio+"€-"+media);
-            		System.out.println("-------------------------------------------------------------------");			
+            		System.out.println("-------------------------------------------------------------------");			            	
             	}
             }catch(HibernateException e) { e.printStackTrace();
 				if (null != session) { session.getTransaction().rollback(); }
@@ -54,14 +56,14 @@ public class Modelo {
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
     }
 	
-	public Usuario iniciarSesion(SessionFactory sessionFactory, String buscarUsuario) {
+	public Usuario iniciarSesion(SessionFactory sessionFactory, String usuarioo) {
 		Session session=null;
 		Usuario u=null;
 		try {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
 			Query query = session.createSQLQuery("SELECT * FROM USUARIO WHERE USUARIO=:usuario");	
-			query.setParameter("usuario", buscarUsuario);  
+			query.setParameter("usuario", usuarioo);
 			List<Object[]> resultado = query.getResultList();
 			for (Object[] fila : resultado) {		
 				int id = (Integer) fila[0]; 
@@ -118,5 +120,33 @@ public class Modelo {
             t.close();    
         } catch (MessagingException e1) { e1.printStackTrace(); }
 	}
-
+	
+	public Carta sacarJugadores(SessionFactory sessionFactory, int idd) {
+		Session session = null;
+		Carta carta=null;
+		 try {
+         	session = sessionFactory.getCurrentSession();
+         	session.beginTransaction();
+         	Query query = session.createSQLQuery("SELECT * FROM CARTA WHERE ID_CARTA=:id");	
+			query.setParameter("id", idd);  
+         	List<Object[]> resultado = query.list();
+         	for (Object[] fila : resultado) {		
+         		Integer id = (Integer) fila[0]; 
+         		String nombre = (String) fila[1]; 
+         		String posicion = (String) fila[2]; 
+         		String pais = (String) fila[3]; 
+         		String equipo = (String) fila[4]; 
+         		String liga = (String) fila[5]; 
+         		Integer precio = (Integer) fila[6]; 
+         		Integer media = (Integer) fila[7]; 
+ 			
+         		System.out.println(id+"-"+nombre+"-"+posicion+"-"+pais+"-"+equipo+"-"+liga+"-"+precio+"€-"+media);
+         		carta=new Carta(nombre, posicion, pais, equipo, liga, precio, media);
+         	}
+         }catch(HibernateException e) { e.printStackTrace();
+				if (null != session) { session.getTransaction().rollback(); }
+         } finally { if (null != session) { session.close(); } }     
+		 return carta;
+	}
+	
 }

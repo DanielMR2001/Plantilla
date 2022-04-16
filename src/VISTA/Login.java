@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
@@ -32,9 +33,9 @@ public class Login extends JFrame {
 	public JButton aceptar2;
 	public JTextField nombreRegistro;
 	public JTextField usuarioRegistro;
-	public JTextField contrasenaRegistro;
+	public JPasswordField contrasenaRegistro;
 	public JTextField emailRegistro;
-	public JTextField contrasenaInicioSesion;
+	public JPasswordField contrasenaInicioSesion;
 	public JTextPane corregir2;
 	public JButton sonido;
 	public JButton silencio;
@@ -51,7 +52,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		setResizable(false);
-		this.setTitle("   - - - FIFA 2022 - - - ");			
+		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 - - - ");			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 592, 439);
 		contentPane = new JPanel();
@@ -105,7 +106,7 @@ public class Login extends JFrame {
 		corregir.setBounds(68, 74, 255, 25);
 		loguear.add(corregir);
 		
-		contrasenaInicioSesion = new JTextField();
+		contrasenaInicioSesion = new JPasswordField();
 		contrasenaInicioSesion.setForeground(Color.BLACK);
 		contrasenaInicioSesion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
 		contrasenaInicioSesion.setColumns(10);
@@ -180,7 +181,7 @@ public class Login extends JFrame {
 		usuarioRegistro.setBounds(107, 40, 294, 25);
 		registro.add(usuarioRegistro);
 		
-		contrasenaRegistro = new JTextField();
+		contrasenaRegistro = new JPasswordField();
 		contrasenaRegistro.setForeground(Color.BLACK);
 		contrasenaRegistro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
 		contrasenaRegistro.setColumns(10);
@@ -226,6 +227,7 @@ public class Login extends JFrame {
 		panel.add(aceptar2);
 		
 		sonido = new JButton("");
+		sonido.setBorder(null);
 		sonido.setForeground(SystemColor.textHighlight);
 		sonido.setVisible(true);
 		sonido.setBackground(SystemColor.textHighlight);
@@ -236,6 +238,7 @@ public class Login extends JFrame {
 		silencio = new JButton("");
 		silencio.setForeground(SystemColor.textHighlight);
 		silencio.setVisible(false);
+		silencio.setBorder(null);
 		silencio.setBackground(SystemColor.textHighlight);
 		silencio.setBounds(509, 12, 57, 41);
 		silencio.setIcon(new ImageIcon("silencio.png"));
