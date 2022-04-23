@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19 abr. 2022 22:07:55 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.CartasCompradas" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="cartas_compradas">
+        <id name="idCartaComprada" type="int">
+            <column name="ID_CARTA_COMPRADA"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="MODELO.Usuario" embed-xml="true" fetch="select" insert="true" name="usuario" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="ID_USUARIO" not-null="true">
+                <comment>Identificador del Usuario</comment>
+            </column>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nombreCartaComprada" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="NOMBRE_CARTA_COMPRADA" not-null="true">
+                <comment>Nombre del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="posicionCartaComprada" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="POSICION_CARTA_COMPRADA" not-null="true">
+                <comment>Posicion del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="paisCartaComprada" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="PAIS_CARTA_COMPRADA" not-null="true">
+                <comment>Pais del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="equipoCartaComprada" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="EQUIPO_CARTA_COMPRADA" not-null="true">
+                <comment>Equipo del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="ligaCartaComprada" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="LIGA_CARTA_COMPRADA" not-null="true">
+                <comment>Liga que juega el Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="precioCartaComprada" optimistic-lock="true" type="int" unique="false">
+            <column name="PRECIO_CARTA_COMPRADA" not-null="true">
+                <comment>Precio del Jugador de la Carta</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="mediaCartaComprada" optimistic-lock="true" type="int" unique="false">
+            <column name="MEDIA_CARTA_COMPRADA" not-null="true">
+                <comment>Puntuacion media del Jugador de la Carta</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

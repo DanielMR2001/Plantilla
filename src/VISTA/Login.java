@@ -43,7 +43,6 @@ public class Login extends JFrame {
 
 	public static void main(String[] args) {
 		Login login = new Login();
-		centreWindow1(login);
 		login.setVisible(true);
 		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		@SuppressWarnings("unused")
@@ -245,10 +244,5 @@ public class Login extends JFrame {
 		panel.add(silencio);
 	}
 	
-	 public static void centreWindow1(Window frame) {
-	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-	    frame.setLocation(x, y - 18);
-	}
+	
 }

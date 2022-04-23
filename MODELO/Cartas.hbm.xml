@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 30 mar. 2022 10:01:58 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 abr. 2022 22:07:55 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Carta" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="carta">
+    <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Cartas" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="cartas">
         <id name="idCarta" type="java.lang.Integer">
             <column name="ID_CARTA"/>
             <generator class="identity"/>
@@ -41,13 +41,5 @@
                 <comment>Puntuacion media del Jugador de la Carta</comment>
             </column>
         </property>
-        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="plantillas" optimistic-lock="true" sort="unsorted" table="plantilla">
-            <key on-delete="noaction">
-                <column name="ID_CARTA" not-null="true">
-                    <comment>Identificador del Jugador de la Carta</comment>
-                </column>
-            </key>
-            <one-to-many class="MODELO.Plantilla" embed-xml="true" not-found="exception"/>
-        </set>
     </class>
 </hibernate-mapping>

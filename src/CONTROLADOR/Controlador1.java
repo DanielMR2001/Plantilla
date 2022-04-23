@@ -1,5 +1,8 @@
 package CONTROLADOR;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -23,6 +26,7 @@ public class Controlador1 implements ActionListener{
 	Usuario u=null;
 	
 	public Controlador1(VISTA.Login login) {
+		centreWindow1(login);
 		this.login=login;
 		this.login.iniciarSesion.addActionListener(this);
 		this.login.aceptar1.addActionListener(this);
@@ -130,5 +134,12 @@ public class Controlador1 implements ActionListener{
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
 		
 	}
+	
+	 public static void centreWindow1(Window frame) {
+		    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+		    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+		    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+		    frame.setLocation(x, y - 18);
+		}
 
 }

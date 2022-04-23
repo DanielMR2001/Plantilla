@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 30 mar. 2022 10:02:03 by Hibernate Tools 5.4.32.Final
+// Generated 19 abr. 2022 22:07:59 by Hibernate Tools 5.4.32.Final
 
 import java.util.List;
 import java.util.logging.Level;
@@ -10,13 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Plantilla.
- * @see MODELO.Plantilla
+ * Home object for domain model class CartasCompradas.
+ * @see MODELO.CartasCompradas
  * @author Hibernate Tools
  */
-public class PlantillaHome {
+public class CartasCompradasHome {
 
-	private static final Logger logger = Logger.getLogger(PlantillaHome.class.getName());
+	private static final Logger logger = Logger.getLogger(CartasCompradasHome.class.getName());
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +29,8 @@ public class PlantillaHome {
 		}
 	}
 
-	public void persist(Plantilla transientInstance) {
-		logger.log(Level.INFO, "persisting Plantilla instance");
+	public void persist(CartasCompradas transientInstance) {
+		logger.log(Level.INFO, "persisting CartasCompradas instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			logger.log(Level.INFO, "persist successful");
@@ -40,8 +40,8 @@ public class PlantillaHome {
 		}
 	}
 
-	public void attachDirty(Plantilla instance) {
-		logger.log(Level.INFO, "attaching dirty Plantilla instance");
+	public void attachDirty(CartasCompradas instance) {
+		logger.log(Level.INFO, "attaching dirty CartasCompradas instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			logger.log(Level.INFO, "attach successful");
@@ -51,8 +51,8 @@ public class PlantillaHome {
 		}
 	}
 
-	public void attachClean(Plantilla instance) {
-		logger.log(Level.INFO, "attaching clean Plantilla instance");
+	public void attachClean(CartasCompradas instance) {
+		logger.log(Level.INFO, "attaching clean CartasCompradas instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			logger.log(Level.INFO, "attach successful");
@@ -62,8 +62,8 @@ public class PlantillaHome {
 		}
 	}
 
-	public void delete(Plantilla persistentInstance) {
-		logger.log(Level.INFO, "deleting Plantilla instance");
+	public void delete(CartasCompradas persistentInstance) {
+		logger.log(Level.INFO, "deleting CartasCompradas instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			logger.log(Level.INFO, "delete successful");
@@ -73,10 +73,10 @@ public class PlantillaHome {
 		}
 	}
 
-	public Plantilla merge(Plantilla detachedInstance) {
-		logger.log(Level.INFO, "merging Plantilla instance");
+	public CartasCompradas merge(CartasCompradas detachedInstance) {
+		logger.log(Level.INFO, "merging CartasCompradas instance");
 		try {
-			Plantilla result = (Plantilla) sessionFactory.getCurrentSession().merge(detachedInstance);
+			CartasCompradas result = (CartasCompradas) sessionFactory.getCurrentSession().merge(detachedInstance);
 			logger.log(Level.INFO, "merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +85,11 @@ public class PlantillaHome {
 		}
 	}
 
-	public Plantilla findById(int id) {
-		logger.log(Level.INFO, "getting Plantilla instance with id: " + id);
+	public CartasCompradas findById(int id) {
+		logger.log(Level.INFO, "getting CartasCompradas instance with id: " + id);
 		try {
-			Plantilla instance = (Plantilla) sessionFactory.getCurrentSession().get("MODELO.Plantilla", id);
+			CartasCompradas instance = (CartasCompradas) sessionFactory.getCurrentSession()
+					.get("MODELO.CartasCompradas", id);
 			if (instance == null) {
 				logger.log(Level.INFO, "get successful, no instance found");
 			} else {
@@ -101,10 +102,10 @@ public class PlantillaHome {
 		}
 	}
 
-	public List findByExample(Plantilla instance) {
-		logger.log(Level.INFO, "finding Plantilla instance by example");
+	public List findByExample(CartasCompradas instance) {
+		logger.log(Level.INFO, "finding CartasCompradas instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.Plantilla")
+			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.CartasCompradas")
 					.add(Example.create(instance)).list();
 			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
 			return results;

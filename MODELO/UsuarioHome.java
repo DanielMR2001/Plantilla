@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 30 mar. 2022 10:02:03 by Hibernate Tools 5.4.32.Final
+// Generated 19 abr. 2022 22:07:59 by Hibernate Tools 5.4.32.Final
 
 import java.util.List;
 import java.util.logging.Level;
@@ -10,13 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Carta.
- * @see MODELO.Carta
+ * Home object for domain model class Usuario.
+ * @see MODELO.Usuario
  * @author Hibernate Tools
  */
-public class CartaHome {
+public class UsuarioHome {
 
-	private static final Logger logger = Logger.getLogger(CartaHome.class.getName());
+	private static final Logger logger = Logger.getLogger(UsuarioHome.class.getName());
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +29,8 @@ public class CartaHome {
 		}
 	}
 
-	public void persist(Carta transientInstance) {
-		logger.log(Level.INFO, "persisting Carta instance");
+	public void persist(Usuario transientInstance) {
+		logger.log(Level.INFO, "persisting Usuario instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			logger.log(Level.INFO, "persist successful");
@@ -40,8 +40,8 @@ public class CartaHome {
 		}
 	}
 
-	public void attachDirty(Carta instance) {
-		logger.log(Level.INFO, "attaching dirty Carta instance");
+	public void attachDirty(Usuario instance) {
+		logger.log(Level.INFO, "attaching dirty Usuario instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			logger.log(Level.INFO, "attach successful");
@@ -51,8 +51,8 @@ public class CartaHome {
 		}
 	}
 
-	public void attachClean(Carta instance) {
-		logger.log(Level.INFO, "attaching clean Carta instance");
+	public void attachClean(Usuario instance) {
+		logger.log(Level.INFO, "attaching clean Usuario instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			logger.log(Level.INFO, "attach successful");
@@ -62,8 +62,8 @@ public class CartaHome {
 		}
 	}
 
-	public void delete(Carta persistentInstance) {
-		logger.log(Level.INFO, "deleting Carta instance");
+	public void delete(Usuario persistentInstance) {
+		logger.log(Level.INFO, "deleting Usuario instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			logger.log(Level.INFO, "delete successful");
@@ -73,10 +73,10 @@ public class CartaHome {
 		}
 	}
 
-	public Carta merge(Carta detachedInstance) {
-		logger.log(Level.INFO, "merging Carta instance");
+	public Usuario merge(Usuario detachedInstance) {
+		logger.log(Level.INFO, "merging Usuario instance");
 		try {
-			Carta result = (Carta) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Usuario result = (Usuario) sessionFactory.getCurrentSession().merge(detachedInstance);
 			logger.log(Level.INFO, "merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +85,10 @@ public class CartaHome {
 		}
 	}
 
-	public Carta findById(java.lang.Integer id) {
-		logger.log(Level.INFO, "getting Carta instance with id: " + id);
+	public Usuario findById(java.lang.Integer id) {
+		logger.log(Level.INFO, "getting Usuario instance with id: " + id);
 		try {
-			Carta instance = (Carta) sessionFactory.getCurrentSession().get("MODELO.Carta", id);
+			Usuario instance = (Usuario) sessionFactory.getCurrentSession().get("MODELO.Usuario", id);
 			if (instance == null) {
 				logger.log(Level.INFO, "get successful, no instance found");
 			} else {
@@ -101,10 +101,10 @@ public class CartaHome {
 		}
 	}
 
-	public List findByExample(Carta instance) {
-		logger.log(Level.INFO, "finding Carta instance by example");
+	public List findByExample(Usuario instance) {
+		logger.log(Level.INFO, "finding Usuario instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.Carta")
+			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.Usuario")
 					.add(Example.create(instance)).list();
 			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
 			return results;

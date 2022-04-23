@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 20 abr. 2022 10:26:44 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 abr. 2022 22:07:55 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Usuario" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="usuario">
         <id name="idUsuario" type="java.lang.Integer">
@@ -26,5 +26,13 @@
                 <comment>Email del Usuario</comment>
             </column>
         </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="cartasCompradases" optimistic-lock="true" sort="unsorted" table="cartas_compradas">
+            <key on-delete="noaction">
+                <column name="ID_USUARIO" not-null="true">
+                    <comment>Identificador del Usuario</comment>
+                </column>
+            </key>
+            <one-to-many class="MODELO.CartasCompradas" embed-xml="true" not-found="exception"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -7,13 +7,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.border.BevelBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JScrollBar;
 import javax.swing.border.TitledBorder;
@@ -23,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 public class Plantilla extends JFrame {
 
@@ -30,7 +38,7 @@ public class Plantilla extends JFrame {
 	public JButton comprar;
 	public JButton vender;
 	public JButton ranking;
-	public JComboBox posiciones;
+	public JComboBox comprarPosiciones;
 	public JPanel panel;
 	public JPanel panelranking;
 	public JButton buscar1;
@@ -54,26 +62,42 @@ public class Plantilla extends JFrame {
 	public JTextPane textPane_1;
 	public JTextPane dinero;
 	public JLabel ampliar;
-	public JPanel jugadores;
-	public JComboBox posicionJugadores;
-	public JButton buscarJugadores;
-	public JButton jugador1;
-	public JButton jugador2;
-	public JButton jugador3;
-	public JButton jugador4;
-	public JButton jugador5;
 	public JPanel panel_3;
-	public JTextField txtA;
+	public JTextField rankingLista;
 	public JTextPane nombre;
-	public JTextPane posicion;
 	public JTextPane pais;
 	public JTextPane media;
 	public JPanel panel_4;
 	public JTextPane nombree;
-	public JTextPane posicioon;
 	public JTextPane paiis;
 	public JTextPane puntoos;
-	public JTextPane usuario;
+	public JTextField buscarPartido;
+	public JButton botonBuscarPartido;
+	public JTextPane equipoo;
+	public JTextPane equipo;
+	public JComboBox elegirPlantilla;
+	public JButton aceptarPlantilla;
+	public JButton portero;
+	public JButton central1_1;
+	public JButton central2_1;
+	public JButton lateralizquierdo_1;
+	public JButton lateralderecho_1;
+	public JButton medio1_1;
+	public JButton medio2_1;
+	public JButton medio3_1;
+	public JButton extremoizquierdo_1;
+	public JButton delantero_1;
+	public JButton extremoderecho_1;
+	public JButton medio1_2;
+	public JButton medio2_2;
+	public JButton medio3_2;
+	public JButton medio4_2;
+	public JButton delantero1_2;
+	public JButton delantero2_2;
+	public JButton central1_3;
+	public JButton central2_3;
+	public JButton central3_3;
+	public JComboBox venderPosiciones;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -105,16 +129,16 @@ public class Plantilla extends JFrame {
 		buscar1.setVisible(false);
 		buscar1.setForeground(Color.BLACK);
 		buscar1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		buscar1.setBounds(240, 46, 87, 23);
+		buscar1.setBounds(244, 46, 87, 23);
 		panel_2.add(buscar1);
 		buscar1.setBackground(Color.LIGHT_GRAY);
 		
 		buscar2 = new JButton("BUSCAR");
 		buscar2.setVisible(false);
-		buscar2.setBackground(Color.WHITE);
+		buscar2.setBackground(Color.LIGHT_GRAY);
 		buscar2.setForeground(Color.BLACK);
 		buscar2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		buscar2.setBounds(240, 46, 87, 23);
+		buscar2.setBounds(244, 46, 87, 23);
 		panel_2.add(buscar2);
 		
 		comprar = new JButton("COMPRAR");
@@ -131,14 +155,14 @@ public class Plantilla extends JFrame {
 		vender.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		vender.setBackground(Color.LIGHT_GRAY);
 		
-		posiciones = new JComboBox();
-		posiciones.setBounds(71, 45, 159, 25);
-		panel_2.add(posiciones);
-		posiciones.setVisible(false);
-		posiciones.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Portero", "Central", "Lateral Izquierdo", "Lateral Derecho"}));
-		posiciones.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
-		posiciones.setBackground(Color.WHITE);
-		posiciones.setForeground(Color.BLACK);
+		comprarPosiciones = new JComboBox();
+		comprarPosiciones.setBounds(75, 44, 159, 25);
+		panel_2.add(comprarPosiciones);
+		comprarPosiciones.setVisible(false);
+		comprarPosiciones.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Portero", "Central", "Lateral Izquierdo", "Lateral Derecho"}));
+		comprarPosiciones.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		comprarPosiciones.setBackground(Color.WHITE);
+		comprarPosiciones.setForeground(Color.BLACK);
 		
 		panel = new JPanel();
 		panel.setBounds(128, 74, 275, 602);
@@ -239,12 +263,13 @@ public class Plantilla extends JFrame {
 		panel.add(carta15);
 		
 		ampliar = new JLabel("");
-		ampliar.setBounds(2, 104, 132, 186);
+		ampliar.setBackground(Color.WHITE);
+		ampliar.setBounds(2, 95, 132, 186);
 		panel_2.add(ampliar);
 		
 		aceptar = new JButton("");
 		aceptar.setHorizontalAlignment(SwingConstants.LEFT);
-		aceptar.setBounds(10, 568, 110, 27);
+		aceptar.setBounds(10, 574, 110, 27);
 		panel_2.add(aceptar);
 		aceptar.setVisible(false);
 		aceptar.setForeground(Color.BLACK);
@@ -256,23 +281,15 @@ public class Plantilla extends JFrame {
 		nombre.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		nombre.setForeground(Color.BLACK);
 		nombre.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		nombre.setBounds(10, 320, 122, 27);
+		nombre.setBounds(10, 312, 122, 27);
 		panel_2.add(nombre);
-		
-		posicion = new JTextPane();
-		posicion.setBackground(Color.WHITE);
-		posicion.setForeground(Color.BLACK);
-		posicion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		posicion.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		posicion.setBounds(10, 386, 122, 27);
-		panel_2.add(posicion);
 		
 		pais = new JTextPane();
 		pais.setBackground(Color.WHITE);
 		pais.setForeground(Color.BLACK);
 		pais.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		pais.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		pais.setBounds(10, 456, 122, 27);
+		pais.setBounds(10, 382, 122, 27);
 		panel_2.add(pais);
 		
 		media = new JTextPane();
@@ -287,92 +304,212 @@ public class Plantilla extends JFrame {
 		nombree.setVisible(false);
 		nombree.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		nombree.setText("NOMBRE:");
-		nombree.setBounds(10, 294, 87, 26);
+		nombree.setBounds(10, 294, 87, 23);
 		panel_2.add(nombree);
-		
-		posicioon = new JTextPane();
-		posicioon.setVisible(false);
-		posicioon.setText("POSICION:");
-		posicioon.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		posicioon.setBounds(10, 360, 87, 26);
-		panel_2.add(posicioon);
 		
 		paiis = new JTextPane();
 		paiis.setVisible(false);
 		paiis.setText("PAIS:");
 		paiis.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		paiis.setBounds(10, 430, 56, 26);
+		paiis.setBounds(10, 363, 56, 23);
 		panel_2.add(paiis);
 		
 		puntoos = new JTextPane();
 		puntoos.setVisible(false);
 		puntoos.setText("PUNTOS:");
 		puntoos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		puntoos.setBounds(10, 496, 70, 26);
+		puntoos.setBounds(10, 504, 70, 23);
 		panel_2.add(puntoos);
 		
-		jugadores = new JPanel();
-		jugadores.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "JUGADORES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		jugadores.setBackground(Color.WHITE);
-		jugadores.setBounds(365, 515, 572, 180);
-		contentPane.add(jugadores);
-		jugadores.setLayout(null);
+		equipoo = new JTextPane();
+		equipoo.setVisible(false);
+		equipoo.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		equipoo.setText("EQUIPO:");
+		equipoo.setBounds(10, 433, 70, 23);
+		panel_2.add(equipoo);
 		
-		jugador1 = new JButton("");
-		jugador1.setBorder(null);
-		jugador1.setBackground(Color.WHITE);
-		jugador1.setBounds(10, 50, 101, 122);
-		jugadores.add(jugador1);
+		equipo = new JTextPane();
+		equipo.setForeground(Color.BLACK);
+		equipo.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		equipo.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		equipo.setBackground(Color.WHITE);
+		equipo.setBounds(10, 453, 122, 27);
+		panel_2.add(equipo);
 		
-		jugador2 = new JButton("");
-		jugador2.setBorder(null);
-		jugador2.setBackground(Color.WHITE);
-		jugador2.setBounds(127, 50, 101, 122);
-		jugadores.add(jugador2);
-		
-		jugador3 = new JButton("");
-		jugador3.setBorder(null);
-		jugador3.setBackground(Color.WHITE);
-		jugador3.setBounds(239, 50, 101, 122);
-		jugadores.add(jugador3);
-		
-		jugador4 = new JButton("");
-		jugador4.setBorder(null);
-		jugador4.setBackground(Color.WHITE);
-		jugador4.setBounds(350, 50, 101, 122);
-		jugadores.add(jugador4);
-		
-		jugador5 = new JButton("");
-		jugador5.setBorder(null);
-		jugador5.setBackground(Color.WHITE);
-		jugador5.setBounds(461, 50, 101, 122);
-		jugadores.add(jugador5);
-		
-		posicionJugadores = new JComboBox();
-		posicionJugadores.setBounds(175, 17, 159, 25);
-		jugadores.add(posicionJugadores);
-		posicionJugadores.setBackground(Color.WHITE);
-		posicionJugadores.setForeground(Color.BLACK);
-		posicionJugadores.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Portero", "Central", "Lateral Izquierdo", "Lateral Derecho"}));
-		posicionJugadores.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		
-		buscarJugadores = new JButton("BUSCAR");
-		buscarJugadores.setBounds(342, 19, 92, 23);
-		jugadores.add(buscarJugadores);
-		buscarJugadores.setForeground(Color.BLACK);
-		buscarJugadores.setBackground(Color.LIGHT_GRAY);
-		buscarJugadores.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 16));
+		venderPosiciones = new JComboBox();
+		venderPosiciones.setForeground(Color.BLACK);
+		venderPosiciones.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		venderPosiciones.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Portero", "Central", "Lateral Izquierdo", "Lateral Derecho"}));
+		venderPosiciones.setVisible(false);
+		venderPosiciones.setBounds(75, 44, 159, 25);
+		panel_2.add(venderPosiciones);
 		
 		panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(null, "MI PLANTILLA", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(365, 11, 572, 497);
+		panel_3.setBounds(365, 11, 572, 684);
 		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
+		elegirPlantilla = new JComboBox();
+		elegirPlantilla.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		elegirPlantilla.setModel(new DefaultComboBoxModel(new String[] {"Elige Formacion", " 4 - 3 - 3", " 4 - 4 - 2", " 3 - 4 - 3", " 4 - 2 - 4"}));
+		elegirPlantilla.setForeground(Color.BLACK);
+		elegirPlantilla.setBackground(Color.WHITE);
+		elegirPlantilla.setBounds(10, 20, 150, 25);
+		panel_3.add(elegirPlantilla);
+		
+		aceptarPlantilla = new JButton("ACEPTAR");
+		aceptarPlantilla.setBackground(Color.LIGHT_GRAY);
+		aceptarPlantilla.setForeground(Color.BLACK);
+		aceptarPlantilla.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		aceptarPlantilla.setBounds(170, 21, 95, 23);
+		panel_3.add(aceptarPlantilla);
+		
+		portero = new JButton(" ");
+		portero.setVisible(false);
+		portero.setBorder(null);
+		portero.setBackground(Color.LIGHT_GRAY);
+		portero.setBounds(238, 530, 110, 130);
+		panel_3.add(portero);
+		
+		central1_1 = new JButton(" ");
+		central1_1.setVisible(false);
+		central1_1.setBorder(null);
+		central1_1.setBackground(Color.LIGHT_GRAY);
+		central1_1.setBounds(165, 380, 110, 130);
+		panel_3.add(central1_1);
+		
+		central2_1 = new JButton(" ");
+		central2_1.setVisible(false);
+		central2_1.setBorder(null);
+		central2_1.setBackground(Color.LIGHT_GRAY);
+		central2_1.setBounds(305, 380, 110, 130);
+		panel_3.add(central2_1);
+		
+		lateralizquierdo_1 = new JButton(" ");
+		lateralizquierdo_1.setVisible(false);
+		lateralizquierdo_1.setBorder(null);
+		lateralizquierdo_1.setBackground(Color.LIGHT_GRAY);
+		lateralizquierdo_1.setBounds(15, 380, 110, 130);
+		panel_3.add(lateralizquierdo_1);
+		
+		lateralderecho_1 = new JButton(" ");
+		lateralderecho_1.setVisible(false);
+		lateralderecho_1.setBorder(null);
+		lateralderecho_1.setBackground(Color.LIGHT_GRAY);
+		lateralderecho_1.setBounds(450, 380, 110, 130);
+		panel_3.add(lateralderecho_1);
+		
+		medio1_1 = new JButton(" ");
+		medio1_1.setVisible(false);
+		medio1_1.setBorder(null);
+		medio1_1.setBackground(Color.LIGHT_GRAY);
+		medio1_1.setBounds(75, 225, 110, 130);
+		panel_3.add(medio1_1);
+		
+		medio2_1 = new JButton(" ");
+		medio2_1.setVisible(false);
+		medio2_1.setBorder(null);
+		medio2_1.setBackground(Color.LIGHT_GRAY);
+		medio2_1.setBounds(234, 230, 110, 130);
+		panel_3.add(medio2_1);
+		
+		medio3_1 = new JButton(" ");
+		medio3_1.setVisible(false);
+		medio3_1.setBorder(null);
+		medio3_1.setBackground(Color.LIGHT_GRAY);
+		medio3_1.setBounds(390, 225, 110, 130);
+		panel_3.add(medio3_1);
+		
+		extremoizquierdo_1 = new JButton(" ");
+		extremoizquierdo_1.setVisible(false);
+		extremoizquierdo_1.setBorder(null);
+		extremoizquierdo_1.setBackground(Color.LIGHT_GRAY);
+		extremoizquierdo_1.setBounds(15, 75, 110, 130);
+		panel_3.add(extremoizquierdo_1);
+		
+		delantero_1 = new JButton(" ");
+		delantero_1.setVisible(false);
+		delantero_1.setBorder(null);
+		delantero_1.setBackground(Color.LIGHT_GRAY);
+		delantero_1.setBounds(234, 65, 110, 130);
+		panel_3.add(delantero_1);
+		
+		extremoderecho_1 = new JButton(" ");
+		extremoderecho_1.setVisible(false);
+		extremoderecho_1.setBorder(null);
+		extremoderecho_1.setBackground(Color.LIGHT_GRAY);
+		extremoderecho_1.setBounds(450, 75, 110, 130);
+		panel_3.add(extremoderecho_1);
+		
+		medio1_2 = new JButton(" ");
+		medio1_2.setVisible(false);
+		medio1_2.setBorder(null);
+		medio1_2.setBackground(Color.LIGHT_GRAY);
+		medio1_2.setBounds(15, 225, 110, 130);
+		panel_3.add(medio1_2);
+		
+		medio2_2 = new JButton(" ");
+		medio2_2.setVisible(false);
+		medio2_2.setBorder(null);
+		medio2_2.setBackground(Color.LIGHT_GRAY);
+		medio2_2.setBounds(155, 225, 110, 130);
+		panel_3.add(medio2_2);
+		
+		medio3_2 = new JButton(" ");
+		medio3_2.setVisible(false);
+		medio3_2.setBorder(null);
+		medio3_2.setBackground(Color.LIGHT_GRAY);
+		medio3_2.setBounds(315, 225, 110, 130);
+		panel_3.add(medio3_2);
+		
+		medio4_2 = new JButton(" ");
+		medio4_2.setVisible(false);
+		medio4_2.setBorder(null);
+		medio4_2.setBackground(Color.LIGHT_GRAY);
+		medio4_2.setBounds(450, 225, 110, 130);
+		panel_3.add(medio4_2);
+		
+		delantero1_2 = new JButton(" ");
+		delantero1_2.setVisible(false);
+		delantero1_2.setBorder(null);
+		delantero1_2.setBackground(Color.LIGHT_GRAY);
+		delantero1_2.setBounds(149, 65, 110, 130);
+		panel_3.add(delantero1_2);
+		
+		delantero2_2 = new JButton(" ");
+		delantero2_2.setVisible(false);
+		delantero2_2.setBorder(null);
+		delantero2_2.setBackground(Color.LIGHT_GRAY);
+		delantero2_2.setBounds(317, 65, 110, 130);
+		panel_3.add(delantero2_2);
+		
+		central1_3 = new JButton("");
+		central1_3.setVisible(false);
+		central1_3.setBorder(null);
+		central1_3.setBackground(Color.LIGHT_GRAY);
+		central1_3.setBounds(75, 370, 110, 130);
+		panel_3.add(central1_3);
+		
+		central2_3 = new JButton("");
+		central2_3.setVisible(false);
+		central2_3.setBorder(null);
+		central2_3.setBackground(Color.LIGHT_GRAY);
+		central2_3.setBounds(239, 380, 110, 130);
+		panel_3.add(central2_3);
+		
+		central3_3 = new JButton("");
+		central3_3.setVisible(false);
+		central3_3.setBorder(null);
+		central3_3.setBackground(Color.LIGHT_GRAY);
+		central3_3.setBounds(398, 370, 110, 130);
+		panel_3.add(central3_3);
 		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(8, 11, 348, 684);
+		panel_4.setBounds(7, 11, 348, 684);
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -388,19 +525,26 @@ public class Plantilla extends JFrame {
 		panel_4.add(panelranking);
 		panelranking.setVisible(false);
 		panelranking.setBackground(Color.WHITE);
-		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelranking.setLayout(null);
 		
-		txtA = new JTextField();
-		txtA.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		txtA.setBackground(Color.WHITE);
-		txtA.setEditable(false);
-		txtA.setBounds(10, 15, 308, 174);
-		panelranking.add(txtA);
-		txtA.setColumns(10);
+		rankingLista = new JTextField();
+		rankingLista.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		rankingLista.setBackground(Color.WHITE);
+		rankingLista.setEditable(false);
+		rankingLista.setBounds(10, 15, 308, 174);
+		panelranking.add(rankingLista);
+		rankingLista.setColumns(10);
+		
+		buscarPartido = new JTextField();
+		buscarPartido.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		buscarPartido.setEditable(false);
+		buscarPartido.setColumns(10);
+		buscarPartido.setBackground(Color.WHITE);
+		buscarPartido.setBounds(10, 15, 308, 174);
+		panelranking.add(buscarPartido);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(20, 15, 115, 34);
+		panel_1.setBounds(20, 22, 115, 34);
 		panel_4.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
@@ -423,21 +567,13 @@ public class Plantilla extends JFrame {
 		textPane_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 23));
 		textPane_1.setText("\u20AC");
 		
-		JButton btnNewButton = new JButton("BUSCAR PARTIDO");
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		btnNewButton.setBounds(145, 443, 172, 26);
-		panel_4.add(btnNewButton);
-		
-		usuario = new JTextPane();
-		usuario.setBackground(Color.WHITE);
-		usuario.setForeground(Color.BLACK);
-		usuario.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		usuario.setBounds(162, 15, 165, 34);
-		panel_4.add(usuario);
-		
-		
-
+		botonBuscarPartido = new JButton("BUSCAR PARTIDO");
+		botonBuscarPartido.setForeground(Color.BLACK);
+		botonBuscarPartido.setBackground(Color.LIGHT_GRAY);
+		botonBuscarPartido.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		botonBuscarPartido.setBounds(145, 443, 172, 26);
+		panel_4.add(botonBuscarPartido);
+		ImageIcon icon = new ImageIcon("cofre_abierto.jpg");
+			
 	}
 }

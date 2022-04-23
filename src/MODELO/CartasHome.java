@@ -10,13 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Usuario.
- * @see MODELO.Usuario
+ * Home object for domain model class Cartas.
+ * @see MODELO.Cartas
  * @author Hibernate Tools
  */
-public class UsuarioHome {
+public class CartasHome {
 
-	private static final Logger logger = Logger.getLogger(UsuarioHome.class.getName());
+	private static final Logger logger = Logger.getLogger(CartasHome.class.getName());
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +29,8 @@ public class UsuarioHome {
 		}
 	}
 
-	public void persist(Usuario transientInstance) {
-		logger.log(Level.INFO, "persisting Usuario instance");
+	public void persist(Cartas transientInstance) {
+		logger.log(Level.INFO, "persisting Cartas instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			logger.log(Level.INFO, "persist successful");
@@ -40,8 +40,8 @@ public class UsuarioHome {
 		}
 	}
 
-	public void attachDirty(Usuario instance) {
-		logger.log(Level.INFO, "attaching dirty Usuario instance");
+	public void attachDirty(Cartas instance) {
+		logger.log(Level.INFO, "attaching dirty Cartas instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			logger.log(Level.INFO, "attach successful");
@@ -51,8 +51,8 @@ public class UsuarioHome {
 		}
 	}
 
-	public void attachClean(Usuario instance) {
-		logger.log(Level.INFO, "attaching clean Usuario instance");
+	public void attachClean(Cartas instance) {
+		logger.log(Level.INFO, "attaching clean Cartas instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			logger.log(Level.INFO, "attach successful");
@@ -62,8 +62,8 @@ public class UsuarioHome {
 		}
 	}
 
-	public void delete(Usuario persistentInstance) {
-		logger.log(Level.INFO, "deleting Usuario instance");
+	public void delete(Cartas persistentInstance) {
+		logger.log(Level.INFO, "deleting Cartas instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			logger.log(Level.INFO, "delete successful");
@@ -73,10 +73,10 @@ public class UsuarioHome {
 		}
 	}
 
-	public Usuario merge(Usuario detachedInstance) {
-		logger.log(Level.INFO, "merging Usuario instance");
+	public Cartas merge(Cartas detachedInstance) {
+		logger.log(Level.INFO, "merging Cartas instance");
 		try {
-			Usuario result = (Usuario) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Cartas result = (Cartas) sessionFactory.getCurrentSession().merge(detachedInstance);
 			logger.log(Level.INFO, "merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +85,10 @@ public class UsuarioHome {
 		}
 	}
 
-	public Usuario findById(java.lang.Integer id) {
-		logger.log(Level.INFO, "getting Usuario instance with id: " + id);
+	public Cartas findById(java.lang.Integer id) {
+		logger.log(Level.INFO, "getting Cartas instance with id: " + id);
 		try {
-			Usuario instance = (Usuario) sessionFactory.getCurrentSession().get("MODELO.Usuario", id);
+			Cartas instance = (Cartas) sessionFactory.getCurrentSession().get("MODELO.Cartas", id);
 			if (instance == null) {
 				logger.log(Level.INFO, "get successful, no instance found");
 			} else {
@@ -101,10 +101,10 @@ public class UsuarioHome {
 		}
 	}
 
-	public List findByExample(Usuario instance) {
-		logger.log(Level.INFO, "finding Usuario instance by example");
+	public List findByExample(Cartas instance) {
+		logger.log(Level.INFO, "finding Cartas instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.Usuario")
+			List results = sessionFactory.getCurrentSession().createCriteria("MODELO.Cartas")
 					.add(Example.create(instance)).list();
 			logger.log(Level.INFO, "find by example successful, result size: " + results.size());
 			return results;
