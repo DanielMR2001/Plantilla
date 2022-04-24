@@ -165,7 +165,7 @@ public class Modelo {
 				query.setParameter("pos", pos);  
 	         	List<Object[]> resultado = query.list();
 	         	for (Object[] fila : resultado) {		
-	         		Integer id = (Integer) fila[0]; 
+	         		String id = (String) fila[0]; 
 	         		String nombre = (String) fila[1]; 
 	         		String posicion = (String) fila[2]; 
 	         		String pais = (String) fila[3]; 
@@ -214,12 +214,13 @@ public class Modelo {
 	}
 	
 	//insertar en la bbdd la carta comprada
-	public void insertarCarta(SessionFactory sessionFactory, Cartas carta) {
+	public void insertarCarta(SessionFactory sessionFactory, Cartas carta, String id) {
 		Session session = null;
 		try {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
 			CartasCompradas cartaComprada =new CartasCompradas();
+			cartaComprada.setIdCartaComprada(id);
 			cartaComprada.setEquipoCartaComprada(carta.getEquipo());
 			cartaComprada.setLigaCartaComprada(carta.getLiga());
 			cartaComprada.setMediaCartaComprada(carta.getMedia());
@@ -227,7 +228,7 @@ public class Modelo {
 			cartaComprada.setPaisCartaComprada(carta.getPais());
 			cartaComprada.setPosicionCartaComprada(carta.getPosicion());
 			cartaComprada.setPrecioCartaComprada(carta.getPrecio());
-			session.save(cartaComprada);	
+			session.saveOrUpdate(cartaComprada);	
 			session.getTransaction().commit();				
 		}catch(HibernateException e2) { e2.printStackTrace();
 			if (null != session) { session.getTransaction().rollback(); }
@@ -244,20 +245,6 @@ public class Modelo {
 				if (option == JOptionPane.YES_OPTION) {
 					borrarDatosTabla();
 					System.exit(0);
-				}
-			}
-		});
-	}
-	//preguntar en un JOptionPane si se quiere cerrar o no la ventana 
-	public void cerrarJugadoresComprados(JFrame jugadoresComprados, JFrame plantilla) {
-		jugadoresComprados.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		jugadoresComprados.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				int option = JOptionPane.showConfirmDialog( jugadoresComprados,  "¿VOLVER A LA PÁGINA ANTERIOR?", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.QUESTION_MESSAGE);
-				if (option == JOptionPane.YES_OPTION) {
-					jugadoresComprados.setVisible(false);
-					plantilla.setVisible(true);
 				}
 			}
 		});

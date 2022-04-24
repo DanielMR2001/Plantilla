@@ -31,6 +31,7 @@ import javax.swing.JSpinner;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.JFormattedTextField;
 
 public class Plantilla extends JFrame {
 
@@ -71,7 +72,6 @@ public class Plantilla extends JFrame {
 	public JTextPane nombree;
 	public JTextPane paiis;
 	public JTextPane puntoos;
-	public JTextField buscarPartido;
 	public JButton botonBuscarPartido;
 	public JTextPane equipoo;
 	public JTextPane equipo;
@@ -98,6 +98,10 @@ public class Plantilla extends JFrame {
 	public JButton central2_3;
 	public JButton central3_3;
 	public JComboBox venderPosiciones;
+	public JComboBox elegirEscudo;
+	public JLabel escudo ;
+	public JPanel panelPartidos;
+	public JTextField partidos;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -165,9 +169,9 @@ public class Plantilla extends JFrame {
 		comprarPosiciones.setForeground(Color.BLACK);
 		
 		panel = new JPanel();
+		panel.setVisible(false);
 		panel.setBounds(128, 74, 275, 602);
 		panel_2.add(panel);
-		panel.setVisible(false);
 		panel.setBackground(Color.WHITE);
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setLayout(null);
@@ -269,7 +273,7 @@ public class Plantilla extends JFrame {
 		
 		aceptar = new JButton("");
 		aceptar.setHorizontalAlignment(SwingConstants.LEFT);
-		aceptar.setBounds(10, 574, 110, 27);
+		aceptar.setBounds(5, 574, 120, 27);
 		panel_2.add(aceptar);
 		aceptar.setVisible(false);
 		aceptar.setForeground(Color.BLACK);
@@ -514,34 +518,28 @@ public class Plantilla extends JFrame {
 		panel_4.setLayout(null);
 		
 		ranking = new JButton("RANKING");
-		ranking.setBounds(25, 443, 110, 26);
+		ranking.setBounds(115, 210, 110, 26);
 		panel_4.add(ranking);
 		ranking.setForeground(Color.BLACK);
 		ranking.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		ranking.setBackground(Color.LIGHT_GRAY);
 		
 		panelranking = new JPanel();
-		panelranking.setBounds(10, 475, 328, 200);
+		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelranking.setBounds(10, 240, 328, 196);
 		panel_4.add(panelranking);
 		panelranking.setVisible(false);
 		panelranking.setBackground(Color.WHITE);
 		panelranking.setLayout(null);
 		
 		rankingLista = new JTextField();
+		rankingLista.setBorder(null);
 		rankingLista.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		rankingLista.setBackground(Color.WHITE);
+		rankingLista.setBackground(Color.LIGHT_GRAY);
 		rankingLista.setEditable(false);
-		rankingLista.setBounds(10, 15, 308, 174);
+		rankingLista.setBounds(10, 15, 308, 170);
 		panelranking.add(rankingLista);
 		rankingLista.setColumns(10);
-		
-		buscarPartido = new JTextField();
-		buscarPartido.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		buscarPartido.setEditable(false);
-		buscarPartido.setColumns(10);
-		buscarPartido.setBackground(Color.WHITE);
-		buscarPartido.setBounds(10, 15, 308, 174);
-		panelranking.add(buscarPartido);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(20, 22, 115, 34);
@@ -571,9 +569,39 @@ public class Plantilla extends JFrame {
 		botonBuscarPartido.setForeground(Color.BLACK);
 		botonBuscarPartido.setBackground(Color.LIGHT_GRAY);
 		botonBuscarPartido.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		botonBuscarPartido.setBounds(145, 443, 172, 26);
+		botonBuscarPartido.setBounds(88, 446, 172, 26);
 		panel_4.add(botonBuscarPartido);
-		ImageIcon icon = new ImageIcon("cofre_abierto.jpg");
+		
+		escudo = new JLabel("");
+		escudo.setBackground(Color.LIGHT_GRAY);
+		escudo.setBounds(180, 60, 121, 129);
+		panel_4.add(escudo);
+		
+		elegirEscudo = new JComboBox();
+		elegirEscudo.setMaximumRowCount(25);
+		elegirEscudo.setForeground(Color.BLACK);
+		elegirEscudo.setBackground(Color.WHITE);
+		elegirEscudo.setModel(new DefaultComboBoxModel(new String[] {"Elige Escudo", "Albacete (ESP)", "Napoles (ITA)", "Everton (ING)", "Barcelona (ESP)", "Leipzig (ALE)", "Juventus (ITA)", "PSG (FRA)", "M. City (ING)", "Ajax (HOL)", "B. de Munich (ALE)", "Inter de Milan (ITA)", "Spt. de Lisboa (POR)", "M. United (ING)", "Sevilla (ESP)", "M\u00F3naco (FRA)", "B. Dortmund (ALE)", "Benfica (POR)", "Arsenal (ING)", "PSV (HOL)", "Milan (ITA)", "Borussia M. (ALE)", "Atl. de Madrid (ESP)", "Tottenham (ING)", "Porto (POR)"}));
+		elegirEscudo.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		elegirEscudo.setBounds(152, 25, 177, 28);
+		panel_4.add(elegirEscudo);
+		
+		panelPartidos = new JPanel();
+		panelPartidos.setVisible(false);
+		panelPartidos.setBorder(new TitledBorder(null, "PARTIDOS ONLINE", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		panelPartidos.setBackground(Color.WHITE);
+		panelPartidos.setBounds(10, 475, 328, 196);
+		panel_4.add(panelPartidos);
+		panelPartidos.setLayout(null);
+		
+		partidos = new JTextField();
+		partidos.setBorder(null);
+		partidos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		partidos.setEditable(false);
+		partidos.setColumns(10);
+		partidos.setBackground(Color.LIGHT_GRAY);
+		partidos.setBounds(10, 15, 308, 170);
+		panelPartidos.add(partidos);
 			
 	}
 }

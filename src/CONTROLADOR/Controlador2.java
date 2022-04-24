@@ -17,7 +17,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import MODELO.Cartas;
 import MODELO.Modelo;
-import VISTA.JugadoresComprados;
 import VISTA.Login;
 import VISTA.Plantilla;
 
@@ -26,11 +25,9 @@ public class Controlador2 implements ActionListener{
 	Login login=new Login();
 	Modelo modelo=new Modelo();
 	Plantilla plantilla=new Plantilla();
-	JugadoresComprados jugadoresComprados=new JugadoresComprados();
 	SessionFactory sessionFactory = null;
 	
 	public Controlador2(VISTA.Plantilla plantilla) {
-		centreWindow1(jugadoresComprados);
 		this.plantilla=plantilla;
 		this.plantilla.comprar.addActionListener(this);
 		this.plantilla.vender.addActionListener(this);
@@ -66,14 +63,9 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.central3_3.addActionListener(this);
 		this.plantilla.lateralderecho_1.addActionListener(this);
 		this.plantilla.lateralizquierdo_1.addActionListener(this);
+		this.plantilla.elegirEscudo.addActionListener(this);
 		modelo.cerrar(plantilla);
 	}
-	
-	public Controlador2(VISTA.JugadoresComprados jugadoresComprados) {
-		centreWindow1(jugadoresComprados);
-		this.jugadoresComprados=jugadoresComprados;
-	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -87,10 +79,63 @@ public class Controlador2 implements ActionListener{
 	        String posicion=(String) plantilla.comprarPosiciones.getSelectedItem();
 	        String decidirFormacion=(String) plantilla.elegirPlantilla.getSelectedItem();
 	        String posicionComprada=(String) plantilla.venderPosiciones.getSelectedItem();
+	        String escudo=(String) plantilla.elegirEscudo.getSelectedItem();
 
+	        if(escudo.equals("Elige Escudo")) {
+	        	asociarImagen2("", plantilla.escudo);
+	        }else if(escudo.equals("Barcelona (ESP)")) {
+	        	asociarImagen2("escudos/barsa.png", plantilla.escudo);
+	        }else if(escudo.equals("Sevilla (ESP)")) {
+	        	asociarImagen2("escudos/sevilla.png", plantilla.escudo);
+	        }else if(escudo.equals("Atl. de Madrid (ESP)")) {
+	        	asociarImagen2("escudos/atletico.png", plantilla.escudo);
+	        }else if(escudo.equals("Spt. de Lisboa (POR)")) {
+	        	asociarImagen2("escudos/lisboa.png", plantilla.escudo);
+	        }else if(escudo.equals("Benfica (POR)")) {
+	        	asociarImagen2("escudos/benfica.png", plantilla.escudo);
+	        }else if(escudo.equals("Porto (POR)")) {
+	        	asociarImagen2("escudos/porto.png", plantilla.escudo);
+	        }else if(escudo.equals("PSG (FRA)")) {
+	        	asociarImagen2("escudos/psg.png", plantilla.escudo);
+	        }else if(escudo.equals("MÃ³naco (FRA)")) {
+	        	asociarImagen2("escudos/monaco.png", plantilla.escudo);
+	        }else if(escudo.equals("M. City (ING)")) {
+	        	asociarImagen2("escudos/city.png", plantilla.escudo);
+	        }else if(escudo.equals("M. United (ING)")) {
+	        	asociarImagen2("escudos/united.png", plantilla.escudo);
+	        }else if(escudo.equals("Arsenal (ING)")) {
+	        	asociarImagen2("escudos/arsenal.png", plantilla.escudo);
+	        }else if(escudo.equals("Tottenham (ING)")) {
+	        	asociarImagen2("escudos/tottenham.png", plantilla.escudo);
+	        }else if(escudo.equals("Ajax (HOL)")) {
+	        	asociarImagen2("escudos/ajax.png", plantilla.escudo);
+	        }else if(escudo.equals("PSV (HOL)")) {
+	        	asociarImagen2("escudos/psv.png", plantilla.escudo);
+	        }else if(escudo.equals("B. de Munich (ALE)")) {
+	        	asociarImagen2("escudos/bayern.png", plantilla.escudo);
+	        }else if(escudo.equals("B. Dortmund (ALE)")) {
+	        	asociarImagen2("escudos/dortmund.png", plantilla.escudo);
+	        }else if(escudo.equals("Borussia M. (ALE)")) {
+	        	asociarImagen2("escudos/borussia.jpg", plantilla.escudo);
+	        }else if(escudo.equals("Leipzig (ALE)")) {
+	        	asociarImagen2("escudos/leipzig.png", plantilla.escudo);
+	        }else if(escudo.equals("Juventus (ITA)")) {
+	        	asociarImagen2("escudos/juventus.png", plantilla.escudo);
+	        }else if(escudo.equals("Inter de Milan (ITA)")) {
+	        	asociarImagen2("escudos/intermilan.png", plantilla.escudo);
+	        }else if(escudo.equals("Milan (ITA)")) {
+	        	asociarImagen2("escudos/milan.png", plantilla.escudo);
+	        }else if(escudo.equals("Napoles (ITA)")) {
+	        	asociarImagen2("escudos/napoles.png", plantilla.escudo);
+	        }else if(escudo.equals("Albacete (ESP)")) {
+	        	asociarImagen2("escudos/albacete.png", plantilla.escudo);
+	        }else if(escudo.equals("Everton (ING)")) {
+	        	asociarImagen2("escudos/everton.png", plantilla.escudo);
+	        }
+	        
 			//funcionalidad cuando se pulse el boton de Comprar
 			if(e.getSource()==plantilla.comprar) {				
-				ocultar1(true, false, true, false, true, true, false, true, true, true, false, false);
+				ocultar1(true, false, true, false, true, true, false, true, true, true, false, false, false);
 			}
 				
 			//funcionalidad cuando se pulse el boton de buscar1 y al selecciona alguna opcion del ComboBox para Comprar
@@ -121,7 +166,7 @@ public class Controlador2 implements ActionListener{
 					for(int i=31; i<=45; i++) {
 						modelo.sacarJugadores(sessionFactory, i);
 					}
-					comprarJugadores("cartas/davies.png", "cartas/acuña.png", "cartas/bernat.png", "cartas/grimaldo.png", "cartas/jordialba.png", "cartas/robertson.png", "cartas/digne.png", "cartas/spinazzola.png",  "cartas/telles.png", "cartas/sandro.png", "cartas/tagliafico.png", "cartas/marcelo.png", "cartas/guerreiro.png", "cartas/mendy.png", "cartas/gelson.png");
+					comprarJugadores("cartas/davies.png", "cartas/acuÃ±a.png", "cartas/bernat.png", "cartas/grimaldo.png", "cartas/jordialba.png", "cartas/robertson.png", "cartas/digne.png", "cartas/spinazzola.png",  "cartas/telles.png", "cartas/sandro.png", "cartas/tagliafico.png", "cartas/marcelo.png", "cartas/guerreiro.png", "cartas/mendy.png", "cartas/gelson.png");
 				}
 			}else if(posicion.equals("Lateral Derecho")) {
 				ocultar2(plantilla.panel, plantilla.ampliar, plantilla.aceptar);
@@ -145,7 +190,7 @@ public class Controlador2 implements ActionListener{
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CENTRALES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			}else if(posicion.equals("Lateral Izquierdo")){
 				ocultarCarta();
-				sacarCarta(e, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, plantilla.aceptar,"cartas/davies.png", "cartas/acuña.png", "cartas/bernat.png", "cartas/grimaldo.png", "cartas/jordialba.png", "cartas/robertson.png", "cartas/digne.png", "cartas/spinazzola.png", "cartas/telles.png", "cartas/sandro.png", "cartas/tagliafico.png", "cartas/marcelo.png", "cartas/guerreiro.png", "cartas/mendy.png", "cartas/gelson.png");
+				sacarCarta(e, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, plantilla.aceptar,"cartas/davies.png", "cartas/acuÃ±a.png", "cartas/bernat.png", "cartas/grimaldo.png", "cartas/jordialba.png", "cartas/robertson.png", "cartas/digne.png", "cartas/spinazzola.png", "cartas/telles.png", "cartas/sandro.png", "cartas/tagliafico.png", "cartas/marcelo.png", "cartas/guerreiro.png", "cartas/mendy.png", "cartas/gelson.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR LATERALES IZQUIERDOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			}else if(posicion.equals("Lateral Derecho")){
 				ocultarCarta();
@@ -163,18 +208,20 @@ public class Controlador2 implements ActionListener{
 				String mediaa=plantilla.media.getText();
 				int media=Integer.parseInt(mediaa);
 				Cartas carta=modelo.comprarJugadores(sessionFactory, nombre, pais, media, equipo);
+				int id=carta.getIdCarta();
+				String idd=String.valueOf(id);
 				int precio=carta.getPrecio();
 				String dineroo=plantilla.dinero.getText();
 				int dinero=Integer.parseInt(dineroo);
 				int resta=dinero-precio;
 				String restaa=String.valueOf(resta);
 				plantilla.dinero.setText(restaa);
-				modelo.insertarCarta(sessionFactory, carta);
+				modelo.insertarCarta(sessionFactory, carta, idd);
 			}
 
 			//funcionalidad cuando se pulse el boton de Vender 
 			if(e.getSource()==plantilla.vender) {
-				ocultar1(true, false, false, true, true, false, false, true, true, true, false, true);
+				ocultar1(true, false, false, true, true, false, false, true, true, true, false, true, false);
 			}
 				
 			//funcionalidad cuando se pulse el boton de buscar2 y al selecciona alguna opcion del ComboBox para Vender
@@ -189,63 +236,34 @@ public class Controlador2 implements ActionListener{
 
 			//funcionalidad cuando se pulse el boton de Ranking
 			if(e.getSource()==plantilla.ranking) {
-				ocultar1(true, true, false, false, true, false, false, true, true, true, true, false);
-				plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				ocultar1(true, true, false, false, true, false, false, true, true, true, true, false, false);
 
 			}
 			
 			//funcionalidad cuando se pulse el boton de Buscar Partido
 			if(e.getSource()==plantilla.botonBuscarPartido) {
-				ocultar1(true, true, false, false, true, false, false, true, true, true, true, false);
-				plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "BUSCAR PARTIDO ONLINE", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				ocultar1(true, false, false, false, true, false, false, true, true, true, true, false, true);
 
 			}
 			
 			//funcionalidad cuando se selecciona alguna opcion del ComboBox para Elegir Formacion y se pulse el boton de buscar
 			if(decidirFormacion.equals(" 4 - 3 - 3") && e.getSource()==plantilla.aceptarPlantilla) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true); plantilla.medio1_1.setVisible(true); plantilla.medio2_1.setVisible(true); plantilla.medio3_1.setVisible(true); plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero_1.setVisible(true); plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true);
-				plantilla.medio1_2.setVisible(false); plantilla.medio2_2.setVisible(false); plantilla.medio3_2.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false); plantilla.central3_3.setVisible(false);
+				plantilla.medio1_2.setVisible(false); plantilla.medio2_2.setVisible(false); plantilla.medio3_2.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.buscar1.setVisible(false); plantilla.comprarPosiciones.setVisible(false); plantilla.panelranking.setVisible(false); plantilla.panelPartidos.setVisible(false);
 			}else if(decidirFormacion.equals(" 4 - 4 - 2") && e.getSource()==plantilla.aceptarPlantilla) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true);plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); 
-				 plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.extremoderecho_1.setVisible(false); plantilla.extremoizquierdo_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false); plantilla.central3_3.setVisible(false);
+				 plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.extremoderecho_1.setVisible(false); plantilla.extremoizquierdo_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.buscar1.setVisible(false); plantilla.comprarPosiciones.setVisible(false); plantilla.panelranking.setVisible(false); plantilla.panelPartidos.setVisible(false);
 			}else if(decidirFormacion.equals(" 3 - 4 - 3") && e.getSource()==plantilla.aceptarPlantilla) {
 				plantilla.portero.setVisible(true); plantilla.central1_3.setVisible(true); plantilla.central2_3.setVisible(true); plantilla.central3_3.setVisible(true); plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero_1.setVisible(true);
-				 plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false); 
+				 plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false); plantilla.buscar1.setVisible(false); plantilla.comprarPosiciones.setVisible(false); plantilla.panelranking.setVisible(false); plantilla.panelPartidos.setVisible(false);
 			}else if(decidirFormacion.equals(" 4 - 2 - 4") && e.getSource()==plantilla.aceptarPlantilla) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);  plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); 
-				plantilla.medio2_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.medio1_2.setVisible(false); plantilla.medio1_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false);
-			}
-			
-			//funcionalidad cuando se pulse alguna posicion para elegir cartas compradas
-			if(e.getSource()==plantilla.portero) {
-				elegirCartaComprada(e, plantilla.portero, "POR", "PORTEROS");
-			}else if(e.getSource()==plantilla.central1_1) {
-				elegirCartaComprada(e, plantilla.central1_1, "DEF", "CENTRALES");
-			}else if(e.getSource()==plantilla.central1_3) {
-				elegirCartaComprada(e, plantilla.central1_3, "DEF", "CENTRALES");
-			}else if(e.getSource()==plantilla.central2_1) {
-				elegirCartaComprada(e, plantilla.central2_1, "DEF", "CENTRALES");
-			}else if(e.getSource()==plantilla.central2_3) {
-				elegirCartaComprada(e, plantilla.central2_3, "DEF", "CENTRALES");
-			}else if(e.getSource()==plantilla.central3_3) {
-				elegirCartaComprada(e, plantilla.central3_3, "DEF", "CENTRALES");
-			}else if(e.getSource()==plantilla.lateralderecho_1) {
-				elegirCartaComprada(e, plantilla.lateralderecho_1, "LD", "LATERALES DERECHO");
-			} else if(e.getSource()==plantilla.lateralizquierdo_1) {
-				elegirCartaComprada(e, plantilla.lateralizquierdo_1, "LI", "LATERALES IZQUIERDOS");
+				plantilla.medio2_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.medio1_2.setVisible(false); plantilla.medio1_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central2_3.setVisible(false); plantilla.buscar1.setVisible(false); plantilla.comprarPosiciones.setVisible(false); plantilla.panelranking.setVisible(false); plantilla.panelPartidos.setVisible(false);
 			}
 						
 		} catch (Exception e3) { e3.printStackTrace(); 
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
 	
-	}
-
-	private void elegirCartaComprada(ActionEvent e, JButton boton, String pos, String titulo) {
-		if(e.getSource()==boton) {
-			modelo.sacarJugadoresComprados(sessionFactory, pos);
-			jugadoresComprados.setVisible(true);
-			jugadoresComprados.panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), titulo, TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		}
 	}
 
 	//ocultar informacion de la carta que se haya pulsado
@@ -255,7 +273,7 @@ public class Controlador2 implements ActionListener{
 	}
 
 	//poner visible o invisible los componentes, dependiendo de lo que se quiera hacer cuando se llame al metodo
-	private void ocultar1(boolean uno, boolean dos, boolean tres, boolean cuatro, boolean cinco, boolean seis, boolean siete, boolean ocho, boolean nueve, boolean diez, boolean once, boolean doce) {
+	private void ocultar1(boolean uno, boolean dos, boolean tres, boolean cuatro, boolean cinco, boolean seis, boolean siete, boolean ocho, boolean nueve, boolean diez, boolean once, boolean doce, boolean trece) {
 		plantilla.ampliar.setVisible(uno);
 		plantilla.panelranking.setVisible(dos);
 		plantilla.buscar1.setVisible(tres);
@@ -265,12 +283,12 @@ public class Controlador2 implements ActionListener{
 		plantilla.venderPosiciones.setSelectedIndex(0);
 		plantilla.comprarPosiciones.setVisible(seis);
 		plantilla.aceptar.setVisible(siete);
-		plantilla.buscarPartido.setVisible(once);
 		plantilla.venderPosiciones.setVisible(doce);
+		plantilla.panelPartidos.setVisible(trece);
 		ocultarCarta();
 	}
 
-	//ocultar el panel, jlabel y el jbutton que se le pase por parámetro
+	//ocultar el panel, jlabel y el jbutton que se le pase por parÃ¡metro
 	private void ocultar2(JPanel panel,JLabel label, JButton button) {
 		panel.setVisible(false);
 		label.setVisible(false);
@@ -296,7 +314,7 @@ public class Controlador2 implements ActionListener{
 		asociarImagen(url15, plantilla.carta15);
 	}
 	
-	//sacar información de las cartas que se eligan
+	//sacar informaciÃ³n de las cartas que se eligan
 	private void sacarCarta(ActionEvent e, int uno, int dos, int tres, int cuatro, int cinco, int seis, int siete, int ocho, int nueve, int diez, int once, int doce, int trece, int catorce, int quince, JButton label1, String url1, String url2, String url3, String url4, String url5, String url6, String url7, String url8, String url9, String url10, String url11, String url12, String url13, String url14, String url15) {
 		if((e.getSource()==plantilla.carta1)) {	
 			plantilla.ampliar.setVisible(true); plantilla.panel.setVisible(true); label1.setVisible(true);
@@ -372,7 +390,7 @@ public class Controlador2 implements ActionListener{
 		String media=String.valueOf(carta1.getMedia());
 		String equipo=String.valueOf(carta1.getEquipo());		
 		plantilla.aceptar.setVisible(true);
-		plantilla.aceptar.setText("- "+precio+" €");
+		plantilla.aceptar.setText("-"+precio+"â‚¬Â€ ");
 		plantilla.aceptar.setForeground(Color.RED);
 		plantilla.nombre.setText(nombre);
 		plantilla.pais.setText(pais);
