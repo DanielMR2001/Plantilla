@@ -50,11 +50,11 @@ public class Plantilla extends JFrame {
 	public JPanel panel_3;
 	public JTextPane nombre;
 	public JTextPane pais;
-	public JTextPane media;
+	public JTextPane posicion;
 	public JPanel panel_4;
 	public JTextPane nombree;
 	public JTextPane paiis;
-	public JTextPane puntoos;
+	public JTextPane posicioon;
 	public JTextPane equipoo;
 	public JTextPane equipo;
 	public JComboBox elegirPlantilla;
@@ -88,11 +88,14 @@ public class Plantilla extends JFrame {
 	public JComboBox centralesIComboBox;
 	public JComboBox lateralDComboBox;
 	public JComboBox lateralIComboBox;
-	public JTextPane posicioon;
-	public JTextPane posicion;
+	public JTextPane puntoos;
+	public JTextPane media;
 	public JScrollPane scrollPane;
 	public JButton recargaPuntos;
 	public JComboBox venderJugadores;
+	public JLabel ampliarvender;
+	public JButton cancelarvender;
+	public JButton aceptarvender;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -279,13 +282,13 @@ public class Plantilla extends JFrame {
 		pais.setBounds(10, 382, 122, 27);
 		panel_2.add(pais);
 		
-		media = new JTextPane();
-		media.setBackground(Color.WHITE);
-		media.setForeground(Color.BLACK);
-		media.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		media.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		media.setBounds(10, 523, 122, 27);
-		panel_2.add(media);
+		posicion = new JTextPane();
+		posicion.setBackground(Color.WHITE);
+		posicion.setForeground(Color.BLACK);
+		posicion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		posicion.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		posicion.setBounds(10, 523, 122, 27);
+		panel_2.add(posicion);
 		
 		nombree = new JTextPane();
 		nombree.setVisible(false);
@@ -301,12 +304,12 @@ public class Plantilla extends JFrame {
 		paiis.setBounds(10, 363, 56, 23);
 		panel_2.add(paiis);
 		
-		puntoos = new JTextPane();
-		puntoos.setVisible(false);
-		puntoos.setText("PUNTOS:");
-		puntoos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		puntoos.setBounds(10, 504, 70, 23);
-		panel_2.add(puntoos);
+		posicioon = new JTextPane();
+		posicioon.setVisible(false);
+		posicioon.setText("POSICION:");
+		posicioon.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		posicioon.setBounds(10, 504, 75, 23);
+		panel_2.add(posicioon);
 		
 		equipoo = new JTextPane();
 		equipoo.setVisible(false);
@@ -323,20 +326,20 @@ public class Plantilla extends JFrame {
 		equipo.setBounds(10, 453, 122, 27);
 		panel_2.add(equipo);
 		
-		posicioon = new JTextPane();
-		posicioon.setVisible(false);
-		posicioon.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		posicioon.setText("POSICI\u00D3N:");
-		posicioon.setBounds(10, 574, 75, 23);
-		panel_2.add(posicioon);
+		puntoos = new JTextPane();
+		puntoos.setVisible(false);
+		puntoos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		puntoos.setText("PUNTOS:");
+		puntoos.setBounds(10, 574, 75, 23);
+		panel_2.add(puntoos);
 		
-		posicion = new JTextPane();
-		posicion.setForeground(Color.BLACK);
-		posicion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		posicion.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		posicion.setBackground(Color.WHITE);
-		posicion.setBounds(10, 593, 122, 27);
-		panel_2.add(posicion);
+		media = new JTextPane();
+		media.setForeground(Color.BLACK);
+		media.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		media.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		media.setBackground(Color.WHITE);
+		media.setBounds(10, 593, 122, 27);
+		panel_2.add(media);
 		
 		venderJugadores = new JComboBox();
 		venderJugadores.setBackground(Color.WHITE);
@@ -344,8 +347,30 @@ public class Plantilla extends JFrame {
 		venderJugadores.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		venderJugadores.setForeground(Color.BLACK);
 		venderJugadores.setModel(new DefaultComboBoxModel(new String[] {"Elige Jugador para Vender"}));
-		venderJugadores.setBounds(75, 55, 254, 27);
+		venderJugadores.setBounds(75, 60, 254, 27);
 		panel_2.add(venderJugadores);
+		
+		ampliarvender = new JLabel("");
+		ampliarvender.setVisible(false);
+		ampliarvender.setBackground(Color.WHITE);
+		ampliarvender.setBounds(135, 180, 170, 220);
+		panel_2.add(ampliarvender);
+		
+		cancelarvender = new JButton("CANCELAR");
+		cancelarvender.setVisible(false);
+		cancelarvender.setForeground(Color.BLACK);
+		cancelarvender.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 19));
+		cancelarvender.setBackground(Color.LIGHT_GRAY);
+		cancelarvender.setBounds(245, 440, 120, 26);
+		panel_2.add(cancelarvender);
+		
+		aceptarvender = new JButton("");
+		aceptarvender.setVisible(false);
+		aceptarvender.setForeground(new Color(0, 128, 0));
+		aceptarvender.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		aceptarvender.setBackground(Color.LIGHT_GRAY);
+		aceptarvender.setBounds(60, 440, 130, 26);
+		panel_2.add(aceptarvender);
 		
 		panel_3 = new JPanel();
 		panel_3.setForeground(Color.BLACK);
@@ -577,6 +602,7 @@ public class Plantilla extends JFrame {
 		panel_3.add(centralesIComboBox);
 		
 		lateralDComboBox = new JComboBox();
+		lateralDComboBox.setBackground(Color.WHITE);
 		lateralDComboBox.setMaximumRowCount(16);
 		lateralDComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		lateralDComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Lateral D."}));
@@ -586,6 +612,7 @@ public class Plantilla extends JFrame {
 		panel_3.add(lateralDComboBox);
 		
 		lateralIComboBox = new JComboBox();
+		lateralIComboBox.setBackground(Color.WHITE);
 		lateralIComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Lateral I."}));
 		lateralIComboBox.setMaximumRowCount(16);
 		lateralIComboBox.setForeground(Color.BLACK);

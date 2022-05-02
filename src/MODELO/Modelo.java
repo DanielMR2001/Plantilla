@@ -12,7 +12,6 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -180,6 +179,57 @@ public class Modelo {
 					if (null != session) { session.getTransaction().rollback(); }
 	         } finally { if (null != session) { session.close(); } }     
 			 return cartaComprada;
+		}
+		
+		//sacarPrecio para vender la carta
+		public CartasCompradas sacarPrecio(SessionFactory sessionFactory, String nombre) {
+			Session session = null;
+			CartasCompradas cartaComprada=null;
+			 try {
+	         	session = sessionFactory.getCurrentSession();
+	         	session.beginTransaction();
+	         	Query query = session.createSQLQuery("SELECT * FROM CARTAS_COMPRADAS WHERE NOMBRE_CARTA_COMPRADA=:nombre");	
+				query.setParameter("nombre", nombre);  
+	         	List<Object[]> resultado = query.list();
+	         	for (Object[] fila : resultado) {		
+	         		String id = (String) fila[0]; 
+	         		String nombree = (String) fila[1]; 
+	         		String posicion = (String) fila[2]; 
+	         		String pais = (String) fila[3]; 
+	         		String equipo = (String) fila[4]; 
+	         		String liga = (String) fila[5]; 
+	         		Integer precio = (Integer) fila[6]; 
+	         		Integer media = (Integer) fila[7];  			
+	         		System.out.println(id+"-"+nombre+"-"+posicion+"-"+pais+"-"+equipo+"-"+liga+"-"+precio+"€-"+media);
+	         		cartaComprada=new CartasCompradas(id, nombre, posicion, pais, equipo, liga, precio, media);
+	         	}
+	         }catch(HibernateException e) { e.printStackTrace();
+					if (null != session) { session.getTransaction().rollback(); }
+	         } finally { if (null != session) { session.close(); } }     
+			 return cartaComprada;
+		}
+		
+		public void borrarDatosCartaVendida(String nombre) {
+			SessionFactory sessionFactory = null;
+			Session session=null;
+			try {
+				Configuration configuration = new Configuration();
+	            configuration.configure("hibernate.cfg.xml");
+	            sessionFactory = configuration.buildSessionFactory();
+	            sessionFactory.getCurrentSession();
+	            
+				session=sessionFactory.getCurrentSession();
+				session.beginTransaction();
+				Query q1=session.createQuery("FROM CartasCompradas WHERE nombreCartaComprada=:nombre");
+				q1.setParameter("nombre", nombre);
+				List<Object[]>lista=q1.list();
+				for(Object list:lista) {
+					session.delete(list);	
+				}		
+				session.getTransaction().commit();
+			}catch(HibernateException e) {e.printStackTrace();
+				if(session!=null) {session.getTransaction().rollback();}
+			}finally {if(session!=null) {session.close();}}
 		}
 	
 	//consultar en la bbdd la carta que se quiera comprar
