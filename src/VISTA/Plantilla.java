@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
 
+
 public class Plantilla extends JFrame {
 
 	public JPanel contentPane;
@@ -26,7 +27,6 @@ public class Plantilla extends JFrame {
 	public JButton vender;
 	public JComboBox comprarPosiciones;
 	public JPanel panel;
-	public JPanel panelranking;
 	public JButton buscar1;
 	public JButton carta1;
 	public JButton carta4;
@@ -83,19 +83,26 @@ public class Plantilla extends JFrame {
 	public JComboBox porterosComboBox;
 	public JComboBox centralesDComboBox;
 	public JTextField puntos;
-	public JButton recarga;
 	public JButton vs;
 	public JComboBox centralesIComboBox;
 	public JComboBox lateralDComboBox;
 	public JComboBox lateralIComboBox;
 	public JTextPane puntoos;
 	public JTextPane media;
-	public JScrollPane scrollPane;
-	public JButton recargaPuntos;
 	public JComboBox venderJugadores;
 	public JLabel ampliarvender;
 	public JButton cancelarvender;
 	public JButton aceptarvender;
+	public JTextPane comprado;
+	public JTextField siglas;
+	public JLabel ej;
+	public JLabel siglaas;
+	public JTextPane error;
+	public JButton aceptarSiglas;
+	public JPanel panelranking;
+	public JButton recarga;
+	public JScrollPane scrollPane;
+	public JTextPane listar;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -347,13 +354,13 @@ public class Plantilla extends JFrame {
 		venderJugadores.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		venderJugadores.setForeground(Color.BLACK);
 		venderJugadores.setModel(new DefaultComboBoxModel(new String[] {"Elige Jugador para Vender"}));
-		venderJugadores.setBounds(75, 60, 254, 27);
+		venderJugadores.setBounds(75, 75, 254, 27);
 		panel_2.add(venderJugadores);
 		
 		ampliarvender = new JLabel("");
 		ampliarvender.setVisible(false);
 		ampliarvender.setBackground(Color.WHITE);
-		ampliarvender.setBounds(135, 180, 170, 220);
+		ampliarvender.setBounds(130, 175, 180, 230);
 		panel_2.add(ampliarvender);
 		
 		cancelarvender = new JButton("CANCELAR");
@@ -361,7 +368,7 @@ public class Plantilla extends JFrame {
 		cancelarvender.setForeground(Color.BLACK);
 		cancelarvender.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 19));
 		cancelarvender.setBackground(Color.LIGHT_GRAY);
-		cancelarvender.setBounds(245, 440, 120, 26);
+		cancelarvender.setBounds(250, 455, 120, 26);
 		panel_2.add(cancelarvender);
 		
 		aceptarvender = new JButton("");
@@ -369,8 +376,18 @@ public class Plantilla extends JFrame {
 		aceptarvender.setForeground(new Color(0, 128, 0));
 		aceptarvender.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
 		aceptarvender.setBackground(Color.LIGHT_GRAY);
-		aceptarvender.setBounds(60, 440, 130, 26);
+		aceptarvender.setBounds(60, 455, 130, 26);
 		panel_2.add(aceptarvender);
+		
+		comprado = new JTextPane();
+		comprado.setVisible(false);
+		comprado.setText("COMPRADO");
+		comprado.setForeground(new Color(0, 128, 0));
+		comprado.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 22));
+		comprado.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		comprado.setBackground(Color.WHITE);
+		comprado.setBounds(8, 642, 110, 27);
+		panel_2.add(comprado);
 		
 		panel_3 = new JPanel();
 		panel_3.setForeground(Color.BLACK);
@@ -581,6 +598,7 @@ public class Plantilla extends JFrame {
 		panel_3.add(centralesDComboBox);
 		
 		puntos = new JTextField();
+		puntos.setEditable(false);
 		puntos.setVisible(false);
 		puntos.setBounds(265, 20, 40, 40);
 		panel_3.add(puntos);
@@ -621,35 +639,12 @@ public class Plantilla extends JFrame {
 		lateralIComboBox.setBounds(397, 20, 162, 27);
 		panel_3.add(lateralIComboBox);
 		
-		recargaPuntos = new JButton("");
-		recargaPuntos.setVisible(false);
-		recargaPuntos.setBorder(null);
-		recargaPuntos.setBackground(Color.WHITE);
-		recargaPuntos.setBounds(306, 16, 25, 25);
-		panel_3.add(recargaPuntos);
-		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_4.setBackground(Color.WHITE);
 		panel_4.setBounds(7, 11, 348, 684);
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 240, 328, 211);
-		panel_4.add(scrollPane);
-		
-		panelranking = new JPanel();
-		scrollPane.setViewportView(panelranking);
-		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panelranking.setBackground(Color.WHITE);
-		panelranking.setLayout(null);
-		
-		recarga = new JButton("");
-		recarga.setBackground(Color.WHITE);
-		recarga.setBorder(null);
-		recarga.setBounds(283, 11, 35, 35);
-		panelranking.add(recarga);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(20, 22, 115, 34);
@@ -698,10 +693,76 @@ public class Plantilla extends JFrame {
 		panelPartidos.setLayout(null);
 		
 		vs = new JButton("");
+		vs.setVisible(false);
 		vs.setBorder(null);
 		vs.setBackground(Color.WHITE);
 		vs.setBounds(280, 11, 40, 40);
 		panelPartidos.add(vs);
+		
+		panelranking = new JPanel();
+		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - (?)", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelranking.setBackground(Color.WHITE);
+		panelranking.setBounds(10, 242, 326, 209);
+		panel_4.add(panelranking);
+		panelranking.setLayout(null);
+		
+		siglaas = new JLabel("Nombre:");
+		siglaas.setBounds(81, 47, 80, 23);
+		panelranking.add(siglaas);
+		siglaas.setForeground(Color.BLACK);
+		siglaas.setBackground(Color.WHITE);
+		siglaas.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		
+		siglas = new JTextField();
+		siglas.setBounds(157, 45, 96, 26);
+		panelranking.add(siglas);
+		siglas.setName("");
+		siglas.setForeground(Color.BLACK);
+		siglas.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		siglas.setColumns(10);
+		
+		ej = new JLabel("3 D\u00EDgitos");
+		ej.setBounds(179, 74, 54, 18);
+		panelranking.add(ej);
+		ej.setForeground(Color.GRAY);
+		ej.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 14));
+		ej.setBackground(Color.WHITE);
+		
+		aceptarSiglas = new JButton("ACEPTAR");
+		aceptarSiglas.setBounds(104, 103, 109, 26);
+		panelranking.add(aceptarSiglas);
+		aceptarSiglas.setBackground(Color.LIGHT_GRAY);
+		aceptarSiglas.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		aceptarSiglas.setForeground(Color.BLACK);
+		
+		error = new JTextPane();
+		error.setBounds(28, 150, 273, 34);
+		panelranking.add(error);
+		error.setVisible(false);
+		error.setText("*EL NOMBRE DEBE TENER 3 D\u00CDGITOS*");
+		error.setForeground(Color.RED);
+		error.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		error.setEditable(false);
+		
+		recarga = new JButton("");
+		recarga.setBorder(null);
+		recarga.setVisible(false);
+		recarga.setBounds(276, 23, 40, 40);
+		panelranking.add(recarga);
+		recarga.setBackground(Color.WHITE);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setVisible(false);
+		scrollPane.setBounds(10, 23, 260, 175);
+		panelranking.add(scrollPane);
+		
+		listar = new JTextPane();
+		listar.setEditable(false);
+		listar.setBorder(null);
+		listar.setForeground(Color.BLACK);
+		listar.setVisible(false);
+		listar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 22));
+		scrollPane.setViewportView(listar);
 			
 	}
 }
