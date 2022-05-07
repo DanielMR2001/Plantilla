@@ -78,7 +78,7 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.aceptarSiglas.addActionListener(this);
 		modelo.cerrar(plantilla);
         asociarImagen("recarga.png", plantilla.recarga);
-        asociarImagen("versus.png", plantilla.vs);
+        asociarImagen("vs.png", plantilla.vs);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -250,6 +250,8 @@ public class Controlador2 implements ActionListener{
 					modelo.insertarCarta(sessionFactory, carta, idd);
 					plantilla.venderJugadores.addItem(nombre); 
 					JOptionPane.showMessageDialog(null, "HAS COMPRADO A "+nombre,"COMPRAR CARTA", JOptionPane.INFORMATION_MESSAGE);
+					String registro=plantilla.registro.getText();
+					plantilla.registro.setText(registro+"Has Comprado a "+carta.getNombre()+"\n");
 					jugadoresComprados.add(nombre);
 					System.out.println(jugadoresComprados.toString());
 					if(posicionCartaComprada.equals("POR")) {
@@ -311,6 +313,7 @@ public class Controlador2 implements ActionListener{
 					mediaCentral2_1=vender(carta, pos, precioFinal, decidirVender, mediaCentral2_1, "DEF I", plantilla.centralesIComboBox);
 					mediaCentral3_3=vender(carta, pos, precioFinal, decidirVender, mediaCentral3_3, "DEF I", plantilla.centralesIComboBox);
 					JOptionPane.showMessageDialog(null, "HAS VENDIDO A "+carta.getNombreCartaComprada(),"VENDER CARTA", JOptionPane.INFORMATION_MESSAGE);
+					plantilla.registro.setText(plantilla.registro.getText()+"Has Vendido a "+carta.getNombreCartaComprada()+"\n");
 				}
 			}
 								
@@ -359,6 +362,7 @@ public class Controlador2 implements ActionListener{
 				String siglas=plantilla.siglas.getText();
 				if(siglas.length()!=3) {
 					plantilla.error.setVisible(true);
+					plantilla.siglas.setText("");
 				}else {
 					plantilla.siglaas.setVisible(false);
 					plantilla.siglas.setVisible(false);
@@ -369,15 +373,21 @@ public class Controlador2 implements ActionListener{
 					plantilla.vs.setVisible(true);
 					plantilla.listar.setVisible(true);
 					plantilla.scrollPane.setVisible(true);
-					plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - ("+siglas.toUpperCase()+")", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));					
+					plantilla.miPosicion.setVisible(true);
+					plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - ("+siglas+")", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));					
 					listarRanking();
 				}
 			}
 
+			//funcionalidad si se pulsa el boton de recarga
 			if(e.getSource()==plantilla.recarga) {
 				listar.removeAll(listar);
 				plantilla.listar.setText("");
 				listarRanking();
+			}
+			
+			if(e.getSource()==plantilla.vs) {
+				
 			}
 					
 		} catch (Exception e3) { e3.printStackTrace(); 
@@ -400,8 +410,7 @@ public class Controlador2 implements ActionListener{
 			char randomChar3 = setOfCharacters.charAt(randomInt3);
 			r=new Ranking(randomChar1, randomChar2, randomChar3, aleatorio);
 			listar.add(r);
-		}
-		
+		}		
 		//incluirme en el ranking con el primer valor igual a 0, para iniciar el ranking
 		Ranking r2=null;
 		String nombreSiglas=plantilla.siglas.getText()+"*";
@@ -416,7 +425,6 @@ public class Controlador2 implements ActionListener{
 		int entero=Integer.parseInt(plantilla.puntos.getText());
 		r2=new Ranking(chhar1, chhar2, chhar3, chhar4, entero);
 		listar.add(r2);
-		
 		//ordenar el array
 		int i1=0;
 		for(int i=0; i<listar.size(); i++) {
@@ -427,14 +435,21 @@ public class Controlador2 implements ActionListener{
 					return new Integer(r2.getNumero()).compareTo(new Integer(r1.getNumero()));
 				}
 			});
+			
 			if(i1!=50) {
 				plantilla.listar.setText(plantilla.listar.getText()+(i+1)+"º-"+listar.get(i).toString()+"\n");
 			}else {
 				plantilla.listar.setText(plantilla.listar.getText()+50+"º-"+listar.get(i).toString());
-			}						
+			}		
+			
+			if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
+				String mp=String.valueOf(i1);
+				plantilla.miPosicion.setText(mp+"º");
+			}
 		}
 	}
 	
+	//vender carta seleccionada y borrar de la BBDD
 	private int vender(CartasCompradas carta, String pos, int precioFinal, String decidirVender, int media1, String posicion, JComboBox cb1) {
 		if(pos.equals(posicion)){
 			int dinero=Integer.parseInt(plantilla.dinero.getText())+precioFinal;
@@ -450,6 +465,7 @@ public class Controlador2 implements ActionListener{
 		return media1;
 	}
 
+	//resetear el boton de la posicion de la carta vendida pero sin la opcion de la carta vendida
 	private void quitarJugadorVendidoFormacion(JComboBox cb, String pos, JButton boton) {
 		if(cb.getSelectedIndex()==0) {
 			boton.setIcon(new ImageIcon(""));
@@ -538,7 +554,6 @@ public class Controlador2 implements ActionListener{
 		plantilla.nombre.setVisible(false); plantilla.pais.setVisible(false); plantilla.media.setVisible(false); plantilla.equipo.setVisible(false); plantilla.posicion.setVisible(false);
 		plantilla.nombree.setVisible(false); plantilla.paiis.setVisible(false); plantilla.puntoos.setVisible(false); plantilla.equipoo.setVisible(false); plantilla.posicioon.setVisible(false);
 	}
-
 
 	//poner visible o invisible los componentes, dependiendo de lo que se quiera hacer cuando se llame al metodo
 	private void ocultar1(boolean uno, boolean dos, boolean tres, boolean cuatro, boolean cinco, boolean seis, boolean siete, boolean ocho, boolean nueve) {

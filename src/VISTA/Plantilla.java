@@ -19,7 +19,6 @@ import javax.swing.JScrollPane;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
 
-
 public class Plantilla extends JFrame {
 
 	public JPanel contentPane;
@@ -103,6 +102,8 @@ public class Plantilla extends JFrame {
 	public JButton recarga;
 	public JScrollPane scrollPane;
 	public JTextPane listar;
+	public JLabel miPosicion;
+	public JTextPane registro;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -393,7 +394,7 @@ public class Plantilla extends JFrame {
 		panel_3.setForeground(Color.BLACK);
 		panel_3.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "MI PLANTILLA", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
 		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(365, 11, 572, 684);
+		panel_3.setBounds(364, 11, 572, 684);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -672,7 +673,7 @@ public class Plantilla extends JFrame {
 		
 		escudo = new JLabel("");
 		escudo.setBackground(Color.LIGHT_GRAY);
-		escudo.setBounds(180, 60, 121, 129);
+		escudo.setBounds(211, 81, 128, 138);
 		panel_4.add(escudo);
 		
 		elegirEscudo = new JComboBox();
@@ -696,7 +697,7 @@ public class Plantilla extends JFrame {
 		vs.setVisible(false);
 		vs.setBorder(null);
 		vs.setBackground(Color.WHITE);
-		vs.setBounds(280, 11, 40, 40);
+		vs.setBounds(268, 11, 50, 50);
 		panelPartidos.add(vs);
 		
 		panelranking = new JPanel();
@@ -747,13 +748,13 @@ public class Plantilla extends JFrame {
 		recarga = new JButton("");
 		recarga.setBorder(null);
 		recarga.setVisible(false);
-		recarga.setBounds(276, 23, 40, 40);
+		recarga.setBounds(10, 30, 40, 40);
 		panelranking.add(recarga);
 		recarga.setBackground(Color.WHITE);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setVisible(false);
-		scrollPane.setBounds(10, 23, 260, 175);
+		scrollPane.setBounds(60, 18, 260, 175);
 		panelranking.add(scrollPane);
 		
 		listar = new JTextPane();
@@ -763,6 +764,28 @@ public class Plantilla extends JFrame {
 		listar.setVisible(false);
 		listar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 22));
 		scrollPane.setViewportView(listar);
+		
+		miPosicion = new JLabel("");
+		miPosicion.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
+		miPosicion.setVisible(false);
+		miPosicion.setHorizontalAlignment(SwingConstants.CENTER);
+		miPosicion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		miPosicion.setForeground(Color.BLACK);
+		miPosicion.setBounds(10, 105, 40, 34);
+		panelranking.add(miPosicion);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBorder(null);
+		scrollPane_1.setBounds(10, 67, 198, 164);
+		panel_4.add(scrollPane_1);
+		
+		registro = new JTextPane();
+		registro.setEditable(false);
+		registro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Compras-Ventas", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		scrollPane_1.setViewportView(registro);
+		registro.setForeground(Color.BLACK);
+		registro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 13));
+		registro.setBackground(Color.WHITE);
 			
 	}
 }
