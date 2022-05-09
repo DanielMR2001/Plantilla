@@ -32,6 +32,7 @@ public class Controlador2 implements ActionListener{
 	Plantilla plantilla=new Plantilla();
 	SessionFactory sessionFactory = null;
 	ArrayList<String>jugadoresComprados=new ArrayList<>();
+	ArrayList<String>escudos=new ArrayList<>();
 	ArrayList<Ranking>listar=new ArrayList<>();
 
 	public Controlador2(VISTA.Plantilla plantilla) {
@@ -79,6 +80,7 @@ public class Controlador2 implements ActionListener{
 		modelo.cerrar(plantilla);
         asociarImagen("recarga.png", plantilla.recarga);
         asociarImagen("vs.png", plantilla.vs);
+        asociarImagen2("versus.png", plantilla.versus);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -103,56 +105,107 @@ public class Controlador2 implements ActionListener{
 
 	        if(escudo.equals("Elige Escudo")) {
 	        	asociarImagen2("", plantilla.escudo);
+	        	asociarImagen2("usuario.jpg", plantilla.yo);
 	        }else if(escudo.equals("Barcelona (ESP)")) {
 	        	asociarImagen2("escudos/barsa.png", plantilla.escudo);
+	        	asociarImagen2("escudos/barsa.png", plantilla.yo);
 	        }else if(escudo.equals("Sevilla (ESP)")) {
 	        	asociarImagen2("escudos/sevilla.png", plantilla.escudo);
+	        	asociarImagen2("escudos/sevilla.png", plantilla.yo);
 	        }else if(escudo.equals("Atl. de Madrid (ESP)")) {
 	        	asociarImagen2("escudos/atletico.png", plantilla.escudo);
+	        	asociarImagen2("escudos/atletico.png", plantilla.yo);
 	        }else if(escudo.equals("Spt. de Lisboa (POR)")) {
 	        	asociarImagen2("escudos/lisboa.png", plantilla.escudo);
+	        	asociarImagen2("escudos/lisboa.png", plantilla.yo);
 	        }else if(escudo.equals("Benfica (POR)")) {
 	        	asociarImagen2("escudos/benfica.png", plantilla.escudo);
+	        	asociarImagen2("escudos/benfica.png", plantilla.yo);
 	        }else if(escudo.equals("Porto (POR)")) {
 	        	asociarImagen2("escudos/porto.png", plantilla.escudo);
+	        	asociarImagen2("escudos/porto.png", plantilla.yo);
 	        }else if(escudo.equals("PSG (FRA)")) {
 	        	asociarImagen2("escudos/psg.png", plantilla.escudo);
+	        	asociarImagen2("escudos/psg.png", plantilla.yo);
 	        }else if(escudo.equals("Mónaco (FRA)")) {
 	        	asociarImagen2("escudos/monaco.png", plantilla.escudo);
+	        	asociarImagen2("escudos/monaco.png", plantilla.yo);
 	        }else if(escudo.equals("M. City (ING)")) {
 	        	asociarImagen2("escudos/city.png", plantilla.escudo);
+	        	asociarImagen2("escudos/city.png", plantilla.yo);
 	        }else if(escudo.equals("M. United (ING)")) {
 	        	asociarImagen2("escudos/united.png", plantilla.escudo);
+	        	asociarImagen2("escudos/united.png", plantilla.yo);
 	        }else if(escudo.equals("Arsenal (ING)")) {
 	        	asociarImagen2("escudos/arsenal.png", plantilla.escudo);
+	        	asociarImagen2("escudos/arsenal.png", plantilla.yo);
 	        }else if(escudo.equals("Tottenham (ING)")) {
 	        	asociarImagen2("escudos/tottenham.png", plantilla.escudo);
+	        	asociarImagen2("escudos/tottenham.png", plantilla.yo);
 	        }else if(escudo.equals("Ajax (HOL)")) {
 	        	asociarImagen2("escudos/ajax.png", plantilla.escudo);
+	        	asociarImagen2("escudos/ajax.png", plantilla.yo);
 	        }else if(escudo.equals("PSV (HOL)")) {
 	        	asociarImagen2("escudos/psv.png", plantilla.escudo);
+	        	asociarImagen2("escudos/psv.png", plantilla.yo);
 	        }else if(escudo.equals("B. de Munich (ALE)")) {
 	        	asociarImagen2("escudos/bayern.png", plantilla.escudo);
+	        	asociarImagen2("escudos/bayern.png", plantilla.yo);
 	        }else if(escudo.equals("B. Dortmund (ALE)")) {
-	        	asociarImagen2("escudos/dortmund.png", plantilla.escudo);
+	        	asociarImagen2("escudos/dortmund.png", plantilla.escudo); 
+	        	asociarImagen2("escudos/dortmund.png", plantilla.yo); 
 	        }else if(escudo.equals("Borussia M. (ALE)")) {
 	        	asociarImagen2("escudos/borussia.jpg", plantilla.escudo);
+	        	asociarImagen2("escudos/borussia.jpg", plantilla.yo);
 	        }else if(escudo.equals("Leipzig (ALE)")) {
 	        	asociarImagen2("escudos/leipzig.png", plantilla.escudo);
+	        	asociarImagen2("escudos/leipzig.png", plantilla.yo);
 	        }else if(escudo.equals("Juventus (ITA)")) {
 	        	asociarImagen2("escudos/juventus.png", plantilla.escudo);
+	        	asociarImagen2("escudos/juventus.png", plantilla.yo);
 	        }else if(escudo.equals("Inter de Milan (ITA)")) {
 	        	asociarImagen2("escudos/intermilan.png", plantilla.escudo);
+	        	asociarImagen2("escudos/intermilan.png", plantilla.yo);
 	        }else if(escudo.equals("Milan (ITA)")) {
 	        	asociarImagen2("escudos/milan.png", plantilla.escudo);
+	        	asociarImagen2("escudos/milan.png", plantilla.yo);
 	        }else if(escudo.equals("Napoles (ITA)")) {
 	        	asociarImagen2("escudos/napoles.png", plantilla.escudo);
+	        	asociarImagen2("escudos/napoles.png", plantilla.yo);
 	        }else if(escudo.equals("Albacete (ESP)")) {
 	        	asociarImagen2("escudos/albacete.png", plantilla.escudo);
+	        	asociarImagen2("escudos/albacete.png", plantilla.yo);
 	        }else if(escudo.equals("Everton (ING)")) {
 	        	asociarImagen2("escudos/everton.png", plantilla.escudo);
+	        	asociarImagen2("escudos/everton.png", plantilla.yo);
 	        }
-	        
+	                    	                 
+	        escudos.add("usuario.jpg");
+	        escudos.add("escudos/barsa.png");
+	        escudos.add("escudos/sevilla.png");
+	        escudos.add("escudos/atletico.png");
+	        escudos.add("escudos/lisboa.png");
+	        escudos.add("escudos/benfica.png");
+	        escudos.add("escudos/porto.png");
+	        escudos.add("escudos/psg.png");
+	        escudos.add("escudos/monaco.png");
+	        escudos.add("escudos/city.png");
+	        escudos.add("escudos/united.png");
+	        escudos.add("escudos/arsenal.png");
+	        escudos.add("escudos/tottenham.png");
+	        escudos.add("escudos/ajax.png");
+	        escudos.add("escudos/psv.png");
+	        escudos.add("escudos/bayern.png");
+	        escudos.add("escudos/dortmund.png");
+	        escudos.add("escudos/borussia.jpg");
+	        escudos.add("escudos/leipzig.png");
+	        escudos.add("escudos/juventus.png");
+	        escudos.add("escudos/intermilan.png");
+	        escudos.add("escudos/milan.png");
+	        escudos.add("escudos/napoles.png");
+	        escudos.add("escudos/albacete.png");
+	        escudos.add("escudos/everton.png");
+
 			//funcionalidad cuando se pulse el boton de Comprar
 			if(e.getSource()==plantilla.comprar) {				
 				ocultar1(true, false, true, false, true, true, false, false, false);
@@ -387,12 +440,72 @@ public class Controlador2 implements ActionListener{
 			}
 			
 			if(e.getSource()==plantilla.vs) {
-				
+				int dinero=Integer.parseInt(plantilla.dinero.getText());
+				String nombreSiglas=plantilla.siglas.getText()+"*";
+				char[] myChars = nombreSiglas.toCharArray();
+				char chhar1=0, chhar2=0, chhar3=0, chhar4=0, chhar5=0;
+				for (int i=0; i<myChars.length; i++){
+					chhar1=myChars[0];
+					chhar2=myChars[1];
+					chhar3=myChars[2];
+					chhar4=myChars[3];
+				}
+				if(dinero<3000) {
+					JOptionPane.showMessageDialog(null, "DEBES DE TENER MÁS DE 3000 $","DINERO INSUFICIENTE", JOptionPane.ERROR_MESSAGE);
+				}else {
+					int siglasOtro=(int)(Math.random()*listar.size());
+					String nombreSiglas2=plantilla.siglas.getText();
+					char[] myChars2 = nombreSiglas.toCharArray();
+					char chhar11=0, chhar22=0, chhar33=0, chhar44=0, chhar55=0;
+					for (int i=0; i<myChars.length; i++){
+						chhar1=myChars[0];
+						chhar2=myChars[1];
+						chhar3=myChars[2];
+					}
+					do {
+						plantilla.yo.setVisible(true); 
+						plantilla.versus.setVisible(true);
+						plantilla.otro.setVisible(true);
+						plantilla.miSigla.setVisible(true);
+						int entero=Integer.parseInt(plantilla.puntos.getText());
+						plantilla.miSigla.setText(plantilla.siglas.getText()+"("+entero+")");
+						int otro=(int)(Math.random()*escudos.size());
+						asociarImagen2(escudos.get(otro), plantilla.otro);
+						plantilla.siglasotro.setText(listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"("+listar.get(siglasOtro).getNumero()+")");
+						if(listar.get(siglasOtro).getNumero()>entero) {
+							JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
+							int resta=dinero-3000;
+							String dineroFinal=String.valueOf(resta);
+							plantilla.dinero.setText(dineroFinal);
+							plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" -3000$\n");
+						}else if(listar.get(siglasOtro).getNumero()<entero){
+							JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
+							int resta=dinero+5000;
+							String dineroFinal=String.valueOf(resta);
+							plantilla.dinero.setText(dineroFinal);
+							plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" +5000$\n");
+						}else {
+							int prorroga=(int)(Math.random()*1);
+							if(prorroga==0) {
+								JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
+								int resta=dinero-3000;
+								String dineroFinal=String.valueOf(resta);
+								plantilla.dinero.setText(dineroFinal);
+								plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" -3000$\n");
+							}else if(prorroga==1) {
+								JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
+								int resta=dinero+5000;
+								String dineroFinal=String.valueOf(resta);
+								plantilla.dinero.setText(dineroFinal);
+								plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" +5000$\n");
+							}
+						}
+					}while((listar.get(siglasOtro).getSigla1()==chhar1)&&(listar.get(siglasOtro).getSigla2()==chhar2)&&(listar.get(siglasOtro).getSigla3()==chhar3));				
+				}
 			}
 					
 		} catch (Exception e3) { e3.printStackTrace(); 
-		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
-	
+		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
 	}
 
 	private void listarRanking() {

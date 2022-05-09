@@ -104,6 +104,11 @@ public class Plantilla extends JFrame {
 	public JTextPane listar;
 	public JLabel miPosicion;
 	public JTextPane registro;
+	public JLabel yo;
+	public JLabel versus;
+	public JLabel otro;
+	public JLabel miSigla;
+	public JLabel siglasotro;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -700,6 +705,36 @@ public class Plantilla extends JFrame {
 		vs.setBounds(268, 11, 50, 50);
 		panelPartidos.add(vs);
 		
+		yo = new JLabel("");
+		yo.setVisible(false);
+		yo.setBounds(55, 65, 70, 70);
+		panelPartidos.add(yo);
+		
+		versus = new JLabel("");
+		versus.setVisible(false);
+		versus.setBounds(140, 68, 60, 60);
+		panelPartidos.add(versus);
+		
+		otro = new JLabel("");
+		otro.setVisible(false);
+		otro.setBounds(207, 65, 70, 70);
+		panelPartidos.add(otro);
+		
+		miSigla = new JLabel("");
+		miSigla.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		miSigla.setForeground(Color.BLACK);
+		miSigla.setHorizontalAlignment(SwingConstants.CENTER);
+		miSigla.setVisible(false);
+		miSigla.setBounds(58, 135, 60, 24);
+		panelPartidos.add(miSigla);
+		
+		siglasotro = new JLabel("");
+		siglasotro.setForeground(Color.BLACK);
+		siglasotro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
+		siglasotro.setHorizontalAlignment(SwingConstants.CENTER);
+		siglasotro.setBounds(210, 135, 60, 24);
+		panelPartidos.add(siglasotro);
+		
 		panelranking = new JPanel();
 		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - (?)", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelranking.setBackground(Color.WHITE);
@@ -781,7 +816,7 @@ public class Plantilla extends JFrame {
 		
 		registro = new JTextPane();
 		registro.setEditable(false);
-		registro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Compras-Ventas", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		registro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Registro Actividad", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		scrollPane_1.setViewportView(registro);
 		registro.setForeground(Color.BLACK);
 		registro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 13));

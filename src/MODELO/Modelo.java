@@ -291,7 +291,7 @@ public class Modelo {
 		plantilla.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				int option = JOptionPane.showConfirmDialog( plantilla,  "¿QUIERES CERRAR LA APLICACIÓN?\n       SE BORRARÁ TU PROGRESO", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.QUESTION_MESSAGE);
+				int option = JOptionPane.showConfirmDialog( plantilla,  "¿QUIERES CERRAR LA APLICACIÓN?\n       SE BORRARÁ TU PROGRESO", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
 					borrarDatosTabla();
 					System.exit(0);
