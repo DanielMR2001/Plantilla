@@ -109,6 +109,7 @@ public class Plantilla extends JFrame {
 	public JLabel otro;
 	public JLabel miSigla;
 	public JLabel siglasotro;
+	public JLabel emoticono;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -140,7 +141,7 @@ public class Plantilla extends JFrame {
 		buscar1.setVisible(false);
 		buscar1.setForeground(Color.BLACK);
 		buscar1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		buscar1.setBounds(244, 46, 87, 23);
+		buscar1.setBounds(240, 46, 87, 23);
 		panel_2.add(buscar1);
 		buscar1.setBackground(Color.LIGHT_GRAY);
 		
@@ -159,10 +160,11 @@ public class Plantilla extends JFrame {
 		vender.setBackground(Color.LIGHT_GRAY);
 		
 		comprarPosiciones = new JComboBox();
-		comprarPosiciones.setBounds(75, 44, 159, 25);
+		comprarPosiciones.setMaximumRowCount(11);
+		comprarPosiciones.setBounds(90, 44, 141, 25);
 		panel_2.add(comprarPosiciones);
 		comprarPosiciones.setVisible(false);
-		comprarPosiciones.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Porteros", "Defensas", "Laterales I.", "Laterales D."}));
+		comprarPosiciones.setModel(new DefaultComboBoxModel(new String[] {"Elige Posicion", "Porteros", "Defensas", "Laterales I.", "Laterales D.", "Mediocentros", "Carrileros I.", "Carrileros D.", "Extremos I.", "Extremos D.", "Delanteros"}));
 		comprarPosiciones.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		comprarPosiciones.setBackground(Color.WHITE);
 		comprarPosiciones.setForeground(Color.BLACK);
@@ -172,7 +174,7 @@ public class Plantilla extends JFrame {
 		panel.setBounds(128, 74, 275, 602);
 		panel_2.add(panel);
 		panel.setBackground(Color.WHITE);
-		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(null);
 		panel.setLayout(null);
 		
 		carta1 = new JButton("");
@@ -304,6 +306,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(posicion);
 		
 		nombree = new JTextPane();
+		nombree.setForeground(Color.DARK_GRAY);
 		nombree.setVisible(false);
 		nombree.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		nombree.setText("NOMBRE:");
@@ -311,6 +314,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(nombree);
 		
 		paiis = new JTextPane();
+		paiis.setForeground(Color.DARK_GRAY);
 		paiis.setVisible(false);
 		paiis.setText("PAIS:");
 		paiis.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
@@ -318,6 +322,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(paiis);
 		
 		posicioon = new JTextPane();
+		posicioon.setForeground(Color.DARK_GRAY);
 		posicioon.setVisible(false);
 		posicioon.setText("POSICION:");
 		posicioon.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
@@ -325,6 +330,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(posicioon);
 		
 		equipoo = new JTextPane();
+		equipoo.setForeground(Color.DARK_GRAY);
 		equipoo.setVisible(false);
 		equipoo.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		equipoo.setText("EQUIPO:");
@@ -340,6 +346,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(equipo);
 		
 		puntoos = new JTextPane();
+		puntoos.setForeground(Color.DARK_GRAY);
 		puntoos.setVisible(false);
 		puntoos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
 		puntoos.setText("PUNTOS:");
@@ -386,6 +393,7 @@ public class Plantilla extends JFrame {
 		panel_2.add(aceptarvender);
 		
 		comprado = new JTextPane();
+		comprado.setEditable(false);
 		comprado.setVisible(false);
 		comprado.setText("COMPRADO");
 		comprado.setForeground(new Color(0, 128, 0));
@@ -604,6 +612,7 @@ public class Plantilla extends JFrame {
 		panel_3.add(centralesDComboBox);
 		
 		puntos = new JTextField();
+		puntos.setForeground(Color.BLACK);
 		puntos.setEditable(false);
 		puntos.setVisible(false);
 		puntos.setBounds(265, 20, 40, 40);
@@ -735,6 +744,10 @@ public class Plantilla extends JFrame {
 		siglasotro.setBounds(210, 135, 60, 24);
 		panelPartidos.add(siglasotro);
 		
+		emoticono = new JLabel("");
+		emoticono.setBounds(10, 11, 45, 45);
+		panelPartidos.add(emoticono);
+		
 		panelranking = new JPanel();
 		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - (?)", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panelranking.setBackground(Color.WHITE);
@@ -743,14 +756,14 @@ public class Plantilla extends JFrame {
 		panelranking.setLayout(null);
 		
 		siglaas = new JLabel("Nombre:");
-		siglaas.setBounds(81, 47, 80, 23);
+		siglaas.setBounds(81, 56, 80, 23);
 		panelranking.add(siglaas);
 		siglaas.setForeground(Color.BLACK);
 		siglaas.setBackground(Color.WHITE);
 		siglaas.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
 		
 		siglas = new JTextField();
-		siglas.setBounds(157, 45, 96, 26);
+		siglas.setBounds(157, 55, 96, 26);
 		panelranking.add(siglas);
 		siglas.setName("");
 		siglas.setForeground(Color.BLACK);
@@ -758,14 +771,14 @@ public class Plantilla extends JFrame {
 		siglas.setColumns(10);
 		
 		ej = new JLabel("3 D\u00EDgitos");
-		ej.setBounds(179, 74, 54, 18);
+		ej.setBounds(179, 85, 54, 18);
 		panelranking.add(ej);
 		ej.setForeground(Color.GRAY);
 		ej.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 14));
 		ej.setBackground(Color.WHITE);
 		
 		aceptarSiglas = new JButton("ACEPTAR");
-		aceptarSiglas.setBounds(104, 103, 109, 26);
+		aceptarSiglas.setBounds(104, 110, 109, 26);
 		panelranking.add(aceptarSiglas);
 		aceptarSiglas.setBackground(Color.LIGHT_GRAY);
 		aceptarSiglas.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));

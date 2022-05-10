@@ -388,7 +388,7 @@ public class Controlador2 implements ActionListener{
 				plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false);  
 					int media=(mediaPortero+mediaCentral1_3+mediaCentral3_3)/11;
 				 	String mediaa=String.valueOf(media);
-				plantilla.puntos.setText(mediaa);
+				 	plantilla.puntos.setText(mediaa);
 			}else if(decidirFormacion.equals(" 4 - 2 - 4")) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);  plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio2_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.medio1_2.setVisible(false); plantilla.medio1_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.central1_3.setVisible(false); 
@@ -432,80 +432,84 @@ public class Controlador2 implements ActionListener{
 				}
 			}
 
-			//funcionalidad si se pulsa el boton de recarga
+			//funcionalidad si se pulsa el icono del panel de Ranking
 			if(e.getSource()==plantilla.recarga) {
 				listar.removeAll(listar);
 				plantilla.listar.setText("");
 				listarRanking();
 			}
 			
+			//funcionalidad si se pulsa el icono del panel de Partidos Online
 			if(e.getSource()==plantilla.vs) {
 				int dinero=Integer.parseInt(plantilla.dinero.getText());
-				String nombreSiglas=plantilla.siglas.getText()+"*";
+				String nombreSiglas=plantilla.siglas.getText();
 				char[] myChars = nombreSiglas.toCharArray();
-				char chhar1=0, chhar2=0, chhar3=0, chhar4=0, chhar5=0;
+				char chhar1=0, chhar2=0, chhar3=0;
 				for (int i=0; i<myChars.length; i++){
 					chhar1=myChars[0];
 					chhar2=myChars[1];
 					chhar3=myChars[2];
-					chhar4=myChars[3];
 				}
 				if(dinero<3000) {
 					JOptionPane.showMessageDialog(null, "DEBES DE TENER MÁS DE 3000 $","DINERO INSUFICIENTE", JOptionPane.ERROR_MESSAGE);
 				}else {
 					int siglasOtro=(int)(Math.random()*listar.size());
-					String nombreSiglas2=plantilla.siglas.getText();
-					char[] myChars2 = nombreSiglas.toCharArray();
-					char chhar11=0, chhar22=0, chhar33=0, chhar44=0, chhar55=0;
-					for (int i=0; i<myChars.length; i++){
-						chhar1=myChars[0];
-						chhar2=myChars[1];
-						chhar3=myChars[2];
-					}
-					do {
-						plantilla.yo.setVisible(true); 
-						plantilla.versus.setVisible(true);
-						plantilla.otro.setVisible(true);
-						plantilla.miSigla.setVisible(true);
-						int entero=Integer.parseInt(plantilla.puntos.getText());
-						plantilla.miSigla.setText(plantilla.siglas.getText()+"("+entero+")");
-						int otro=(int)(Math.random()*escudos.size());
-						asociarImagen2(escudos.get(otro), plantilla.otro);
-						plantilla.siglasotro.setText(listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"("+listar.get(siglasOtro).getNumero()+")");
-						if(listar.get(siglasOtro).getNumero()>entero) {
-							JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
-							int resta=dinero-3000;
-							String dineroFinal=String.valueOf(resta);
-							plantilla.dinero.setText(dineroFinal);
-							plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" -3000$\n");
-						}else if(listar.get(siglasOtro).getNumero()<entero){
-							JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
-							int resta=dinero+5000;
-							String dineroFinal=String.valueOf(resta);
-							plantilla.dinero.setText(dineroFinal);
-							plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" +5000$\n");
-						}else {
-							int prorroga=(int)(Math.random()*1);
-							if(prorroga==0) {
-								JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
-								int resta=dinero-3000;
-								String dineroFinal=String.valueOf(resta);
-								plantilla.dinero.setText(dineroFinal);
-								plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" -3000$\n");
-							}else if(prorroga==1) {
-								JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
-								int resta=dinero+5000;
-								String dineroFinal=String.valueOf(resta);
-								plantilla.dinero.setText(dineroFinal);
-								plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" +5000$\n");
-							}
-						}
-					}while((listar.get(siglasOtro).getSigla1()==chhar1)&&(listar.get(siglasOtro).getSigla2()==chhar2)&&(listar.get(siglasOtro).getSigla3()==chhar3));				
+					if((listar.get(siglasOtro).getSigla1()!=chhar1)&&(listar.get(siglasOtro).getSigla2()!=chhar2)&&(listar.get(siglasOtro).getSigla3()!=chhar3)) {
+						jugarPartido(dinero, siglasOtro);
+					}else {
+						siglasOtro=(int)(Math.random()*listar.size());
+						jugarPartido(dinero, siglasOtro);
+					}					
 				}
 			}
 					
 		} catch (Exception e3) { e3.printStackTrace(); 
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
+	}
+
+	//enfrentarte a otros jugadores del ranking y para ganarles debes de tener más puntos que ellos
+	private void jugarPartido(int dinero, int siglasOtro) {
+		plantilla.yo.setVisible(true); 
+		plantilla.versus.setVisible(true);
+		plantilla.otro.setVisible(true);
+		plantilla.miSigla.setVisible(true);
+		int entero=Integer.parseInt(plantilla.puntos.getText());
+		plantilla.miSigla.setText(plantilla.siglas.getText()+" ("+entero+")");
+		int otro=(int)(Math.random()*escudos.size());
+		asociarImagen2(escudos.get(otro), plantilla.otro);
+		plantilla.siglasotro.setText(listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")");
+		if(listar.get(siglasOtro).getNumero()>entero) {
+			JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
+			int resta=dinero-3000;
+			String dineroFinal=String.valueOf(resta);
+			plantilla.dinero.setText(dineroFinal);
+			plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
+			asociarImagen2("perder.jpg", plantilla.emoticono);
+		}else if(listar.get(siglasOtro).getNumero()<entero){
+			JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
+			int resta=dinero+5000;
+			String dineroFinal=String.valueOf(resta);
+			plantilla.dinero.setText(dineroFinal);
+			plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
+			asociarImagen2("ganar.png", plantilla.emoticono);
+		}else {
+			int prorroga=(int)(Math.random()*1);
+			if(prorroga==0) {
+				JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
+				int resta=dinero-3000;
+				String dineroFinal=String.valueOf(resta);
+				plantilla.dinero.setText(dineroFinal);
+				plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
+				asociarImagen2("perder.jpg", plantilla.emoticono);
+			}else if(prorroga==1) {
+				JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
+				int resta=dinero+5000;
+				String dineroFinal=String.valueOf(resta);
+				plantilla.dinero.setText(dineroFinal);
+				plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
+				asociarImagen2("ganar.png", plantilla.emoticono);
+			}
+		}
 	}
 
 	private void listarRanking() {
@@ -519,7 +523,7 @@ public class Controlador2 implements ActionListener{
 			int randomInt2 = random.nextInt(setOfCharacters.length());
 			char randomChar2 = setOfCharacters.charAt(randomInt2);
 			int randomInt3 = random.nextInt(setOfCharacters.length());
-			int aleatorio=(int) (Math.random()*((101-1))+1);
+			int aleatorio=(int) (Math.random()*((101-0))+0);
 			char randomChar3 = setOfCharacters.charAt(randomInt3);
 			r=new Ranking(randomChar1, randomChar2, randomChar3, aleatorio);
 			listar.add(r);
@@ -662,13 +666,11 @@ public class Controlador2 implements ActionListener{
 		return media;
 	}
 	
-	//ocultar informacion de la carta que se haya pulsado
 	private void ocultarCarta() {
 		plantilla.nombre.setVisible(false); plantilla.pais.setVisible(false); plantilla.media.setVisible(false); plantilla.equipo.setVisible(false); plantilla.posicion.setVisible(false);
 		plantilla.nombree.setVisible(false); plantilla.paiis.setVisible(false); plantilla.puntoos.setVisible(false); plantilla.equipoo.setVisible(false); plantilla.posicioon.setVisible(false);
 	}
 
-	//poner visible o invisible los componentes, dependiendo de lo que se quiera hacer cuando se llame al metodo
 	private void ocultar1(boolean uno, boolean dos, boolean tres, boolean cuatro, boolean cinco, boolean seis, boolean siete, boolean ocho, boolean nueve) {
 		plantilla.ampliar.setVisible(uno);
 		plantilla.buscar1.setVisible(tres);
@@ -687,7 +689,6 @@ public class Controlador2 implements ActionListener{
 		plantilla.cancelarvender.setVisible(uno); 
 	}
 	
-	//ocultar el panel, jlabel y el jbutton que se le pase por parámetro
 	private void ocultar2() {
 		plantilla.panel.setVisible(false);
 		plantilla.ampliar.setVisible(false);
