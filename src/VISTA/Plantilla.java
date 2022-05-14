@@ -110,6 +110,9 @@ public class Plantilla extends JFrame {
 	public JLabel miSigla;
 	public JLabel siglasotro;
 	public JLabel emoticono;
+	public JComboBox mediosComboBox;
+	public JComboBox mediosDComboBox;
+	public JComboBox mediosIComboBox;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -654,6 +657,36 @@ public class Plantilla extends JFrame {
 		lateralIComboBox.setBounds(397, 20, 162, 27);
 		panel_3.add(lateralIComboBox);
 		
+		mediosComboBox = new JComboBox();
+		mediosComboBox.setVisible(false);
+		mediosComboBox.setBackground(Color.WHITE);
+		mediosComboBox.setMaximumRowCount(16);
+		mediosComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Medio"}));
+		mediosComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		mediosComboBox.setForeground(Color.BLACK);
+		mediosComboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(mediosComboBox);
+		
+		mediosDComboBox = new JComboBox();
+		mediosDComboBox.setVisible(false);
+		mediosDComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elegir Medio D."}));
+		mediosDComboBox.setMaximumRowCount(16);
+		mediosDComboBox.setForeground(Color.BLACK);
+		mediosDComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		mediosDComboBox.setBackground(Color.WHITE);
+		mediosDComboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(mediosDComboBox);
+		
+		mediosIComboBox = new JComboBox();
+		mediosIComboBox.setVisible(false);
+		mediosIComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elegir Medio I."}));
+		mediosIComboBox.setMaximumRowCount(16);
+		mediosIComboBox.setForeground(Color.BLACK);
+		mediosIComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		mediosIComboBox.setBackground(Color.WHITE);
+		mediosIComboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(mediosIComboBox);
+		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_4.setBackground(Color.WHITE);
@@ -740,8 +773,8 @@ public class Plantilla extends JFrame {
 		siglasotro = new JLabel("");
 		siglasotro.setForeground(Color.BLACK);
 		siglasotro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		siglasotro.setHorizontalAlignment(SwingConstants.CENTER);
-		siglasotro.setBounds(210, 135, 60, 24);
+		siglasotro.setHorizontalAlignment(SwingConstants.LEFT);
+		siglasotro.setBounds(210, 135, 75, 24);
 		panelPartidos.add(siglasotro);
 		
 		emoticono = new JLabel("");
