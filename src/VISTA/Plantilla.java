@@ -115,6 +115,11 @@ public class Plantilla extends JFrame {
 	public JComboBox mediosIComboBox;
 	public JComboBox carrileroIComboBox;
 	public JComboBox carrileroDComboBox;
+	public JComboBox extremosDCcomboBox;
+	public JComboBox extremosICcomboBox;
+	public JComboBox delanteroDCcomboBox;
+	public JComboBox delanteroICcomboBox;
+	public JComboBox delanteroCcomboBox;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -508,7 +513,7 @@ public class Plantilla extends JFrame {
 		
 		delantero_1 = new JButton("DELANTERO");
 		delantero_1.setForeground(Color.BLACK);
-		delantero_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 21));
+		delantero_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 19));
 		delantero_1.setVisible(false);
 		delantero_1.setBorder(null);
 		delantero_1.setBackground(Color.WHITE);
@@ -552,17 +557,19 @@ public class Plantilla extends JFrame {
 		panel_3.add(medio3_2);
 		
 		medio4_2 = new JButton("CARRILERO D.");
+		medio4_2.setHorizontalAlignment(SwingConstants.LEFT);
 		medio4_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
 		medio4_2.setForeground(Color.BLACK);
 		medio4_2.setVisible(false);
 		medio4_2.setBorder(null);
 		medio4_2.setBackground(Color.WHITE);
-		medio4_2.setBounds(450, 225, 110, 130);
+		medio4_2.setBounds(450, 225, 112, 130);
 		panel_3.add(medio4_2);
 		
 		delantero1_2 = new JButton("DELANTERO I.");
+		delantero1_2.setHorizontalAlignment(SwingConstants.LEFT);
 		delantero1_2.setForeground(Color.BLACK);
-		delantero1_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		delantero1_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 19));
 		delantero1_2.setVisible(false);
 		delantero1_2.setBorder(null);
 		delantero1_2.setBackground(Color.WHITE);
@@ -570,6 +577,7 @@ public class Plantilla extends JFrame {
 		panel_3.add(delantero1_2);
 		
 		delantero2_2 = new JButton("DELANTERO D.");
+		delantero2_2.setHorizontalAlignment(SwingConstants.LEFT);
 		delantero2_2.setForeground(Color.BLACK);
 		delantero2_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		delantero2_2.setVisible(false);
@@ -709,6 +717,56 @@ public class Plantilla extends JFrame {
 		carrileroDComboBox.setBounds(398, 20, 162, 25);
 		panel_3.add(carrileroDComboBox);
 		
+		extremosDCcomboBox = new JComboBox();
+		extremosDCcomboBox.setVisible(false);
+		extremosDCcomboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Extremo D."}));
+		extremosDCcomboBox.setMaximumRowCount(16);
+		extremosDCcomboBox.setForeground(Color.BLACK);
+		extremosDCcomboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		extremosDCcomboBox.setBackground(Color.WHITE);
+		extremosDCcomboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(extremosDCcomboBox);
+		
+		extremosICcomboBox = new JComboBox();
+		extremosICcomboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Extremo I."}));
+		extremosICcomboBox.setVisible(false);
+		extremosICcomboBox.setMaximumRowCount(16);
+		extremosICcomboBox.setForeground(Color.BLACK);
+		extremosICcomboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		extremosICcomboBox.setBackground(Color.WHITE);
+		extremosICcomboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(extremosICcomboBox);
+		
+		delanteroDCcomboBox = new JComboBox();
+		delanteroDCcomboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Delantero D."}));
+		delanteroDCcomboBox.setVisible(false);
+		delanteroDCcomboBox.setMaximumRowCount(16);
+		delanteroDCcomboBox.setForeground(Color.BLACK);
+		delanteroDCcomboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		delanteroDCcomboBox.setBackground(Color.WHITE);
+		delanteroDCcomboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(delanteroDCcomboBox);
+		
+		delanteroICcomboBox = new JComboBox();
+		delanteroICcomboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Delantero I."}));
+		delanteroICcomboBox.setVisible(false);
+		delanteroICcomboBox.setMaximumRowCount(16);
+		delanteroICcomboBox.setForeground(Color.BLACK);
+		delanteroICcomboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		delanteroICcomboBox.setBackground(Color.WHITE);
+		delanteroICcomboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(delanteroICcomboBox);
+		
+		delanteroCcomboBox = new JComboBox();
+		delanteroCcomboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Delantero"}));
+		delanteroCcomboBox.setVisible(false);
+		delanteroCcomboBox.setMaximumRowCount(16);
+		delanteroCcomboBox.setForeground(Color.BLACK);
+		delanteroCcomboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		delanteroCcomboBox.setBackground(Color.WHITE);
+		delanteroCcomboBox.setBounds(397, 20, 163, 25);
+		panel_3.add(delanteroCcomboBox);
+		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_4.setBackground(Color.WHITE);
@@ -795,7 +853,7 @@ public class Plantilla extends JFrame {
 		siglasotro = new JLabel("");
 		siglasotro.setForeground(Color.BLACK);
 		siglasotro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 17));
-		siglasotro.setHorizontalAlignment(SwingConstants.LEFT);
+		siglasotro.setHorizontalAlignment(SwingConstants.CENTER);
 		siglasotro.setBounds(210, 135, 75, 24);
 		panelPartidos.add(siglasotro);
 		
