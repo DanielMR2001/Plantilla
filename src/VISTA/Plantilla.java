@@ -113,6 +113,8 @@ public class Plantilla extends JFrame {
 	public JComboBox mediosComboBox;
 	public JComboBox mediosDComboBox;
 	public JComboBox mediosIComboBox;
+	public JComboBox carrileroIComboBox;
+	public JComboBox carrileroDComboBox;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -686,6 +688,26 @@ public class Plantilla extends JFrame {
 		mediosIComboBox.setBackground(Color.WHITE);
 		mediosIComboBox.setBounds(397, 20, 163, 25);
 		panel_3.add(mediosIComboBox);
+		
+		carrileroIComboBox = new JComboBox();
+		carrileroIComboBox.setForeground(Color.BLACK);
+		carrileroIComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Carrilero I."}));
+		carrileroIComboBox.setMaximumRowCount(16);
+		carrileroIComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		carrileroIComboBox.setBackground(Color.WHITE);
+		carrileroIComboBox.setVisible(false);
+		carrileroIComboBox.setBounds(398, 20, 162, 25);
+		panel_3.add(carrileroIComboBox);
+		
+		carrileroDComboBox = new JComboBox();
+		carrileroDComboBox.setForeground(Color.BLACK);
+		carrileroDComboBox.setModel(new DefaultComboBoxModel(new String[] {"Elige Carrilero D."}));
+		carrileroDComboBox.setVisible(false);
+		carrileroDComboBox.setMaximumRowCount(16);
+		carrileroDComboBox.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		carrileroDComboBox.setBackground(Color.WHITE);
+		carrileroDComboBox.setBounds(398, 20, 162, 25);
+		panel_3.add(carrileroDComboBox);
 		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));

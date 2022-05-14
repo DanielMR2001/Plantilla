@@ -81,6 +81,9 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.mediosDComboBox.addActionListener(this);
 		this.plantilla.mediosIComboBox.addActionListener(this);
 		this.plantilla.lateralDComboBox.addActionListener(this);
+		this.plantilla.carrileroDComboBox.addActionListener(this);
+		this.plantilla.carrileroIComboBox.addActionListener(this);
+		this.plantilla.lateralDComboBox.addActionListener(this);
 		this.plantilla.recarga.addActionListener(this);
 		this.plantilla.vs.addActionListener(this);
 		this.plantilla.venderJugadores.addActionListener(this);
@@ -112,6 +115,8 @@ public class Controlador2 implements ActionListener{
 	        String elegirmedioI=(String) plantilla.mediosIComboBox.getSelectedItem();
 	        String elegirmedioD=(String) plantilla.mediosDComboBox.getSelectedItem();
 	        String elegirmedio=(String) plantilla.mediosComboBox.getSelectedItem();
+	        String elegircarrileroD=(String) plantilla.carrileroDComboBox.getSelectedItem();
+	        String elegircarrileroI=(String) plantilla.carrileroIComboBox.getSelectedItem();
 	        String decidirFormacion=(String) plantilla.elegirPlantilla.getSelectedItem();
 	        String decidirVender=(String) plantilla.venderJugadores.getSelectedItem();
 	        String escudo=(String) plantilla.elegirEscudo.getSelectedItem();
@@ -267,16 +272,34 @@ public class Controlador2 implements ActionListener{
 					for(int i=46; i<=60; i++) {
 						modelo.sacarJugadores(sessionFactory, i);
 					}
-					comprarJugadores("cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png",  "cartas/cuadrado.png", "cartas/pereira.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png");
+					comprarJugadores("cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png",  "cartas/cuadrado.png", "cartas/ricardo.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png");
 				}
 			}else if(posicion.equals("Mediocentros")) {
 				ocultar2();
 				if(e.getSource()==plantilla.buscar1) {
 					plantilla.panel.setVisible(true);
-					for(int i=46; i<=60; i++) {
+					for(int i=61; i<=75; i++) {
 						modelo.sacarJugadores(sessionFactory, i);
 					}
-					comprarJugadores("cartas/de jong.png", "cartas/de bruyne.png", "cartas/thiago.png", "cartas/casemiro.png", "cartas/fabinho.png", "cartas/busquets.png", "cartas/muller.png", "cartas/kroos.png",  "cartas/gomez.png", "cartas/david silva.png", "cartas/reus.png",  "cartas/kante.png", "cartas/bruno.png", "cartas/luis alberto.png", "cartas/verratti.png");
+					comprarJugadores("cartas/de jong.png", "cartas/de bruyne.png", "cartas/thiago.png", "cartas/coutinho.png", "cartas/fabinho.png", "cartas/busquets.png", "cartas/muller.png", "cartas/ozil.png",  "cartas/gomez.png", "cartas/david silva.png", "cartas/reus.png",  "cartas/kante.png", "cartas/bruno.png", "cartas/luis alberto.png", "cartas/verratti.png");
+				}
+			}else if(posicion.equals("Carrileros I.")) {
+				ocultar2();
+				if(e.getSource()==plantilla.buscar1) {
+					plantilla.panel.setVisible(true);
+					for(int i=76; i<=90; i++) {
+						modelo.sacarJugadores(sessionFactory, i);
+					}
+					comprarJugadores("cartas/ziyech.png", "cartas/dybala.png", "cartas/pjanic.png", "cartas/vidal.png", "cartas/mertens.png", "cartas/eriksen.png", "cartas/witsel.png", "cartas/odegaard.png",  "cartas/partey.png", "cartas/nani.png", "cartas/isco.png",  "cartas/aranguiz.png", "cartas/parejo.png", "cartas/insigne.png", "cartas/sancho.png");
+				}
+			}else if(posicion.equals("Carrileros D.")) {
+				ocultar2();
+				if(e.getSource()==plantilla.buscar1) {
+					plantilla.panel.setVisible(true);
+					for(int i=91; i<=105; i++) {
+						modelo.sacarJugadores(sessionFactory, i);
+					}
+					comprarJugadores("cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
 				}
 			}
 			
@@ -295,12 +318,20 @@ public class Controlador2 implements ActionListener{
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR LATERALES IZQUIERDOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			}else if(posicion.equals("Laterales D.")){
 				ocultarCarta();
-				sacarCarta(e, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, plantilla.aceptar, "cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png",  "cartas/cuadrado.png", "cartas/pereira.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png");
+				sacarCarta(e, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, plantilla.aceptar, "cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png",  "cartas/cuadrado.png", "cartas/ricardo.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR LATERALES DERECHOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
 			}else if(posicion.equals("Mediocentros")){
 				ocultarCarta();
-				sacarCarta(e, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, plantilla.aceptar, "cartas/de jong.png", "cartas/de bruyne.png", "cartas/thiago.png", "cartas/casemiro.png", "cartas/fabinho.png", "cartas/busquets.png", "cartas/muller.png", "cartas/kroos.png",  "cartas/gomez.png", "cartas/david silva.png", "cartas/reus.png",  "cartas/kante.png", "cartas/bruno.png", "cartas/luis alberto.png", "cartas/verratti.png");
+				sacarCarta(e, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, plantilla.aceptar, "cartas/de jong.png", "cartas/de bruyne.png", "cartas/thiago.png", "cartas/coutinho.png", "cartas/fabinho.png", "cartas/busquets.png", "cartas/muller.png", "cartas/ozil.png",  "cartas/gomez.png", "cartas/david silva.png", "cartas/reus.png",  "cartas/kante.png", "cartas/bruno.png", "cartas/luis alberto.png", "cartas/verratti.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR MEDIOCENTROS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
+			}else if(posicion.equals("Carrileros I.")){
+				ocultarCarta();
+				sacarCarta(e, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, plantilla.aceptar, "cartas/ziyech.png", "cartas/dybala.png", "cartas/pjanic.png", "cartas/vidal.png", "cartas/mertens.png", "cartas/eriksen.png", "cartas/witsel.png", "cartas/odegaard.png",  "cartas/partey.png", "cartas/nani.png", "cartas/isco.png",  "cartas/aranguiz.png", "cartas/parejo.png", "cartas/insigne.png", "cartas/sancho.png");
+				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CARRILEROS IZQUIERDOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));		
+			}else if(posicion.equals("Carrileros D.")){
+				ocultarCarta();
+				sacarCarta(e, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, plantilla.aceptar, "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
+				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CARRILEROS DERECHOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));		
 			}
 		
 			
@@ -350,12 +381,18 @@ public class Controlador2 implements ActionListener{
 						plantilla.mediosDComboBox.addItem(nombre); 
 					}else if(posicionCartaComprada.equals("MED I")) {
 						plantilla.mediosIComboBox.addItem(nombre); 
-					}					
+					}else if(posicionCartaComprada.equals("CAR D")) {
+						plantilla.carrileroDComboBox.addItem(nombre); 
+					}else if(posicionCartaComprada.equals("CAR I")) {
+						plantilla.carrileroIComboBox.addItem(nombre); 
+					}						
 				}				
 			}
+			
+			//poner jugador seleccionado en la plantilla y quitarlo en caso de venderlo (actualizacion de valoración de plantilla automática)
 			int mediaPortero=ponerCartaIndividualIndividual(elegirPortero, plantilla.portero, "OBLAK", "TER STEGEN", "ALISSON", "COURTOIS", "NEUER", "EDERSON", "HANDANOVIC", "NAVAS", "SZCZESNY", "LLORIS", "DE GEA", "DONNARUMA", "LENO", "GULASCI", "SOMMER", "cartas/oblak.png", "cartas/ter stegen.png", "cartas/alisson.png", "cartas/courtois.png", "cartas/neuer.png", "cartas/ederson.png", "cartas/handanovic.png", "cartas/navas.png", "cartas/szczesny.png", "cartas/lloris.png", "cartas/de gea.png",  "cartas/donnaruma.png", "cartas/leno.png", "cartas/gulasci.png", "cartas/sommer.png", 91, 90, 90, 89, 89, 88, 88, 87, 87, 87, 86, 85, 85, 85, 86);
 			quitarJugadorVendidoFormacion(plantilla.porterosComboBox, "PORTERO", plantilla.portero);
-			int mediaLateralDerecho=ponerCartaIndividualIndividual(elegirlateralD, plantilla.lateralderecho_1, "AZPILICUETA", "TRIPPIER", "JESUS NAVAS", "CARVAJAL", "ARNOLD", "CANCELO", "WAN-BISSAKA", "WALKER", "CUADRADO", "PEREIRA", "DEST", "KAMARA", "KIMMICH", "CORONA", "HAKIMI", "cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png", "cartas/cuadrado.png", "cartas/pereira.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png", 83, 83, 84, 86 , 87, 83, 83, 85, 81, 85, 75, 77, 88, 81, 83);
+			int mediaLateralDerecho=ponerCartaIndividualIndividual(elegirlateralD, plantilla.lateralderecho_1, "AZPILICUETA", "TRIPPIER", "JESUS NAVAS", "CARVAJAL", "ARNOLD", "CANCELO", "WAN-BISSAKA", "WALKER", "CUADRADO", "RICARDO", "DEST", "KAMARA", "KIMMICH", "CORONA", "HAKIMI", "cartas/azpilicueta.png", "cartas/trippier.png", "cartas/jesus navas.png", "cartas/carvajal.png", "cartas/arnold.png", "cartas/cancelo.png", "cartas/wan-bissaka.png", "cartas/walker.png", "cartas/cuadrado.png", "cartas/ricardo.png", "cartas/dest.png",  "cartas/kamara.png", "cartas/kimmich.png", "cartas/corona.png", "cartas/hakimi.png", 83, 83, 84, 86 , 87, 83, 83, 85, 81, 85, 75, 77, 88, 81, 83);
 			quitarJugadorVendidoFormacion(plantilla.lateralDComboBox, "LATERAL D.", plantilla.lateralderecho_1);
 			int mediaLateralIzquierdo=ponerCartaIndividualIndividual(elegirLateralI, plantilla.lateralizquierdo_1, "DAVIES", "ACUÑA", "JUAN BERNAT", "GRIMALDO", "JORDI ALBA", "ROBERTSON", "DIGNE", "SPINAZZOLA", "ALEX TELLES", "SANDRO", "TAGLIAFICO", "MARCELO", "GUERREIRO", "MENDY", "GELSON", "cartas/davies.png", "cartas/acuña.png", "cartas/juan bernat.png", "cartas/grimaldo.png", "cartas/jordi alba.png", "cartas/robertson.png", "cartas/digne.png", "cartas/spinazzola.png", "cartas/telles.png", "cartas/sandro.png", "cartas/tagliafico.png", "cartas/marcelo.png", "cartas/guerreiro.png", "cartas/mendy.png", "cartas/gelson.png", 81, 83, 83, 84, 86, 87, 84, 82, 84, 85, 84, 83, 84, 83, 82);
 			quitarJugadorVendidoFormacion(plantilla.lateralIComboBox, "LATERAL I.", plantilla.lateralizquierdo_1);
@@ -367,16 +404,20 @@ public class Controlador2 implements ActionListener{
 			quitarJugadorVendidoFormacion(plantilla.centralesIComboBox, "CENTRAL I.", plantilla.central1_3);
 			int mediaCentral3_3=ponerCartaIndividualIndividual(elegirCentralD, plantilla.central3_3, "HUMMELS", "LAPORTE", "DE VRIJ", "MANOLAS", "KOUNDE", "NACHO", "KOULIBALY", "SERGIO RAMOS","","","","","","","", "cartas/hummels.png", "cartas/laporte.png", "cartas/de vrij.png", "cartas/manolas.png", "cartas/kounde.png", "cartas/nacho.png", "cartas/koulibaly.png", "cartas/sergio ramos.png", "","","","","","","", 86, 87, 84, 83, 79, 80, 88, 89, 0,0,0,0,0,0,0);			
 			quitarJugadorVendidoFormacion(plantilla.centralesDComboBox, "CENTRAL D.", plantilla.central3_3);
-			int media1_1=ponerCartaIndividualIndividual(elegirmedioI, plantilla.medio1_1, "THIAGO", "CASEMIRO", "FABINHO", "REUS", "VERRATI", "", "", "","","","","","","","", "cartas/thiago.png", "cartas/casemiro.png", "cartas/fabinho.png", "cartas/reus.png", "cartas/verrati.png", "", "", "", "","","","","","","", 85, 89, 87, 85, 86, 0, 0, 0, 0,0,0,0,0,0,0);			
+			int media1_1=ponerCartaIndividualIndividual(elegirmedioI, plantilla.medio1_1, "THIAGO", "COUTINHO", "FABINHO", "REUS", "VERRATI", "", "", "","","","","","","","", "cartas/thiago.png", "cartas/coutinho.png", "cartas/fabinho.png", "cartas/reus.png", "cartas/verrati.png", "", "", "", "","","","","","","", 85, 83, 87, 85, 86, 0, 0, 0, 0,0,0,0,0,0,0);			
 			quitarJugadorVendidoFormacion(plantilla.mediosIComboBox, "MEDIO I.", plantilla.medio1_1);
-			int media2_2=ponerCartaIndividualIndividual(elegirmedioI, plantilla.medio2_2, "THIAGO", "CASEMIRO", "FABINHO", "REUS", "VERRATI", "", "", "","","","","","","","", "cartas/thiago.png", "cartas/casemiro.png", "cartas/fabinho.png", "cartas/reus.png", "cartas/verrati.png", "", "", "", "","","","","","","", 85, 89, 87, 85, 86, 0, 0, 0, 0,0,0,0,0,0,0);			
+			int media2_2=ponerCartaIndividualIndividual(elegirmedioI, plantilla.medio2_2, "THIAGO", "COUTINHO", "FABINHO", "REUS", "VERRATI", "", "", "","","","","","","","", "cartas/thiago.png", "cartas/coutinho.png", "cartas/fabinho.png", "cartas/reus.png", "cartas/verrati.png", "", "", "", "","","","","","","", 85, 83, 87, 85, 86, 0, 0, 0, 0,0,0,0,0,0,0);			
 			quitarJugadorVendidoFormacion(plantilla.mediosIComboBox, "MEDIO I.", plantilla.medio2_2);
-			int media3_2=ponerCartaIndividualIndividual(elegirmedioD, plantilla.medio3_2, "DE JONG", "BUSQUETS", "KROOS", "GOMEZ", "BRUNO", "", "", "","","","","","","","", "cartas/de jong.png", "cartas/busquets.png", "cartas/kroos.png", "cartas/gomez.png", "cartas/bruno.png", "", "", "", "","","","","","","", 85, 87, 88, 86, 87, 0, 0, 0, 0,0,0,0,0,0,0);			
-			quitarJugadorVendidoFormacion(plantilla.mediosDComboBox, "MEDIO I.", plantilla.medio3_2);
-			int media3_1=ponerCartaIndividualIndividual(elegirmedioD, plantilla.medio3_1, "DE JONG", "BUSQUETS", "KROOS", "GOMEZ", "BRUNO", "", "", "","","","","","","","", "cartas/de jong.png", "cartas/busquets.png", "cartas/kroos.png", "cartas/gomez.png", "cartas/bruno.png", "", "", "", "","","","","","","", 85, 87, 88, 86, 87, 0, 0, 0, 0,0,0,0,0,0,0);			
-			quitarJugadorVendidoFormacion(plantilla.mediosDComboBox, "MEDIO I.", plantilla.medio3_1);
+			int media3_2=ponerCartaIndividualIndividual(elegirmedioD, plantilla.medio3_2, "DE JONG", "BUSQUETS", "OZIL", "GOMEZ", "BRUNO", "", "", "","","","","","","","", "cartas/de jong.png", "cartas/busquets.png", "cartas/ozil.png", "cartas/gomez.png", "cartas/bruno.png", "", "", "", "","","","","","","", 85, 87, 82, 86, 87, 0, 0, 0, 0,0,0,0,0,0,0);			
+			quitarJugadorVendidoFormacion(plantilla.mediosDComboBox, "MEDIO D.", plantilla.medio3_2);
+			int media3_1=ponerCartaIndividualIndividual(elegirmedioD, plantilla.medio3_1, "DE JONG", "BUSQUETS", "OZIL", "GOMEZ", "BRUNO", "", "", "","","","","","","","", "cartas/de jong.png", "cartas/busquets.png", "cartas/ozil.png", "cartas/gomez.png", "cartas/bruno.png", "", "", "", "","","","","","","", 85, 87, 82, 86, 87, 0, 0, 0, 0,0,0,0,0,0,0);			
+			quitarJugadorVendidoFormacion(plantilla.mediosDComboBox, "MEDIO D.", plantilla.medio3_1);
 			int media2_1=ponerCartaIndividualIndividual(elegirmedio, plantilla.medio2_1, "DE BRUYNE", "MULLER", "DAVID SILVA", "KANTE", "LUIS ALBERTO", "", "", "","","","","","","","", "cartas/de bruyne.png", "cartas/muller.png", "cartas/david silva.png", "cartas/kante.png", "cartas/luis alberto.png", "", "", "", "","","","","","","", 91, 86, 86, 88, 85, 0, 0, 0, 0,0,0,0,0,0,0);			
 			quitarJugadorVendidoFormacion(plantilla.mediosComboBox, "MEDIO", plantilla.medio2_1);
+			int media1_2=ponerCartaIndividualIndividual(elegircarrileroI, plantilla.medio1_2, "ZIYECH", "DYBALA", "PJANIC", "VIDAL", "MERTENS", "ERIKSEN", "WITSEL", "ODEGAARD","PARTEY","NANI","ISCO","ARANGUIZ","PAREJO","INSIGNE","SANCHO", "cartas/ziyech.png", "cartas/dybala.png", "cartas/pjanic.png", "cartas/vidal.png", "cartas/mertens.png", "cartas/eriksen.png", "cartas/witsel.png", "cartas/odegaard.png",  "cartas/partey.png", "cartas/nani.png", "cartas/isco.png",  "cartas/aranguiz.png", "cartas/parejo.png", "cartas/insigne.png", "cartas/sancho.png", 85, 88, 85, 84, 85, 85, 84, 83, 82, 80, 84, 83, 85, 85, 87);			
+			quitarJugadorVendidoFormacion(plantilla.carrileroIComboBox, "CARRILERO I.", plantilla.medio1_2);
+			int media4_2=ponerCartaIndividualIndividual(elegircarrileroD, plantilla.medio4_2, "SANE", "BRANDT", "ZAKARIA", "KOKE", "KROOS", "BERNARDO", "ALLI", "PEREIRA", "GORETZKA", "CASEMIRO", "VALVERDE", "HAVERTZ", "IMMOBILE", "POGBA", "MOUTINHO", "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png", 85, 88, 85, 84, 85, 85, 84, 83, 82, 80, 84, 83, 85, 85, 87);	
+			quitarJugadorVendidoFormacion(plantilla.carrileroDComboBox, "CARRILERO D.", plantilla.medio4_2);
 			
 			//funcionalidad cuando se pulse el boton de Vender 
 			if(e.getSource()==plantilla.vender) {
@@ -413,6 +454,8 @@ public class Controlador2 implements ActionListener{
 					media3_1=vender(carta, pos, precioFinal, decidirVender, media3_1, "MED D", plantilla.mediosDComboBox);
 					media3_2=vender(carta, pos, precioFinal, decidirVender, media3_2, "MED D", plantilla.mediosDComboBox);
 					media2_1=vender(carta, pos, precioFinal, decidirVender, media2_1, "MED", plantilla.mediosComboBox);
+					media1_2=vender(carta, pos, precioFinal, decidirVender, media1_2, "CAR I", plantilla.carrileroIComboBox);
+					media4_2=vender(carta, pos, precioFinal, decidirVender, media4_2, "CAR D", plantilla.carrileroDComboBox);
 					JOptionPane.showMessageDialog(null, "HAS VENDIDO A "+carta.getNombreCartaComprada(),"VENDER CARTA", JOptionPane.INFORMATION_MESSAGE);
 					plantilla.registro.setText(plantilla.registro.getText()+"Has Vendido a "+carta.getNombreCartaComprada()+"\n");
 				}
@@ -428,13 +471,13 @@ public class Controlador2 implements ActionListener{
 			}else if(decidirFormacion.equals(" 4 - 4 - 2")) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true);plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.extremoderecho_1.setVisible(false); plantilla.extremoizquierdo_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central3_3.setVisible(false); 
-					int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2)/11;
+					int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+media1_2+media4_2)/11;
 					String mediaa=String.valueOf(media);
 					plantilla.puntos.setText(mediaa);
 			}else if(decidirFormacion.equals(" 2 - 4 - 4")) {
 				plantilla.portero.setVisible(true); plantilla.central1_3.setVisible(true); plantilla.central3_3.setVisible(true); plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false);  
-					int media=(mediaPortero+mediaCentral1_3+mediaCentral3_3+media2_2+media3_2)/11;
+					int media=(mediaPortero+mediaCentral1_3+mediaCentral3_3+media2_2+media3_2+media1_2+media4_2)/11;
 				 	String mediaa=String.valueOf(media);
 				 	plantilla.puntos.setText(mediaa);
 			}else if(decidirFormacion.equals(" 4 - 2 - 4")) {
@@ -447,22 +490,26 @@ public class Controlador2 implements ActionListener{
 			
 			//mostrar el comboBox necesario al pulsar la posicion para elegir la carta
 			if(e.getSource()==plantilla.portero) {
-				ocultarComboBox(true, false, false, false, false, false, false, false);
+				ocultarComboBox(true, false, false, false, false, false, false, false, false, false);
 			}else if((e.getSource()==plantilla.central1_1)||(e.getSource()==plantilla.central1_3)) {
-				ocultarComboBox(false, false, false, false, true, false, false, false);
+				ocultarComboBox(false, false, false, false, true, false, false, false, false, false);
 			}else if((e.getSource()==plantilla.central2_1)||(e.getSource()==plantilla.central3_3)) {
-				ocultarComboBox(false, true, false, false, false, false, false, false);
+				ocultarComboBox(false, true, false, false, false, false, false, false, false, false);
 			}else if(e.getSource()==plantilla.lateralizquierdo_1) {
-				ocultarComboBox(false, false, false, true, false, false, false, false);
+				ocultarComboBox(false, false, false, true, false, false, false, false, false, false);
 			}else if(e.getSource()==plantilla.lateralderecho_1) {
-				ocultarComboBox(false, false, true, false, false, false, false, false);
+				ocultarComboBox(false, false, true, false, false, false, false, false, false, false);
 			}else if((e.getSource()==plantilla.medio1_1)||(e.getSource()==plantilla.medio2_2)) {
-				ocultarComboBox(false, false, false, false, false, false, false, true);
+				ocultarComboBox(false, false, false, false, false, false, false, true, false, false);
 			}else if((e.getSource()==plantilla.medio3_2)||(e.getSource()==plantilla.medio3_1)) {
-				ocultarComboBox(false, false, false, false, false, false, true, false);
+				ocultarComboBox(false, false, false, false, false, false, true, false, false, false);
 			}else if(e.getSource()==plantilla.medio2_1) {
-				ocultarComboBox(false, false, false, false, false, true, false, false);
-		}
+				ocultarComboBox(false, false, false, false, false, true, false, false, false, false);
+			}else if(e.getSource()==plantilla.medio1_2) {
+				ocultarComboBox(false, false, false, false, false, false, false, false, true, false);
+			}else if(e.getSource()==plantilla.medio4_2) {
+				ocultarComboBox(false, false, false, false, false, false, false, false, false, true);
+			}
 			
 			//funcionalidad cuando se introduzca correctamente el nombre en el ranking
 			if(e.getSource()==plantilla.aceptarSiglas) {
@@ -645,7 +692,7 @@ public class Controlador2 implements ActionListener{
 	}
 
 	//ocultar comboBox dependiendo del boton que se pulse en la formacion
-	private void ocultarComboBox(Boolean uno, Boolean dos, Boolean tres, Boolean cuatro, Boolean cinco, Boolean seis, Boolean siete, Boolean ocho) {
+	private void ocultarComboBox(Boolean uno, Boolean dos, Boolean tres, Boolean cuatro, Boolean cinco, Boolean seis, Boolean siete, Boolean ocho, Boolean nueve, Boolean diez) {
 		plantilla.porterosComboBox.setVisible(uno);
 		plantilla.centralesDComboBox.setVisible(dos);	
 		plantilla.lateralDComboBox.setVisible(tres);
@@ -654,7 +701,8 @@ public class Controlador2 implements ActionListener{
 		plantilla.mediosComboBox.setVisible(seis);
 		plantilla.mediosDComboBox.setVisible(siete);
 		plantilla.mediosIComboBox.setVisible(ocho);
-
+		plantilla.carrileroIComboBox.setVisible(nueve);
+		plantilla.carrileroDComboBox.setVisible(diez);
 	}
 
 	//poner la imagen de la opcion seleccionada del comboBox
@@ -759,7 +807,8 @@ public class Controlador2 implements ActionListener{
 		plantilla.mediosComboBox.setVisible(false);
 		plantilla.mediosDComboBox.setVisible(false);
 		plantilla.mediosIComboBox.setVisible(false);
-
+		plantilla.carrileroDComboBox.setVisible(false);
+		plantilla.carrileroIComboBox.setVisible(false);
 	}
 
 	//poner las cartas correspondientes en su lugar para comprarlas
