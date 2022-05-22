@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,19 +21,17 @@ import MODELO.Cartas;
 import MODELO.CartasCompradas;
 import MODELO.Modelo;
 import MODELO.Ranking;
-import VISTA.Login;
 import VISTA.Plantilla;
 
 public class Controlador2 implements ActionListener{
 	
-	Login login=new Login();
 	Modelo modelo=new Modelo();
 	Plantilla plantilla=new Plantilla();
 	SessionFactory sessionFactory = null;
 	ArrayList<String>jugadoresComprados=new ArrayList<>();
 	ArrayList<String>escudos=new ArrayList<>();
 	ArrayList<Ranking>listar=new ArrayList<>();
-
+	
 	public Controlador2(VISTA.Plantilla plantilla) {
 		this.plantilla=plantilla;
 		this.plantilla.comprar.addActionListener(this);
@@ -104,7 +101,7 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.extremoderecho_1.addActionListener(this);
 		modelo.cerrar(plantilla);
         asociarImagen("recarga.png", plantilla.recarga);
-        asociarImagen("vs.png", plantilla.vs);
+        asociarImagen("batalla.jpg", plantilla.vs);
         asociarImagen2("versus.png", plantilla.versus);
 	}
 
@@ -270,7 +267,7 @@ public class Controlador2 implements ActionListener{
 				ocultar2();
 				if(e.getSource()==plantilla.buscar1) {
 					plantilla.panel.setVisible(true);
-					comprarJugadores("cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
+					comprarJugadores("cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/celso.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
 				}
 			}else if(posicion.equals("Extremos I.")) {
 				ocultar2();
@@ -319,7 +316,7 @@ public class Controlador2 implements ActionListener{
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CARRILEROS IZQUIERDOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));		
 			}else if(posicion.equals("Carrileros D.")){
 				ocultarCarta();
-				sacarCarta(e, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, plantilla.aceptar, "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
+				sacarCarta(e, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, plantilla.aceptar, "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/celso.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CARRILEROS DERECHOS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));		
 			}else if(posicion.equals("Extremos I.")){
 				ocultarCarta();
@@ -411,7 +408,7 @@ public class Controlador2 implements ActionListener{
 			quitarJugadorVendidoFormacion(plantilla.mediosComboBox, "MEDIO", plantilla.medio2_1);
 			int media1_2=ponerCartaIndividualIndividual(elegircarrileroI, plantilla.medio1_2, "ZIYECH", "DYBALA", "PJANIC", "VIDAL", "MERTENS", "ERIKSEN", "WITSEL", "ODEGAARD","PARTEY","NANI","ISCO","ARANGUIZ","PAREJO","INSIGNE","SANCHO", "cartas/ziyech.png", "cartas/dybala.png", "cartas/pjanic.png", "cartas/vidal.png", "cartas/mertens.png", "cartas/eriksen.png", "cartas/witsel.png", "cartas/odegaard.png",  "cartas/partey.png", "cartas/nani.png", "cartas/isco.png",  "cartas/aranguiz.png", "cartas/parejo.png", "cartas/insigne.png", "cartas/sancho.png", 85, 88, 85, 84, 85, 85, 84, 83, 82, 80, 84, 83, 85, 85, 87);			
 			quitarJugadorVendidoFormacion(plantilla.carrileroIComboBox, "CARRILERO I.", plantilla.medio1_2);
-			int media4_2=ponerCartaIndividualIndividual(elegircarrileroD, plantilla.medio4_2, "SANE", "BRANDT", "ZAKARIA", "KOKE", "KROOS", "BERNARDO", "ALLI", "PEREIRA", "GORETZKA", "CASEMIRO", "VALVERDE", "HAVERTZ", "IMMOBILE", "POGBA", "MOUTINHO", "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/kroos.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png", 85, 88, 85, 84, 85, 85, 84, 83, 82, 80, 84, 83, 85, 85, 87);	
+			int media4_2=ponerCartaIndividualIndividual(elegircarrileroD, plantilla.medio4_2, "SANE", "BRANDT", "ZAKARIA", "KOKE", "CELSO", "BERNARDO", "ALLI", "PEREIRA", "GORETZKA", "CASEMIRO", "VALVERDE", "HAVERTZ", "IMMOBILE", "POGBA", "MOUTINHO", "cartas/sane.png", "cartas/brandt.png", "cartas/zakaria.png", "cartas/koke.png", "cartas/celso.png", "cartas/bernardo.png", "cartas/alli.png", "cartas/pereira.png",  "cartas/goretzka.png", "cartas/casemiro.png", "cartas/valverde.png",  "cartas/havertz.png", "cartas/immobile.png", "cartas/pogba.png", "cartas/moutinho.png", 85, 88, 85, 84, 82, 85, 84, 83, 82, 80, 84, 83, 85, 85, 87);	
 			quitarJugadorVendidoFormacion(plantilla.carrileroDComboBox, "CARRILERO D.", plantilla.medio4_2);
 			int extremoizquierdo_1=ponerCartaIndividualIndividual(elegirextremoI, plantilla.extremoizquierdo_1, "DEPAY", "NEYMAR", "HAZARD", "STERLING", "OYARZABAL", "COMAN", "CALLEJON", "DEMBELE", "PROMES", "WILLIAMS" ,"HERNANI", "RAFA", "JAMES", "MANE", "SON", "cartas/depay.png", "cartas/neymar.png", "cartas/hazard.png", "cartas/sterling.png", "cartas/oyarzabal.png", "cartas/coman.png", "cartas/callejon.png", "cartas/dembele.png",  "cartas/promes.png", "cartas/williams.png", "cartas/hernani.png",  "cartas/rafa.png", "cartas/james.png", "cartas/mane.png", "cartas/son.png", 85, 91, 88, 88, 84, 84, 84, 83, 82, 81, 76, 83, 77, 90, 87);			
 			quitarJugadorVendidoFormacion(plantilla.extremosICcomboBox, "EXTREMO I.", plantilla.extremoizquierdo_1);
@@ -572,6 +569,7 @@ public class Controlador2 implements ActionListener{
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
 	}
 
+	//meter los escucos en un array
 	private void escudos() {
 		escudos.add("usuario.jpg");
 		escudos.add("escudos/barsa.png");
@@ -612,35 +610,39 @@ public class Controlador2 implements ActionListener{
 		asociarImagen2(escudos.get(otro), plantilla.otro);
 		plantilla.siglasotro.setText(listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")");
 		if(listar.get(siglasOtro).getNumero()>entero) {
-			JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
 			int resta=dinero-3000;
 			String dineroFinal=String.valueOf(resta);
 			plantilla.dinero.setText(dineroFinal);
 			plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 			asociarImagen2("perder.jpg", plantilla.emoticono);
+			plantilla.partidoPerdido.setVisible(true); plantilla.partidoGanado.setVisible(false);
+			JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
 		}else if(listar.get(siglasOtro).getNumero()<entero){
-			JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 			int resta=dinero+5000;
 			String dineroFinal=String.valueOf(resta);
 			plantilla.dinero.setText(dineroFinal);
 			plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 			asociarImagen2("ganar.png", plantilla.emoticono);
+			plantilla.partidoPerdido.setVisible(false); plantilla.partidoGanado.setVisible(true);
+			JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 		}else {
 			int prorroga=(int)(Math.random()*1);
 			if(prorroga==0) {
-				JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
 				int resta=dinero-3000;
 				String dineroFinal=String.valueOf(resta);
 				plantilla.dinero.setText(dineroFinal);
 				plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 				asociarImagen2("perder.jpg", plantilla.emoticono);
+				plantilla.partidoPerdido.setVisible(true); plantilla.partidoGanado.setVisible(false);
+				JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
 			}else if(prorroga==1) {
-				JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 				int resta=dinero+5000;
 				String dineroFinal=String.valueOf(resta);
 				plantilla.dinero.setText(dineroFinal);
 				plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 				asociarImagen2("ganar.png", plantilla.emoticono);
+				plantilla.partidoPerdido.setVisible(false); plantilla.partidoGanado.setVisible(true);
+				JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
@@ -665,7 +667,7 @@ public class Controlador2 implements ActionListener{
 		Ranking r2=null;
 		String nombreSiglas=plantilla.siglas.getText()+"*";
 		char[] myChars = nombreSiglas.toCharArray();
-		char chhar1=0, chhar2=0, chhar3=0, chhar4=0, chhar5=0;
+		char chhar1=0, chhar2=0, chhar3=0, chhar4=0;
 		for (int i=0; i<myChars.length; i++){
 			chhar1=myChars[0];
 			chhar2=myChars[1];

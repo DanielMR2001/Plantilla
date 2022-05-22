@@ -51,7 +51,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		setResizable(false);
-		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 - - - ");			
+		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 (¿ ?) - - - ");			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 592, 439);
 		contentPane = new JPanel();
@@ -154,8 +154,8 @@ public class Login extends JFrame {
 		email.setEditable(false);
 		email.setForeground(Color.BLACK);
 		email.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		email.setText("EMAIL (...@...):");
-		email.setBounds(3, 100, 103, 25);
+		email.setText("EMAIL(@gmail):");
+		email.setBounds(2, 100, 104, 25);
 		registro.add(email);
 		
 		JTextPane Contraseniaa = new JTextPane();
@@ -198,7 +198,7 @@ public class Login extends JFrame {
 		corregir2.setForeground(Color.RED);
 		corregir2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		corregir2.setEditable(false);
-		corregir2.setBounds(157, 136, 244, 25);
+		corregir2.setBounds(140, 136, 266, 25);
 		registro.add(corregir2);
 		
 		validar = new JTextPane();
@@ -206,7 +206,7 @@ public class Login extends JFrame {
 		validar.setForeground(Color.BLACK);
 		validar.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
 		validar.setEditable(false);
-		validar.setBounds(3, 136, 144, 25);
+		validar.setBounds(2, 136, 140, 25);
 		registro.add(validar);
 		
 		aceptar1 = new JButton("ACEPTAR");

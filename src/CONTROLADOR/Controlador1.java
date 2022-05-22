@@ -74,6 +74,8 @@ public class Controlador1 implements ActionListener{
 				//comprobar que se hace bien el inicio de sesion
 				if((usuario.equals(""))||(contrasenaBoolean==true)) {
 					login.corregir.setText("");
+					login.usuarioInicioSesion.setText("");
+					login.contrasenaInicioSesion.setText("");
 					login.corregir.setText("       *Rellene Todos Los Campos*");	
 				}else {
 					//sacar los datos de los usuarios registrados para comprobar el inicio de sesion
@@ -86,6 +88,7 @@ public class Controlador1 implements ActionListener{
 						JOptionPane.showMessageDialog(null, "INICIO DE SESIÓN CONFIRMADO\nBIENVENIDO "+usuariousuarioBBDD,"INICIAR SESION", JOptionPane.INFORMATION_MESSAGE);
 						login.setVisible(false); 
 						plantilla.setVisible(true);
+						plantilla.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 ("+usuariousuarioBBDD+") - - - ");			
 						Controlador2 c2=new Controlador2(plantilla);
 					}else{	
 						JOptionPane.showMessageDialog(null, "USUARIO Y/O CONTRASEÑA INCORRECTO","INICIAR SESION", JOptionPane.ERROR_MESSAGE);
@@ -111,22 +114,28 @@ public class Controlador1 implements ActionListener{
 				Boolean usuarioBoolean=usuario.isEmpty();
 				Boolean contrasenaBoolean=contrasena.isEmpty();
 				Boolean nombreBoolean=nombre.isEmpty();
-				Boolean emailBoolean=email.contains("@");
+				Boolean emailBoolean=email.isEmpty();
+				Boolean emailarro=email.contains("@gmail");
 
 				//comprobar que se han rellenado bien los campos de registrarse
-				if((usuarioBoolean==true)||(contrasenaBoolean==true)||(nombreBoolean==true)||(emailBoolean==false)) {
-					login.corregir2.setText("");
+				if((usuarioBoolean==true)||(contrasenaBoolean==true)||(nombreBoolean==true)||(emailBoolean==true)) {
+					login.corregir2.setText(""); login.nombreRegistro.setText(""); login.contrasenaRegistro.setText(""); login.usuarioRegistro.setText(""); login.emailRegistro.setText("");
 					login.corregir2.setText("   *Rellene Todos Los Campos*");	
-				}else{	
-					login.corregir2.setText("");
-					//insertar los nuevos usuarios en la BBDD
-					modelo.insertarDatos(sessionFactory, nombre, usuario, contrasena, email);
-							
-					//mandar un mensaje de confirmacion al email del registro
-					modelo.mandarMensaje(email, nombre, usuario);
+				}else{
+					if(emailarro==false) {
+						login.corregir2.setText(""); login.nombreRegistro.setText(""); login.contrasenaRegistro.setText(""); login.usuarioRegistro.setText(""); login.emailRegistro.setText("");
+						login.corregir2.setText(" *Email incorrecto (..@gmail..)*");	
+					}else {
+						login.corregir2.setText("");
+						//insertar los nuevos usuarios en la BBDD
+						modelo.insertarDatos(sessionFactory, nombre, usuario, contrasena, email);
+								
+						//mandar un mensaje de confirmacion al email del registro
+						modelo.mandarMensaje(email, nombre, usuario);
 
-					login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
-					JOptionPane.showMessageDialog(null, "REFGISTRO CONFIRMADO\nUsuario: "+usuario+"\nMensaje pa: "+email,"REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+						login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
+						JOptionPane.showMessageDialog(null, "REGISTRO CONFIRMADO\nNombre: "+nombre+"\nUsuario: "+usuario+"\nEmail: "+email,"REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}
 			}			
 
@@ -140,6 +149,6 @@ public class Controlador1 implements ActionListener{
 		    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
 		    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
 		    frame.setLocation(x, y - 18);
-		}
+	}
 
 }

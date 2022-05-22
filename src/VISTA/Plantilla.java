@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.ComponentOrientation;
 import javax.swing.SwingConstants;
+import javax.swing.JFormattedTextField;
 
 public class Plantilla extends JFrame {
 
@@ -120,18 +121,19 @@ public class Plantilla extends JFrame {
 	public JComboBox delanteroDCcomboBox;
 	public JComboBox delanteroICcomboBox;
 	public JComboBox delanteroCcomboBox;
+	public JFormattedTextField partidoGanado;
+	public JFormattedTextField partidoPerdido;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
 		plantilla.setVisible(true);
 		plantilla.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		@SuppressWarnings("unused")
-		Controlador2 controlador2=new Controlador2(plantilla);			
+		Controlador2 controlador2=new Controlador2(plantilla);	
 	}
 
 	public Plantilla() {
 		this.setExtendedState(MAXIMIZED_BOTH);
-		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 - - - ");			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1385, 740);
 		contentPane = new JPanel();
@@ -860,6 +862,28 @@ public class Plantilla extends JFrame {
 		emoticono = new JLabel("");
 		emoticono.setBounds(10, 11, 45, 45);
 		panelPartidos.add(emoticono);
+		
+		partidoGanado = new JFormattedTextField();
+		partidoGanado.setBorder(null);
+		partidoGanado.setVisible(false);
+		partidoGanado.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		partidoGanado.setHorizontalAlignment(SwingConstants.CENTER);
+		partidoGanado.setText("*Partido Ganado*");
+		partidoGanado.setForeground(Color.GREEN);
+		partidoGanado.setBackground(Color.WHITE);
+		partidoGanado.setBounds(68, 170, 192, 31);
+		panelPartidos.add(partidoGanado);
+		
+		partidoPerdido = new JFormattedTextField();
+		partidoPerdido.setBorder(null);
+		partidoPerdido.setVisible(false);
+		partidoPerdido.setText("*Partido Perdido*");
+		partidoPerdido.setHorizontalAlignment(SwingConstants.CENTER);
+		partidoPerdido.setForeground(Color.RED);
+		partidoPerdido.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));
+		partidoPerdido.setBackground(Color.WHITE);
+		partidoPerdido.setBounds(68, 170, 192, 31);
+		panelPartidos.add(partidoPerdido);
 		
 		panelranking = new JPanel();
 		panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - (?)", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
