@@ -2,6 +2,7 @@ package MODELO;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
@@ -17,6 +18,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import MODELO.Plantilla;
 
 public class Modelo {
 	
@@ -285,21 +287,45 @@ public class Modelo {
 		} finally { if (null != session) { session.close(); } }
 	}
 	
-	//preguntar en un JOptionPane si se quiere cerrar o no la ventana 
-	public void cerrar(JFrame plantilla) {
-		plantilla.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		plantilla.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				int option = JOptionPane.showConfirmDialog( plantilla,  "¿QUIERES CERRAR LA APLICACIÓN?\n       SE BORRARÁ TU PROGRESO", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
-				if (option == JOptionPane.YES_OPTION) {
-					borrarDatosTabla();
-					System.exit(0);
-				}
-			}
-		});
+	public void insertarPlantilla(SessionFactory sessionFactory, String nombre, int puntos) {
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			Plantilla plantilla =new Plantilla();
+			plantilla.setNombrePlantilla(nombre);
+			plantilla.setPuntosPlantilla(puntos);
+			session.saveOrUpdate(plantilla);	
+			session.getTransaction().commit();				
+		}catch(HibernateException e2) { e2.printStackTrace();
+			if (null != session) { session.getTransaction().rollback(); }
+		} finally { if (null != session) { session.close(); } }
 	}
 	
+	//listar el nombre y puntos de la plantilla para el ranking
+		public ArrayList<Plantilla> listarUsuario(SessionFactory sessionFactory) {
+			Session session = null;
+			Plantilla plantilla=null;
+			ArrayList<Plantilla>listaPlantilla=new ArrayList<>();			
+			try {
+		      session = sessionFactory.getCurrentSession();
+		      session.beginTransaction();
+		      Query query = session.createSQLQuery("SELECT * FROM PLANTILLA");	
+		      List<Object[]> resultado = query.list();
+		          for (Object[] fila : resultado) {		
+		         	Integer id = (Integer) fila[0]; 
+		         	String nombree = (String) fila[1]; 
+		         	Integer media = (Integer) fila[2];  			
+		         	System.out.println(id+"-"+nombree+"-"+media);
+		         	plantilla=new Plantilla(id, nombree, media);
+		         	listaPlantilla.add(plantilla);
+		         }
+		       }catch(HibernateException e) { e.printStackTrace();
+					if (null != session) { session.getTransaction().rollback(); }
+		       } finally { if (null != session) { session.close(); } }     
+			 return listaPlantilla;
+		}
+
 	//borrar datos de la tabla 'cartas compradas' al cerrar la aplicación
 	public void borrarDatosTabla() {
 		SessionFactory sessionFactory = null;

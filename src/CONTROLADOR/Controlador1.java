@@ -109,14 +109,12 @@ public class Controlador1 implements ActionListener{
 				String nombre=login.nombreRegistro.getText();
 				String contrasena=login.contrasenaRegistro.getText();
 				String usuario=login.usuarioRegistro.getText();
-				String email=login.emailRegistro.getText();
-				
+				String email=login.emailRegistro.getText();				
 				Boolean usuarioBoolean=usuario.isEmpty();
 				Boolean contrasenaBoolean=contrasena.isEmpty();
 				Boolean nombreBoolean=nombre.isEmpty();
 				Boolean emailBoolean=email.isEmpty();
 				Boolean emailarro=email.contains("@gmail");
-
 				//comprobar que se han rellenado bien los campos de registrarse
 				if((usuarioBoolean==true)||(contrasenaBoolean==true)||(nombreBoolean==true)||(emailBoolean==true)) {
 					login.corregir2.setText(""); login.nombreRegistro.setText(""); login.contrasenaRegistro.setText(""); login.usuarioRegistro.setText(""); login.emailRegistro.setText("");
@@ -129,10 +127,8 @@ public class Controlador1 implements ActionListener{
 						login.corregir2.setText("");
 						//insertar los nuevos usuarios en la BBDD
 						modelo.insertarDatos(sessionFactory, nombre, usuario, contrasena, email);
-								
 						//mandar un mensaje de confirmacion al email del registro
 						modelo.mandarMensaje(email, nombre, usuario);
-
 						login.nombreRegistro.setText(""); login.usuarioRegistro.setText(""); login.contrasenaRegistro.setText(""); login.emailRegistro.setText(""); login.corregir2.setText("");
 						JOptionPane.showMessageDialog(null, "REGISTRO CONFIRMADO\nNombre: "+nombre+"\nUsuario: "+usuario+"\nEmail: "+email,"REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 					}

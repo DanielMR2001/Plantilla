@@ -1,5 +1,5 @@
 package MODELO;
-// Generated 2 may. 2022 10:19:05 by Hibernate Tools 5.4.32.Final
+// Generated 22 may. 2022 18:02:15 by Hibernate Tools 5.4.32.Final
 
 import java.util.List;
 import java.util.logging.Level;

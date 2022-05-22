@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,8 +13,10 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import org.hibernate.SessionFactory;
@@ -99,10 +103,10 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.aceptarSiglas.addActionListener(this);
 		this.plantilla.extremoizquierdo_1.addActionListener(this);
 		this.plantilla.extremoderecho_1.addActionListener(this);
-		modelo.cerrar(plantilla);
         asociarImagen("recarga.png", plantilla.recarga);
         asociarImagen("batalla.jpg", plantilla.vs);
         asociarImagen2("versus.png", plantilla.versus);
+        
 	}
 
 	@SuppressWarnings("unchecked")
@@ -114,7 +118,7 @@ public class Controlador2 implements ActionListener{
 	        configuration.configure("hibernate.cfg.xml");
 	        sessionFactory = configuration.buildSessionFactory();
 	        sessionFactory.getCurrentSession();
-			
+
 	        String posicion=(String) plantilla.comprarPosiciones.getSelectedItem();
 	        String elegirPortero=(String) plantilla.porterosComboBox.getSelectedItem();
 	        String elegirCentralD=(String) plantilla.centralesDComboBox.getSelectedItem();
@@ -428,8 +432,7 @@ public class Controlador2 implements ActionListener{
 				plantilla.venderJugadores.setSelectedIndex(0);
 				ocultarVender(false);
 				plantilla.comprado.setVisible(false);
-			}
-			
+			}		
 			if(plantilla.venderJugadores.getSelectedIndex()>0) {
 				ocultarVender(true);
 				asociarImagen2("cartas/"+decidirVender.toUpperCase()+".png", plantilla.ampliarvender);
@@ -531,6 +534,7 @@ public class Controlador2 implements ActionListener{
 					plantilla.miPosicion.setVisible(true);
 					plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - ("+siglas+")", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));					
 					listarRanking();
+					
 				}
 			}
 
@@ -564,7 +568,10 @@ public class Controlador2 implements ActionListener{
 					}					
 				}
 			}
-					
+			
+			//al cerrar la app, guardar puntos y nombre de la plantilla para incluirlo en el ranking en la siguiente ejecucion
+			cerrar(plantilla);
+			
 		} catch (Exception e3) { e3.printStackTrace(); 
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
 	}
@@ -648,8 +655,10 @@ public class Controlador2 implements ActionListener{
 	}
 
 	private void listarRanking() {
+		ArrayList<MODELO.Plantilla>listaUsuarios=modelo.listarUsuario(sessionFactory);
 		//crear nombres aleatorios de los demás jugadores
 		Ranking r=null;
+		Ranking r2=null;
 		String setOfCharacters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz";
 		Random random = new Random();
 		for(int i=0; i<49; i++) {
@@ -661,10 +670,22 @@ public class Controlador2 implements ActionListener{
 			int aleatorio=(int) (Math.random()*((101-0))+0);
 			char randomChar3 = setOfCharacters.charAt(randomInt3);
 			r=new Ranking(randomChar1, randomChar2, randomChar3, aleatorio);
-			listar.add(r);
-		}		
+			listar.add(r);		
+		}	
+		for(int j=0; j<listaUsuarios.size(); j++) {
+			String nombreSiglas=listaUsuarios.get(j).getNombrePlantilla();
+			char[] myChars = nombreSiglas.toCharArray();
+			char chhar1=0, chhar2=0, chhar3=0;
+			for (int k=0; k<myChars.length; k++){
+				chhar1=myChars[0];
+				chhar2=myChars[1];
+				chhar3=myChars[2];
+			}
+			r2=new Ranking(chhar1, chhar2, chhar3, listaUsuarios.get(j).getPuntosPlantilla());
+			listar.add(r2);
+		}
 		//incluirme en el ranking con el primer valor igual a 0, para iniciar el ranking
-		Ranking r2=null;
+		Ranking r3=null;
 		String nombreSiglas=plantilla.siglas.getText()+"*";
 		char[] myChars = nombreSiglas.toCharArray();
 		char chhar1=0, chhar2=0, chhar3=0, chhar4=0;
@@ -675,8 +696,8 @@ public class Controlador2 implements ActionListener{
 			chhar4=myChars[3];
 		}
 		int entero=Integer.parseInt(plantilla.puntos.getText());
-		r2=new Ranking(chhar1, chhar2, chhar3, chhar4, entero);
-		listar.add(r2);
+		r3=new Ranking(chhar1, chhar2, chhar3, chhar4, entero);
+		listar.add(r3);
 		//ordenar el array
 		int i1=0;
 		for(int i=0; i<listar.size(); i++) {
@@ -688,15 +709,15 @@ public class Controlador2 implements ActionListener{
 				}
 			});
 			
-			if(i1!=50) {
+			if(i1!=listar.size()) {
 				plantilla.listar.setText(plantilla.listar.getText()+(i+1)+"º-"+listar.get(i).toString()+"\n");
 			}else {
-				plantilla.listar.setText(plantilla.listar.getText()+50+"º-"+listar.get(i).toString());
+				plantilla.listar.setText(plantilla.listar.getText()+listar.size()+"º-"+listar.get(i).toString());
 			}		
 			
 			if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
 				String mp=String.valueOf(i1);
-				plantilla.miPosicion.setText(mp+"º");
+				plantilla.miPosicion.setText(mp+"º");	
 			}
 		}
 	}
@@ -993,4 +1014,35 @@ public class Controlador2 implements ActionListener{
 		label.setIcon(img);
 	}
 	
-}
+	//preguntar en un JOptionPane si se quiere cerrar o no la ventana 
+		public void cerrar(JFrame plantillaaa) {	
+			plantillaaa.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			plantillaaa.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					SessionFactory sessionFactory = null;
+			        Configuration configuration = new Configuration();
+			        configuration.configure("hibernate.cfg.xml");
+			        sessionFactory = configuration.buildSessionFactory();
+			        sessionFactory.getCurrentSession();
+					int option = JOptionPane.showConfirmDialog( plantillaaa,  "¿QUIERES CERRAR LA APLICACIÓN?\n       SE BORRARÁ TU PROGRESO", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
+					if (option == JOptionPane.YES_OPTION) {
+						String nombreSiglas=plantilla.siglas.getText();
+						char[] myChars = nombreSiglas.toCharArray();
+						char chhar1=myChars[0];
+						char chhar2=myChars[1];
+						char chhar3=myChars[2];
+						for(int i=0; i<listar.size(); i++) {	
+							if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
+								String sig=plantilla.siglas.getText();
+								modelo.insertarPlantilla(sessionFactory, sig, listar.get(i).getNumero());
+							}
+						}
+						modelo.borrarDatosTabla();
+						System.exit(0);
+					}
+				}
+			});
+		}
+	
+	}

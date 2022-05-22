@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 22 may. 2022 18:02:12 by Hibernate Tools 5.4.32.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="plantilla_futbol" dynamic-insert="false" dynamic-update="false" mutable="true" name="MODELO.Plantilla" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="plantilla">
+        <id name="idPlantilla" type="int">
+            <column name="ID_PLANTILLA"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombrePlantilla" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="NOMBRE_PLANTILLA" not-null="true">
+                <comment>Nombre de la Plantilla del Usuario</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="puntosPlantilla" optimistic-lock="true" type="int" unique="false">
+            <column name="PUNTOS_PLANTILLA" not-null="true">
+                <comment>Puntos de la Plantilla del Usuario</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
