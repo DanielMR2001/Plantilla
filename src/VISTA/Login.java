@@ -1,8 +1,5 @@
 package VISTA;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +13,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
 
 public class Login extends JFrame {
 
@@ -40,6 +41,21 @@ public class Login extends JFrame {
 	public JButton sonido;
 	public JButton silencio;
 	public JTextPane validar;
+	public JButton help;
+	public JButton volver;
+	public JTextField norma1;
+	public JTextField norma2;
+	public JPanel normas;
+	public JTextField norma3;
+	public JTextField norma4;
+	public JTextField norma5;
+	public JTextField norma6;
+	public JTextField norma7;
+	public JTextField norma8;
+	public JTextField norma9;
+	public JTextField norma10;
+	public JLabel pensar;
+	public JLabel pensar2;
 
 	public static void main(String[] args) {
 		Login login = new Login();
@@ -242,7 +258,140 @@ public class Login extends JFrame {
 		silencio.setBounds(509, 12, 57, 41);
 		silencio.setIcon(new ImageIcon("silencio.png"));
 		panel.add(silencio);
+		
+		help = new JButton("");
+		help.setBorder(null);
+		help.setBackground(SystemColor.textHighlight);
+		help.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		help.setBounds(5, 4, 126, 42);
+		panel.add(help);
+		
+		volver = new JButton("");
+		volver.setVisible(false);
+		volver.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
+		volver.setBorder(null);
+		volver.setBackground(SystemColor.textHighlight);
+		volver.setBounds(5, 4, 126, 42);
+		panel.add(volver);
+		
+		normas = new JPanel();
+		normas.setVisible(false);
+		normas.setBorder(new TitledBorder(null, "INSTRUCCIONES", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
+		normas.setBackground(Color.WHITE);
+		normas.setBounds(81, 52, 411, 321);
+		panel.add(normas);
+		normas.setLayout(null);
+		
+		norma2 = new JTextField();
+		norma2.setEditable(false);
+		norma2.setBorder(null);
+		norma2.setBounds(7, 50, 398, 30);
+		normas.add(norma2);
+		norma2.setHorizontalAlignment(SwingConstants.LEFT);
+		norma2.setForeground(Color.BLACK);
+		norma2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma2.setColumns(10);
+		norma2.setBackground(Color.WHITE);
+		
+		norma1 = new JTextField();
+		norma1.setEditable(false);
+		norma1.setBorder(null);
+		norma1.setBounds(7, 20, 398, 30);
+		normas.add(norma1);
+		norma1.setHorizontalAlignment(SwingConstants.LEFT);
+		norma1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma1.setForeground(Color.BLACK);
+		norma1.setBackground(Color.WHITE);
+		norma1.setColumns(10);
+		
+		norma3 = new JTextField();
+		norma3.setEditable(false);
+		norma3.setBounds(7, 80, 398, 30);
+		normas.add(norma3);
+		norma3.setBorder(null);
+		norma3.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma3.setForeground(Color.BLACK);
+		norma3.setBackground(Color.WHITE);
+		norma3.setColumns(10);
+		
+		norma4 = new JTextField();
+		norma4.setEditable(false);
+		norma4.setColumns(10);
+		norma4.setBorder(null);
+		norma4.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma4.setForeground(Color.BLACK);
+		norma4.setBackground(Color.WHITE);
+		norma4.setBounds(7, 110, 398, 30);
+		normas.add(norma4);
+		
+		norma5 = new JTextField();
+		norma5.setEditable(false);
+		norma5.setBorder(null);
+		norma5.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma5.setForeground(Color.BLACK);
+		norma5.setBackground(Color.WHITE);
+		norma5.setBounds(7, 140, 398, 30);
+		normas.add(norma5);
+		norma5.setColumns(10);
+		
+		norma6 = new JTextField();
+		norma6.setEditable(false);
+		norma6.setForeground(Color.BLACK);
+		norma6.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma6.setColumns(10);
+		norma6.setBorder(null);
+		norma6.setBackground(Color.WHITE);
+		norma6.setBounds(7, 170, 398, 30);
+		normas.add(norma6);
+		
+		norma7 = new JTextField();
+		norma7.setEditable(false);
+		norma7.setForeground(Color.BLACK);
+		norma7.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma7.setColumns(10);
+		norma7.setBorder(null);
+		norma7.setBackground(Color.WHITE);
+		norma7.setBounds(7, 200, 398, 30);
+		normas.add(norma7);
+		
+		norma8 = new JTextField();
+		norma8.setEditable(false);
+		norma8.setForeground(Color.BLACK);
+		norma8.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma8.setColumns(10);
+		norma8.setBorder(null);
+		norma8.setBackground(Color.WHITE);
+		norma8.setBounds(7, 230, 398, 30);
+		normas.add(norma8);
+		
+		norma9 = new JTextField();
+		norma9.setEditable(false);
+		norma9.setForeground(Color.BLACK);
+		norma9.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma9.setColumns(10);
+		norma9.setBorder(null);
+		norma9.setBackground(Color.WHITE);
+		norma9.setBounds(7, 260, 398, 30);
+		normas.add(norma9);
+		
+		norma10 = new JTextField();
+		norma10.setEditable(false);
+		norma10.setForeground(Color.BLACK);
+		norma10.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
+		norma10.setColumns(10);
+		norma10.setBorder(null);
+		norma10.setBackground(Color.WHITE);
+		norma10.setBounds(7, 290, 398, 25);
+		normas.add(norma10);
+		
+		pensar = new JLabel("");
+		pensar.setBounds(499, 175, 70, 70);
+		panel.add(pensar);
+		
+		pensar2 = new JLabel("");
+		pensar2.setVisible(false);
+		pensar2.setBounds(0, 160, 85, 90);
+		panel.add(pensar2);
+		pensar.setVisible(false);
 	}
-	
-	
 }

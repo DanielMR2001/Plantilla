@@ -113,8 +113,8 @@ public class Modelo {
             String remitente="danielmarchantero2001@gmail.com";
             String password="ciudadreal12";
             String receptor=email;
-            String asunto="- - FIFA 22 - - ";
-            String mensaje="¡Hola "+nombre+"!\nTe has registrado como '"+usuario+"'";
+            String asunto="- - FIFA INTERNATIONAL SOCCER 2022 - - ";
+            String mensaje="¡Hola "+nombre+"!\nTe has registrado en como '"+usuario+"'";
             MimeMessage message=new MimeMessage(ses);
             message.setFrom(new InternetAddress(remitente));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(receptor));

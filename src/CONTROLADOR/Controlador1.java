@@ -1,6 +1,7 @@
 package CONTROLADOR;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -29,11 +33,17 @@ public class Controlador1 implements ActionListener{
 		centreWindow1(login);
 		this.login=login;
 		this.login.iniciarSesion.addActionListener(this);
+		this.login.volver.addActionListener(this);
 		this.login.aceptar1.addActionListener(this);
 		this.login.aceptar2.addActionListener(this);
 		this.login.registrar.addActionListener(this);
 		this.login.sonido.addActionListener(this);
-		this.login.silencio.addActionListener(this);	
+		this.login.silencio.addActionListener(this);
+		this.login.help.addActionListener(this);
+		asociarImagen("help.png", login.help);
+		asociarImagen("volver.png", login.volver);
+		asociarImagen2("pensar.png", login.pensar);
+		asociarImagen2("pensar2.png", login.pensar2);
 	}
 	
 	@Override
@@ -134,17 +144,51 @@ public class Controlador1 implements ActionListener{
 					}
 				}
 			}			
-
+			
+			//funcionalidad cuando se pulse el boton de Instrucciones
+			if(e.getSource()==login.help) {
+				login.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 (INSTRUCCIONES) - - - ");
+				login.help.setVisible(false); login.aceptar1.setVisible(false); login.aceptar2.setVisible(false); login.loguear.setVisible(false); login.registro.setVisible(false); login.registrar.setVisible(false); login.iniciarSesion.setVisible(false); login.volver.setVisible(true); login.normas.setVisible(true); login.pensar.setVisible(true); login.pensar2.setVisible(true);
+				login.norma1.setText("1º Primero debes regístrate para acceder en el inicio de sesión");
+				login.norma2.setText("2º Inicia sesión con el usuario y contraseña del registro");
+				login.norma3.setText("3º Al entrar a la siguiente ventana, regístrate en el ranking");
+				login.norma4.setText("4º Compra/Vende jugadores en la tienda");
+				login.norma5.setText("5º Elege la mejor plantilla para los jugadores comprados");
+				login.norma6.setText("6º Para jugar partidos, debes registrarte antes en el Ranking");
+				login.norma7.setText("7º +5000$ por victoria/-3000$ por derrota");
+				login.norma8.setText("8º Puedes escoger el escudo de tu equipo para los partidos");
+				login.norma9.setText("9º No podrás jugar partidos si tienes menos de 3000$");
+				login.norma10.setText("10º Al vender un jugador, obtendrás el 60% de su precio de venta");
+			}
+			
+			if(e.getSource()==login.volver) {
+				login.help.setVisible(true); login.registrar.setVisible(true); login.iniciarSesion.setVisible(true); login.volver.setVisible(false); login.normas.setVisible(false); login.pensar.setVisible(false); login.pensar2.setVisible(false);			
+				login.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 (¿ ?) - - - ");
+			}
+			
 		} catch (Exception e3) { e3.printStackTrace(); 
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }
 		
 	}
 	
 	 public static void centreWindow1(Window frame) {
-		    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-		    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-		    frame.setLocation(x, y - 18);
+		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+		frame.setLocation(x, y - 18);
 	}
-
+	 
+	//cambiar el fondo a un boton
+	private void asociarImagen(String nombre, JButton button) {
+		ImageIcon icon = new ImageIcon(nombre);
+		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH));
+		button.setIcon(img);
+	}
+	
+	//cambiar el fondo a un jlabel
+	private void asociarImagen2(String nombre, JLabel label) {
+		ImageIcon icon = new ImageIcon(nombre);
+		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH));
+		label.setIcon(img);
+	}
 }

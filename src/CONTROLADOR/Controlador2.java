@@ -433,6 +433,7 @@ public class Controlador2 implements ActionListener{
 				ocultarVender(false);
 				plantilla.comprado.setVisible(false);
 			}		
+			
 			if(plantilla.venderJugadores.getSelectedIndex()>0) {
 				ocultarVender(true);
 				asociarImagen2("cartas/"+decidirVender.toUpperCase()+".png", plantilla.ampliarvender);
@@ -533,8 +534,7 @@ public class Controlador2 implements ActionListener{
 					plantilla.scrollPane.setVisible(true);
 					plantilla.miPosicion.setVisible(true);
 					plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - ("+siglas+")", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));					
-					listarRanking();
-					
+					listarRanking();					
 				}
 			}
 
@@ -661,7 +661,7 @@ public class Controlador2 implements ActionListener{
 		Ranking r2=null;
 		String setOfCharacters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz";
 		Random random = new Random();
-		for(int i=0; i<49; i++) {
+		for(int i=0; i<7; i++) {
 			int randomInt1 = random.nextInt(setOfCharacters.length());
 			char randomChar1 = setOfCharacters.charAt(randomInt1);
 			int randomInt2 = random.nextInt(setOfCharacters.length());
@@ -675,12 +675,9 @@ public class Controlador2 implements ActionListener{
 		for(int j=0; j<listaUsuarios.size(); j++) {
 			String nombreSiglas=listaUsuarios.get(j).getNombrePlantilla();
 			char[] myChars = nombreSiglas.toCharArray();
-			char chhar1=0, chhar2=0, chhar3=0;
-			for (int k=0; k<myChars.length; k++){
-				chhar1=myChars[0];
-				chhar2=myChars[1];
-				chhar3=myChars[2];
-			}
+			char chhar1=myChars[0];
+			char chhar2=myChars[1];
+			char chhar3=myChars[2];
 			r2=new Ranking(chhar1, chhar2, chhar3, listaUsuarios.get(j).getPuntosPlantilla());
 			listar.add(r2);
 		}
@@ -688,13 +685,10 @@ public class Controlador2 implements ActionListener{
 		Ranking r3=null;
 		String nombreSiglas=plantilla.siglas.getText()+"*";
 		char[] myChars = nombreSiglas.toCharArray();
-		char chhar1=0, chhar2=0, chhar3=0, chhar4=0;
-		for (int i=0; i<myChars.length; i++){
-			chhar1=myChars[0];
-			chhar2=myChars[1];
-			chhar3=myChars[2];
-			chhar4=myChars[3];
-		}
+		char chhar1=myChars[0];
+		char chhar2=myChars[1];
+		char chhar3=myChars[2];
+		char chhar4=myChars[3];
 		int entero=Integer.parseInt(plantilla.puntos.getText());
 		r3=new Ranking(chhar1, chhar2, chhar3, chhar4, entero);
 		listar.add(r3);
@@ -708,13 +702,11 @@ public class Controlador2 implements ActionListener{
 					return new Integer(r2.getNumero()).compareTo(new Integer(r1.getNumero()));
 				}
 			});
-			
 			if(i1!=listar.size()) {
 				plantilla.listar.setText(plantilla.listar.getText()+(i+1)+"º-"+listar.get(i).toString()+"\n");
 			}else {
 				plantilla.listar.setText(plantilla.listar.getText()+listar.size()+"º-"+listar.get(i).toString());
 			}		
-			
 			if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
 				String mp=String.valueOf(i1);
 				plantilla.miPosicion.setText(mp+"º");	
@@ -723,6 +715,7 @@ public class Controlador2 implements ActionListener{
 	}
 	
 	//vender carta seleccionada y borrar de la BBDD
+	@SuppressWarnings("rawtypes")
 	private int vender(CartasCompradas carta, String pos, int precioFinal, String decidirVender, int media1, String posicion, JComboBox cb1) {
 		if(pos.equals(posicion)){
 			int dinero=Integer.parseInt(plantilla.dinero.getText())+precioFinal;
@@ -739,6 +732,7 @@ public class Controlador2 implements ActionListener{
 	}
 
 	//resetear el boton de la posicion de la carta vendida pero sin la opcion de la carta vendida
+	@SuppressWarnings("rawtypes")
 	private void quitarJugadorVendidoFormacion(JComboBox cb, String pos, JButton boton) {
 		if(cb.getSelectedIndex()==0) {
 			boton.setIcon(new ImageIcon(""));
@@ -1017,6 +1011,7 @@ public class Controlador2 implements ActionListener{
 	//preguntar en un JOptionPane si se quiere cerrar o no la ventana 
 		public void cerrar(JFrame plantillaaa) {	
 			plantillaaa.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			String sig=plantilla.siglas.getText();
 			plantillaaa.addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent e) {
@@ -1025,7 +1020,7 @@ public class Controlador2 implements ActionListener{
 			        configuration.configure("hibernate.cfg.xml");
 			        sessionFactory = configuration.buildSessionFactory();
 			        sessionFactory.getCurrentSession();
-					int option = JOptionPane.showConfirmDialog( plantillaaa,  "¿QUIERES CERRAR LA APLICACIÓN?\n       SE BORRARÁ TU PROGRESO", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
+					int option = JOptionPane.showConfirmDialog( plantillaaa,  "           ¿QUIERES CERRAR LA APLICACIÓN?\n   TU PUNTUACIÓN SE GUARDARÁ EN LA BBDD\nDEBES DE REGISTRARTE ANTES EN EL RANKING", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
 					if (option == JOptionPane.YES_OPTION) {
 						String nombreSiglas=plantilla.siglas.getText();
 						char[] myChars = nombreSiglas.toCharArray();
@@ -1034,7 +1029,6 @@ public class Controlador2 implements ActionListener{
 						char chhar3=myChars[2];
 						for(int i=0; i<listar.size(); i++) {	
 							if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
-								String sig=plantilla.siglas.getText();
 								modelo.insertarPlantilla(sessionFactory, sig, listar.get(i).getNumero());
 							}
 						}
@@ -1043,6 +1037,5 @@ public class Controlador2 implements ActionListener{
 					}
 				}
 			});
-		}
-	
+		}	
 	}

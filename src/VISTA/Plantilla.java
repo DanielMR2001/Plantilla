@@ -153,7 +153,7 @@ public class Plantilla extends JFrame {
 		buscar1.setVisible(false);
 		buscar1.setForeground(Color.BLACK);
 		buscar1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		buscar1.setBounds(240, 46, 87, 23);
+		buscar1.setBounds(240, 45, 87, 23);
 		panel_2.add(buscar1);
 		buscar1.setBackground(Color.LIGHT_GRAY);
 		
