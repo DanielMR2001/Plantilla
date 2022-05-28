@@ -105,8 +105,9 @@ public class Controlador2 implements ActionListener{
 		this.plantilla.extremoderecho_1.addActionListener(this);
         asociarImagen("recarga.png", plantilla.recarga);
         asociarImagen("batalla.jpg", plantilla.vs);
-        asociarImagen2("versus.png", plantilla.versus);
-        
+        asociarImagen2("versus.png", plantilla.versus); 
+		//al cerrar la app, guardar puntos y nombre de la plantilla para incluirlo en el ranking en la siguiente ejecucion
+		cerrar(plantilla);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -237,7 +238,7 @@ public class Controlador2 implements ActionListener{
 					plantilla.panel.setVisible(true);
 					comprarJugadores("cartas/oblak.png", "cartas/ter stegen.png", "cartas/alisson.png", "cartas/courtois.png", "cartas/neuer.png", "cartas/ederson.png", "cartas/handanovic.png", "cartas/navas.png", "cartas/szczesny.png", "cartas/lloris.png", "cartas/de gea.png",  "cartas/donnaruma.png", "cartas/leno.png", "cartas/gulasci.png", "cartas/sommer.png");	
 				}
-			}else if(posicion.equals("Defensas")) {
+			}else if(posicion.equals("Centrales")) {
 				ocultar2();
 				if(e.getSource()==plantilla.buscar1) {
 					plantilla.panel.setVisible(true);
@@ -298,7 +299,7 @@ public class Controlador2 implements ActionListener{
 				ocultarCarta();
 				sacarCarta(e, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, plantilla.aceptar, "cartas/oblak.png", "cartas/ter stegen.png", "cartas/alisson.png", "cartas/courtois.png", "cartas/neuer.png", "cartas/ederson.png", "cartas/handanovic.png", "cartas/navas.png", "cartas/szczesny.png", "cartas/lloris.png", "cartas/de gea.png",  "cartas/donnaruma.png", "cartas/leno.png", "cartas/gulasci.png", "cartas/sommer.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR PORTEROS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
-			}else if(posicion.equals("Defensas")){
+			}else if(posicion.equals("Centrales")){
 				ocultarCarta();
 				sacarCarta(e, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, plantilla.aceptar,"cartas/hummels.png", "cartas/de ligt.png", "cartas/laporte.png", "cartas/pique.png", "cartas/de vrij.png", "cartas/lenglet.png", "cartas/manolas.png", "cartas/coates.png",  "cartas/kounde.png", "cartas/skriniar.png", "cartas/nacho.png",  "cartas/upamecano.png", "cartas/koulibaly.png", "cartas/van dijk.png", "cartas/sergio ramos.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR CENTRALES", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));
@@ -335,8 +336,7 @@ public class Controlador2 implements ActionListener{
 				sacarCarta(e, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, plantilla.aceptar, "cartas/ibrahimovic.png", "cartas/haaland.png", "cartas/lewandowski.png", "cartas/mbappe.png", "cartas/peres.png", "cartas/aguero.png", "cartas/benzema.png", "cartas/suarez.png",  "cartas/ronaldo.png", "cartas/firmino.png", "cartas/lukaku.png",  "cartas/iago aspas.png", "cartas/martinez.png", "cartas/aubameyang.png", "cartas/kane.png");
 				plantilla.panel.setBorder((new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "COMPRAR DELANTEROS", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0))));		
 			}
-		
-			
+					
 			//funcionalidad si se compra alguna carta
 			if(e.getSource()==plantilla.aceptar) {
 				plantilla.comprado.setVisible(false);
@@ -433,7 +433,7 @@ public class Controlador2 implements ActionListener{
 				ocultarVender(false);
 				plantilla.comprado.setVisible(false);
 			}		
-			
+
 			if(plantilla.venderJugadores.getSelectedIndex()>0) {
 				ocultarVender(true);
 				asociarImagen2("cartas/"+decidirVender.toUpperCase()+".png", plantilla.ampliarvender);
@@ -442,10 +442,31 @@ public class Controlador2 implements ActionListener{
 				int precioFinal=(carta.getPrecioCartaComprada()*60)/100;
 				String precioo=String.valueOf(precioFinal);
 				plantilla.aceptarvender.setText("+ "+precioo+" $");
+				plantilla.info.setVisible(true);
+				plantilla.info2.setVisible(true);
+				String posicioon="";
+				if(pos.equals("POR")) {posicioon="PORTERO"; }
+				if(pos.equals("DEF D")) {posicioon="CENTRAL D."; }
+				if(pos.equals("DEF I")) {posicioon="CENTRAL I."; } 
+				if(pos.equals("LI")) {posicioon="LATERAL I."; }
+				if(pos.equals("LD")) {posicioon="LATERAL D."; }
+				if(pos.equals("MED")) {posicioon="MEDIO"; }
+				if(pos.equals("MED I")) {posicioon="MEDIO I."; }
+				if(pos.equals("MED D")) {posicioon="MEDIO D."; }
+				if(pos.equals("CAR I")) {posicioon="CARRILERO I."; }
+				if(pos.equals("CAR D")) {posicioon="CARRILERO D."; }
+				if(pos.equals("EXT D")) {posicioon="EXTREMO D."; }
+				if(pos.equals("EXT I")) {posicioon="EXTREMO I."; }
+				if(pos.equals("DEL I")) {posicioon="DELANTERO I."; }
+				if(pos.equals("DEL D")) {posicioon="DELANTERO D."; }
+				if(pos.equals("DEL")) {posicioon="DELANTERO"; }
+				plantilla.info.setText(carta.getNombreCartaComprada()+"\n\n"+posicioon+"\n\n"+carta.getPaisCartaComprada()+"\n\n"+carta.getEquipoCartaComprada()+"\n\n"+carta.getLigaCartaComprada()+"\n\n"+carta.getMediaCartaComprada());
+				plantilla.info2.setText("NOMBRE: \n\nPOSICION: \n\nPAIS: \n\nEQUIPO: \n\nLIGA: \n\nMEDIA: ");
 				if(e.getSource()==plantilla.cancelarvender) {
 					plantilla.venderJugadores.setSelectedIndex(0);
 					ocultarVender(false);
 				}else if(e.getSource()==plantilla.aceptarvender) {
+					ocultarVender(false);
 					plantilla.venderJugadores.removeItem(decidirVender);
 					plantilla.venderJugadores.setSelectedIndex(0);
 					mediaPortero=vender(carta, pos, precioFinal, decidirVender, mediaPortero, "POR", plantilla.porterosComboBox);
@@ -470,6 +491,8 @@ public class Controlador2 implements ActionListener{
 					JOptionPane.showMessageDialog(null, "HAS VENDIDO A "+carta.getNombreCartaComprada(),"VENDER CARTA", JOptionPane.INFORMATION_MESSAGE);
 					plantilla.registro.setText(plantilla.registro.getText()+"Has Vendido a "+carta.getNombreCartaComprada()+"\n");
 				}
+			}else if(plantilla.venderJugadores.getSelectedIndex()==0) {
+				ocultarVender(false);
 			}
 								
 			//funcionalidad cuando se coloca el jugador elegido del ComboBox en la formacion
@@ -568,10 +591,7 @@ public class Controlador2 implements ActionListener{
 					}					
 				}
 			}
-			
-			//al cerrar la app, guardar puntos y nombre de la plantilla para incluirlo en el ranking en la siguiente ejecucion
-			cerrar(plantilla);
-			
+						
 		} catch (Exception e3) { e3.printStackTrace(); 
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
 	}
@@ -681,7 +701,7 @@ public class Controlador2 implements ActionListener{
 			r2=new Ranking(chhar1, chhar2, chhar3, listaUsuarios.get(j).getPuntosPlantilla());
 			listar.add(r2);
 		}
-		//incluirme en el ranking con el primer valor igual a 0, para iniciar el ranking
+		//incluirme en el ranking
 		Ranking r3=null;
 		String nombreSiglas=plantilla.siglas.getText()+"*";
 		char[] myChars = nombreSiglas.toCharArray();
@@ -732,7 +752,6 @@ public class Controlador2 implements ActionListener{
 	}
 
 	//resetear el boton de la posicion de la carta vendida pero sin la opcion de la carta vendida
-	@SuppressWarnings("rawtypes")
 	private void quitarJugadorVendidoFormacion(JComboBox cb, String pos, JButton boton) {
 		if(cb.getSelectedIndex()==0) {
 			boton.setIcon(new ImageIcon(""));
@@ -846,6 +865,8 @@ public class Controlador2 implements ActionListener{
 		plantilla.ampliarvender.setVisible(uno); 
 		plantilla.aceptarvender.setVisible(uno); 
 		plantilla.cancelarvender.setVisible(uno); 
+		plantilla.info.setVisible(uno);
+		plantilla.info2.setVisible(uno);
 	}
 	
 	private void ocultar2() {
@@ -1009,33 +1030,35 @@ public class Controlador2 implements ActionListener{
 	}
 	
 	//preguntar en un JOptionPane si se quiere cerrar o no la ventana 
-		public void cerrar(JFrame plantillaaa) {	
-			plantillaaa.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-			String sig=plantilla.siglas.getText();
-			plantillaaa.addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowClosing(WindowEvent e) {
-					SessionFactory sessionFactory = null;
-			        Configuration configuration = new Configuration();
-			        configuration.configure("hibernate.cfg.xml");
-			        sessionFactory = configuration.buildSessionFactory();
-			        sessionFactory.getCurrentSession();
-					int option = JOptionPane.showConfirmDialog( plantillaaa,  "           ¿QUIERES CERRAR LA APLICACIÓN?\n   TU PUNTUACIÓN SE GUARDARÁ EN LA BBDD\nDEBES DE REGISTRARTE ANTES EN EL RANKING", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
-					if (option == JOptionPane.YES_OPTION) {
-						String nombreSiglas=plantilla.siglas.getText();
-						char[] myChars = nombreSiglas.toCharArray();
-						char chhar1=myChars[0];
-						char chhar2=myChars[1];
-						char chhar3=myChars[2];
-						for(int i=0; i<listar.size(); i++) {	
-							if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
-								modelo.insertarPlantilla(sessionFactory, sig, listar.get(i).getNumero());
-							}
+	public void cerrar(JFrame plantillaaa) {	
+		plantillaaa.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		plantillaaa.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				String sig=plantilla.siglas.getText();
+				SessionFactory sessionFactory = null;
+		        Configuration configuration = new Configuration();
+		        configuration.configure("hibernate.cfg.xml");
+		        sessionFactory = configuration.buildSessionFactory();
+		        sessionFactory.getCurrentSession();
+				int option = JOptionPane.showConfirmDialog( plantillaaa,  "           ¿QUIERES CERRAR LA APLICACIÓN?\n   TU PUNTUACIÓN SE GUARDARÁ EN LA BBDD\nDEBES DE REGISTRARTE ANTES EN EL RANKING", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
+				if (option==JOptionPane.YES_OPTION && sig!=null) {
+					String nombreSiglas=plantilla.siglas.getText();
+					char[] myChars = nombreSiglas.toCharArray();
+					char chhar1=myChars[0];
+					char chhar2=myChars[1];
+					char chhar3=myChars[2];
+					for(int i=0; i<listar.size(); i++) {	
+						if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
+							modelo.insertarPlantilla(sessionFactory, sig, listar.get(i).getNumero());
 						}
-						modelo.borrarDatosTabla();
-						System.exit(0);
 					}
+					modelo.borrarDatosTabla();
+					System.exit(0);
+				}else {
+					
 				}
-			});
-		}	
+			}
+		});
+	}	
 	}
