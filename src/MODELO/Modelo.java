@@ -114,7 +114,7 @@ public class Modelo {
             String password="ciudadreal12";
             String receptor=email;
             String asunto="- - FIFA INTERNATIONAL SOCCER 2022 - - ";
-            String mensaje="¡Hola "+nombre+"!\nTe has registrado en como '"+usuario+"'";
+            String mensaje="¡Hola "+nombre+"!\nTe has registrado en la App como '"+usuario+"'";
             MimeMessage message=new MimeMessage(ses);
             message.setFrom(new InternetAddress(remitente));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(receptor));

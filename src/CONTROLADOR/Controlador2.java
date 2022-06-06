@@ -652,8 +652,8 @@ public class Controlador2 implements ActionListener{
 			asociarImagen2("ganar.png", plantilla.emoticono);
 			plantilla.partidoPerdido.setVisible(false); plantilla.partidoGanado.setVisible(true);
 			JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
-		}else {
-			int prorroga=(int)(Math.random()*1);
+		}else if(listar.get(siglasOtro).getNumero()==entero){
+			int prorroga=(int)(Math.random()*((1-0))+0);
 			if(prorroga==0) {
 				int resta=dinero-3000;
 				String dineroFinal=String.valueOf(resta);
@@ -1048,11 +1048,8 @@ public class Controlador2 implements ActionListener{
 					char chhar1=myChars[0];
 					char chhar2=myChars[1];
 					char chhar3=myChars[2];
-					for(int i=0; i<listar.size(); i++) {	
-						if((listar.get(i).getSigla1()==chhar1)&&(listar.get(i).getSigla2()==chhar2)&&(listar.get(i).getSigla3()==chhar3)) {
-							modelo.insertarPlantilla(sessionFactory, sig, listar.get(i).getNumero());
-						}
-					}
+					int puntuacion=Integer.parseInt(plantilla.puntos.getText());
+					modelo.insertarPlantilla(sessionFactory, sig, puntuacion);
 					modelo.borrarDatosTabla();
 					System.exit(0);
 				}else {
