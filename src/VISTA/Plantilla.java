@@ -125,6 +125,7 @@ public class Plantilla extends JFrame {
 	public JFormattedTextField partidoPerdido;
 	public JTextPane info;
 	public JTextPane info2;
+	public JLabel flecha;
 
 	public static void main(String[] args) {
 		Plantilla plantilla = new Plantilla();
@@ -788,6 +789,10 @@ public class Plantilla extends JFrame {
 		delanteroCcomboBox.setBounds(397, 20, 163, 25);
 		panel_3.add(delanteroCcomboBox);
 		
+		flecha = new JLabel("");
+		flecha.setBounds(317, 15, 46, 53);
+		panel_3.add(flecha);
+		
 		panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), " PERFIL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_4.setBackground(Color.WHITE);
@@ -980,7 +985,7 @@ public class Plantilla extends JFrame {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(null);
-		scrollPane_1.setBounds(10, 67, 198, 164);
+		scrollPane_1.setBounds(5, 67, 204, 164);
 		panel_4.add(scrollPane_1);
 		
 		registro = new JTextPane();
@@ -988,7 +993,7 @@ public class Plantilla extends JFrame {
 		registro.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Registro Actividad", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		scrollPane_1.setViewportView(registro);
 		registro.setForeground(Color.BLACK);
-		registro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 13));
+		registro.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 14));
 		registro.setBackground(Color.WHITE);
 			
 	}

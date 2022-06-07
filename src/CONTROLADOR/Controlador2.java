@@ -139,6 +139,7 @@ public class Controlador2 implements ActionListener{
 	        String decidirFormacion=(String) plantilla.elegirPlantilla.getSelectedItem();
 	        String decidirVender=(String) plantilla.venderJugadores.getSelectedItem();
 	        String escudo=(String) plantilla.elegirEscudo.getSelectedItem();
+			int comparar=Integer.parseInt(plantilla.puntos.getText());
 
 	        if(escudo.equals("Elige Escudo")) {
 	        	asociarImagen2("", plantilla.escudo);
@@ -494,34 +495,34 @@ public class Controlador2 implements ActionListener{
 			}else if(plantilla.venderJugadores.getSelectedIndex()==0) {
 				ocultarVender(false);
 			}
-								
+					
 			//funcionalidad cuando se coloca el jugador elegido del ComboBox en la formacion
 			if(decidirFormacion.equals(" 4 - 3 - 3")) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true); plantilla.medio1_1.setVisible(true); plantilla.medio2_1.setVisible(true); plantilla.medio3_1.setVisible(true); plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero_1.setVisible(true); plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true); plantilla.puntos.setVisible(true);
-				plantilla.medio1_2.setVisible(false); plantilla.medio2_2.setVisible(false); plantilla.medio3_2.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central3_3.setVisible(false); 						
-					int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media1_1+media3_1+media2_1+extremoizquierdo_1+extremoderecho_1+delantero_1)/11;
+				plantilla.medio1_2.setVisible(false); plantilla.medio2_2.setVisible(false); plantilla.medio3_2.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central3_3.setVisible(false); 	
+				int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media1_1+media3_1+media2_1+extremoizquierdo_1+extremoderecho_1+delantero_1)/11;
 					String mediaa=String.valueOf(media);
-					plantilla.puntos.setText(mediaa);				
+					modificarPuntos(comparar, media, mediaa);
 			}else if(decidirFormacion.equals(" 4 - 4 - 2")) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true);plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.extremoderecho_1.setVisible(false); plantilla.extremoizquierdo_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_3.setVisible(false); plantilla.central3_3.setVisible(false); 
-					int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+media1_2+media4_2+delantero1_2+delantero2_2)/11;
+				int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+media1_2+media4_2+delantero1_2+delantero2_2)/11;
 					String mediaa=String.valueOf(media);
-					plantilla.puntos.setText(mediaa);
+					modificarPuntos(comparar, media, mediaa);
 			}else if(decidirFormacion.equals(" 2 - 4 - 4")) {
 				plantilla.portero.setVisible(true); plantilla.central1_3.setVisible(true); plantilla.central3_3.setVisible(true); plantilla.medio1_2.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.medio4_2.setVisible(true); plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio1_1.setVisible(false); plantilla.medio2_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false);  
-					int media=(mediaPortero+mediaCentral1_3+mediaCentral3_3+media2_2+media3_2+media1_2+media4_2+extremoizquierdo_1+extremoderecho_1+delantero1_2+delantero2_2)/11;
+				int media=(mediaPortero+mediaCentral1_3+mediaCentral3_3+media2_2+media3_2+media1_2+media4_2+extremoizquierdo_1+extremoderecho_1+delantero1_2+delantero2_2)/11;
 				 	String mediaa=String.valueOf(media);
-				 	plantilla.puntos.setText(mediaa);
+					modificarPuntos(comparar, media, mediaa);
 			}else if(decidirFormacion.equals(" 4 - 2 - 4")) {
 				plantilla.portero.setVisible(true); plantilla.central1_1.setVisible(true); plantilla.central2_1.setVisible(true);  plantilla.extremoderecho_1.setVisible(true); plantilla.extremoizquierdo_1.setVisible(true); plantilla.delantero1_2.setVisible(true); plantilla.delantero2_2.setVisible(true); plantilla.lateralderecho_1.setVisible(true); plantilla.lateralizquierdo_1.setVisible(true); plantilla.medio2_2.setVisible(true); plantilla.medio3_2.setVisible(true); plantilla.puntos.setVisible(true);
 				plantilla.medio2_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.medio1_2.setVisible(false); plantilla.medio1_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.central1_3.setVisible(false); 
-					int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+extremoizquierdo_1+extremoderecho_1+delantero1_2+delantero2_2)/11;
+				int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+extremoizquierdo_1+extremoderecho_1+delantero1_2+delantero2_2)/11;
 					String mediaa=String.valueOf(media);
-					plantilla.puntos.setText(mediaa);
+					modificarPuntos(comparar, media, mediaa);
 			}
-			
+
 			//mostrar el comboBox necesario al pulsar la posicion para elegir la carta
 			if(e.getSource()==plantilla.portero) { ocultarComboBox(true, false, false, false, false, false, false, false, false, false, false, false, false, false, false); }
 			if((e.getSource()==plantilla.central1_1)||(e.getSource()==plantilla.central1_3)) { ocultarComboBox(false, false, false, false, true, false, false, false, false, false, false, false, false, false, false); }
@@ -596,6 +597,16 @@ public class Controlador2 implements ActionListener{
 		} finally { if(sessionFactory != null) { sessionFactory.close(); } }	
 	}
 
+	private void modificarPuntos(int comparar, int media, String mediaa) {
+		if(comparar<media) {
+			asociarImagen2("verde.png", plantilla.flecha);
+			plantilla.puntos.setText(mediaa);
+		}else if(comparar>media){
+			asociarImagen2("rojo.png", plantilla.flecha);
+			plantilla.puntos.setText(mediaa);
+		}
+	}
+
 	//meter los escucos en un array
 	private void escudos() {
 		escudos.add("usuario.jpg");
@@ -653,23 +664,23 @@ public class Controlador2 implements ActionListener{
 			plantilla.partidoPerdido.setVisible(false); plantilla.partidoGanado.setVisible(true);
 			JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 		}else if(listar.get(siglasOtro).getNumero()==entero){
-			int prorroga=(int)(Math.random()*((1-0))+0);
-			if(prorroga==0) {
+			int prorroga=(int)(Math.random()*10);
+			if(prorroga>5) {
 				int resta=dinero-3000;
 				String dineroFinal=String.valueOf(resta);
 				plantilla.dinero.setText(dineroFinal);
 				plantilla.registro.setText(plantilla.registro.getText()+"Has Perdido contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 				asociarImagen2("perder.jpg", plantilla.emoticono);
 				plantilla.partidoPerdido.setVisible(true); plantilla.partidoGanado.setVisible(false);
-				JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (-3000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
-			}else if(prorroga==1) {
+				JOptionPane.showMessageDialog(null, "HAS PERDIDO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" EN LA PRÓRROGA (-3000 $)\n                         "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO PERDIDO", JOptionPane.ERROR_MESSAGE);
+			}else if(prorroga<=5) {					     
 				int resta=dinero+5000;
 				String dineroFinal=String.valueOf(resta);
 				plantilla.dinero.setText(dineroFinal);
 				plantilla.registro.setText(plantilla.registro.getText()+"Has Ganado contra "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"\n");
 				asociarImagen2("ganar.png", plantilla.emoticono);
 				plantilla.partidoPerdido.setVisible(false); plantilla.partidoGanado.setVisible(true);
-				JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" (+5000 $)\n           "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "HAS GANADO CONTRA "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+"  EN LA PRÓRROGA (+5000 $)\n                        "+plantilla.siglas.getText()+" ("+entero+")     VS     "+listar.get(siglasOtro).getSigla1()+""+listar.get(siglasOtro).getSigla2()+""+listar.get(siglasOtro).getSigla3()+" ("+listar.get(siglasOtro).getNumero()+")","PARTIDO GANADO", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
