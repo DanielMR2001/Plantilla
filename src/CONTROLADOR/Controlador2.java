@@ -557,6 +557,7 @@ public class Controlador2 implements ActionListener{
 					plantilla.listar.setVisible(true);
 					plantilla.scrollPane.setVisible(true);
 					plantilla.miPosicion.setVisible(true);
+					plantilla.panelPartidos.setVisible(true);
 					plantilla.panelranking.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "RANKING - ("+siglas+")", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));					
 					listarRanking();					
 				}

@@ -653,7 +653,7 @@ public class Plantilla extends JFrame {
 		puntos.setBounds(265, 20, 40, 40);
 		panel_3.add(puntos);
 		puntos.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
-		puntos.setText("0");
+		puntos.setText("45");
 		puntos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 25));
 		puntos.setHorizontalAlignment(SwingConstants.CENTER);
 		puntos.setBackground(Color.WHITE);
@@ -839,6 +839,7 @@ public class Plantilla extends JFrame {
 		panel_4.add(elegirEscudo);
 		
 		panelPartidos = new JPanel();
+		panelPartidos.setVisible(false);
 		panelPartidos.setForeground(Color.BLACK);
 		panelPartidos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "PARTIDOS ONLINE", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
 		panelPartidos.setBackground(Color.WHITE);
