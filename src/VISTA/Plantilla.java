@@ -140,7 +140,7 @@ public class Plantilla extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1385, 740);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.textHighlight);
+		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);

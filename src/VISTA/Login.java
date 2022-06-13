@@ -65,6 +65,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		setResizable(false);
+		setBackground(Color.YELLOW);
 		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 - - - ");			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 592, 439);
@@ -76,7 +77,7 @@ public class Login extends JFrame {
 		
 		panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
-		panel.setBackground(SystemColor.textHighlight);
+		panel.setBackground(new Color(0, 191, 255));
 		panel.setBounds(0, 0, 576, 400);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -241,9 +242,9 @@ public class Login extends JFrame {
 		
 		sonido = new JButton("");
 		sonido.setBorder(null);
-		sonido.setForeground(SystemColor.textHighlight);
+		sonido.setForeground(new Color(0, 191, 255));
 		sonido.setVisible(true);
-		sonido.setBackground(SystemColor.textHighlight);
+		sonido.setBackground(new Color(0, 191, 255));
 		sonido.setBounds(509, 12, 57, 41);
 		sonido.setIcon(new ImageIcon("sonido.png"));
 		panel.add(sonido);
@@ -252,14 +253,14 @@ public class Login extends JFrame {
 		silencio.setForeground(SystemColor.textHighlight);
 		silencio.setVisible(false);
 		silencio.setBorder(null);
-		silencio.setBackground(SystemColor.textHighlight);
+		silencio.setBackground(new Color(0, 191, 255));
 		silencio.setBounds(509, 12, 57, 41);
 		silencio.setIcon(new ImageIcon("silencio.png"));
 		panel.add(silencio);
 		
 		help = new JButton("");
 		help.setBorder(null);
-		help.setBackground(SystemColor.textHighlight);
+		help.setBackground(new Color(0, 191, 255));
 		help.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		help.setBounds(5, 4, 126, 42);
 		panel.add(help);
@@ -268,7 +269,7 @@ public class Login extends JFrame {
 		volver.setVisible(false);
 		volver.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		volver.setBorder(null);
-		volver.setBackground(SystemColor.textHighlight);
+		volver.setBackground(new Color(0, 191, 255));
 		volver.setBounds(5, 4, 126, 42);
 		panel.add(volver);
 		

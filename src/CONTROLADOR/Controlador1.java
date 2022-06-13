@@ -44,10 +44,12 @@ public class Controlador1 implements ActionListener{
 		asociarImagen("volver.png", login.volver);
 		asociarImagen2("pensar.png", login.pensar);
 		asociarImagen2("pensar2.png", login.pensar2);
+
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		try {
 			//configuracion del hibernate
 			Configuration configuration = new Configuration();
