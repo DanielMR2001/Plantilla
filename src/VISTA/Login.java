@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
 import javax.swing.border.TitledBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 
@@ -53,7 +52,6 @@ public class Login extends JFrame {
 	public JTextField norma7;
 	public JTextField norma8;
 	public JTextField norma9;
-	public JTextField norma10;
 	public JLabel pensar;
 	public JLabel pensar2;
 
@@ -67,7 +65,7 @@ public class Login extends JFrame {
 
 	public Login() {
 		setResizable(false);
-		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 (¿ ?) - - - ");			
+		this.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 - - - ");			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 592, 439);
 		contentPane = new JPanel();
@@ -278,7 +276,7 @@ public class Login extends JFrame {
 		normas.setVisible(false);
 		normas.setBorder(new TitledBorder(null, "INSTRUCCIONES", TitledBorder.CENTER, TitledBorder.TOP, null, Color.BLACK));
 		normas.setBackground(Color.WHITE);
-		normas.setBounds(81, 52, 411, 321);
+		normas.setBounds(81, 52, 411, 300);
 		panel.add(normas);
 		normas.setLayout(null);
 		
@@ -374,23 +372,13 @@ public class Login extends JFrame {
 		norma9.setBounds(7, 260, 398, 30);
 		normas.add(norma9);
 		
-		norma10 = new JTextField();
-		norma10.setEditable(false);
-		norma10.setForeground(Color.BLACK);
-		norma10.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 15));
-		norma10.setColumns(10);
-		norma10.setBorder(null);
-		norma10.setBackground(Color.WHITE);
-		norma10.setBounds(7, 290, 398, 25);
-		normas.add(norma10);
-		
 		pensar = new JLabel("");
-		pensar.setBounds(499, 175, 70, 70);
+		pensar.setBounds(499, 165, 70, 70);
 		panel.add(pensar);
 		
 		pensar2 = new JLabel("");
 		pensar2.setVisible(false);
-		pensar2.setBounds(0, 160, 85, 90);
+		pensar2.setBounds(0, 155, 85, 90);
 		panel.add(pensar2);
 		pensar.setVisible(false);
 	}

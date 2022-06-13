@@ -149,16 +149,15 @@ public class Controlador1 implements ActionListener{
 			if(e.getSource()==login.help) {
 				login.setTitle("   - - - FIFA INTERNATIONAL SOCCER 2022 (INSTRUCCIONES) - - - ");
 				login.help.setVisible(false); login.aceptar1.setVisible(false); login.aceptar2.setVisible(false); login.loguear.setVisible(false); login.registro.setVisible(false); login.registrar.setVisible(false); login.iniciarSesion.setVisible(false); login.volver.setVisible(true); login.normas.setVisible(true); login.pensar.setVisible(true); login.pensar2.setVisible(true);
-				login.norma1.setText("1º Primero debes regístrate para acceder en el inicio de sesión");
-				login.norma2.setText("2º Inicia sesión con el usuario y contraseña del registro");
-				login.norma3.setText("3º Al entrar a la siguiente ventana, regístrate en el ranking");
-				login.norma4.setText("4º Compra/Vende jugadores en la tienda");
-				login.norma5.setText("5º Elege la mejor plantilla para los jugadores comprados");
-				login.norma6.setText("6º Para jugar partidos, debes registrarte antes en el Ranking");
-				login.norma7.setText("7º +5000$ por victoria/-3000$ por derrota");
-				login.norma8.setText("8º Puedes escoger el escudo de tu equipo para los partidos");
-				login.norma9.setText("9º No podrás jugar partidos si tienes menos de 3000$");
-				login.norma10.setText("10º Al vender un jugador, obtendrás el 60% de su precio de venta");
+				login.norma1.setText("1º Regístrate e inicia sesión para acceder a la App");
+				login.norma2.setText("2º Al entrar a la siguiente ventana, regístrate en el ranking");
+				login.norma3.setText("3º Compra/Vende jugadores en la tienda");
+				login.norma4.setText("4º Elege la mejor plantilla para los jugadores comprados");
+				login.norma5.setText("5º Para jugar partidos, debes registrarte antes en el Ranking");
+				login.norma6.setText("6º +5000$ por victoria/-3000$ por derrota");
+				login.norma7.setText("7º Puedes escoger el escudo de tu equipo para los partidos");
+				login.norma8.setText("8º No podrás jugar partidos si tienes menos de 3000$");
+				login.norma9.setText("9º Al vender un jugador, obtendrás el 60% de su precio de venta");
 			}
 			
 			if(e.getSource()==login.volver) {

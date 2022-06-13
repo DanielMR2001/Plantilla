@@ -111,7 +111,7 @@ public class Modelo {
         	properties.put("mail.smtp.auth", "true");
             javax.mail.Session ses = javax.mail.Session.getInstance(properties);
             String remitente="danielmarchantero2001@gmail.com";
-            String password="ciudadreal12";
+            String password="zryhwzdiwwbnhoqm";
             String receptor=email;
             String asunto="- - FIFA INTERNATIONAL SOCCER 2022 - - ";
             String mensaje="¡Hola "+nombre+"!\nTe has registrado en la App como '"+usuario+"'";

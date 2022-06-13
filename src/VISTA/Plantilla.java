@@ -382,7 +382,7 @@ public class Plantilla extends JFrame {
 		venderJugadores.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 18));
 		venderJugadores.setForeground(Color.BLACK);
 		venderJugadores.setModel(new DefaultComboBoxModel(new String[] {"Elige Jugador para Vender"}));
-		venderJugadores.setBounds(75, 75, 254, 27);
+		venderJugadores.setBounds(75, 60, 254, 27);
 		panel_2.add(venderJugadores);
 		
 		ampliarvender = new JLabel("");
@@ -653,7 +653,7 @@ public class Plantilla extends JFrame {
 		puntos.setBounds(265, 20, 40, 40);
 		panel_3.add(puntos);
 		puntos.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
-		puntos.setText("45");
+		puntos.setText("0");
 		puntos.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 25));
 		puntos.setHorizontalAlignment(SwingConstants.CENTER);
 		puntos.setBackground(Color.WHITE);

@@ -521,6 +521,9 @@ public class Controlador2 implements ActionListener{
 				int media=(mediaPortero+mediaLateralDerecho+mediaLateralIzquierdo+mediaCentral1_1+mediaCentral2_1+media2_2+media3_2+extremoizquierdo_1+extremoderecho_1+delantero1_2+delantero2_2)/11;
 					String mediaa=String.valueOf(media);
 					modificarPuntos(comparar, media, mediaa);
+			}else if(decidirFormacion.equals("Elige Formacion")) {
+				plantilla.portero.setVisible(false); plantilla.central1_1.setVisible(false); plantilla.central2_1.setVisible(false);  plantilla.extremoderecho_1.setVisible(false); plantilla.extremoizquierdo_1.setVisible(false); plantilla.delantero1_2.setVisible(false); plantilla.delantero2_2.setVisible(false); plantilla.lateralderecho_1.setVisible(false); plantilla.lateralizquierdo_1.setVisible(false); plantilla.medio2_2.setVisible(false); plantilla.medio3_2.setVisible(false); plantilla.puntos.setVisible(false);
+				plantilla.medio2_1.setVisible(false); plantilla.delantero_1.setVisible(false); plantilla.central3_3.setVisible(false); plantilla.medio1_2.setVisible(false); plantilla.medio1_1.setVisible(false); plantilla.medio3_1.setVisible(false); plantilla.medio4_2.setVisible(false); plantilla.central1_3.setVisible(false); 
 			}
 
 			//mostrar el comboBox necesario al pulsar la posicion para elegir la carta
@@ -1048,24 +1051,18 @@ public class Controlador2 implements ActionListener{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				String sig=plantilla.siglas.getText();
+				Boolean sigBoolean=sig.isEmpty();
 				SessionFactory sessionFactory = null;
 		        Configuration configuration = new Configuration();
 		        configuration.configure("hibernate.cfg.xml");
 		        sessionFactory = configuration.buildSessionFactory();
 		        sessionFactory.getCurrentSession();
-				int option = JOptionPane.showConfirmDialog( plantillaaa,  "           ¿QUIERES CERRAR LA APLICACIÓN?\n   TU PUNTUACIÓN SE GUARDARÁ EN LA BBDD\nDEBES DE REGISTRARTE ANTES EN EL RANKING", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
-				if (option==JOptionPane.YES_OPTION && sig!=null) {
-					String nombreSiglas=plantilla.siglas.getText();
-					char[] myChars = nombreSiglas.toCharArray();
-					char chhar1=myChars[0];
-					char chhar2=myChars[1];
-					char chhar3=myChars[2];
+				int option = JOptionPane.showConfirmDialog( plantillaaa,  "           ¿QUIERES CERRAR LA APLICACIÓN?\nDEBES DE REGISTRARTE ANTES EN EL RANKING\n   TU PUNTUACIÓN SE GUARDARÁ EN LA BBDD", "CONFIRMACIÓN DE CIERRE", JOptionPane.YES_NO_OPTION,  JOptionPane.WARNING_MESSAGE);
+				if (option==JOptionPane.YES_OPTION && sigBoolean==false) {
 					int puntuacion=Integer.parseInt(plantilla.puntos.getText());
 					modelo.insertarPlantilla(sessionFactory, sig, puntuacion);
 					modelo.borrarDatosTabla();
 					System.exit(0);
-				}else {
-					
 				}
 			}
 		});
